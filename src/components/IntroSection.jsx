@@ -1,10 +1,12 @@
 import React from 'react'
-import LetterGlitch from './LetterGlitch'
+import {LetterGlitch } from '../components'
 
-export default function IntroSection() {
+function IntroSection() {
   return (
-    <div>
-      <LetterGlitch/>
-    </div>
+    <LetterGlitch>
+      
+    </LetterGlitch>
   )
 }
+
+export default IntroSection

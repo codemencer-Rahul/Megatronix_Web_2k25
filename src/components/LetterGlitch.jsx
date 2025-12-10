@@ -1,73 +1,67 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from "react";
 
 const LetterGlitch = ({
-glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
+  children,
+  glitchColors = ["#160f29", "#246a73", "#368f8b"],
   glitchSpeed = 50,
   centerVignette = true,
   outerVignette = false,
   smooth = true,
-  characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'
 }) => {
   const canvasRef = useRef(null);
+  const containerRef = useRef(null);
   const animationRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
   const letters = useRef([]);
   const grid = useRef({ columns: 0, rows: 0 });
   const context = useRef(null);
   const lastGlitchTime = useRef(Date.now());
 
-  const lettersAndSymbols = Array.from(characters);
-
   const fontSize = 16;
   const charWidth = 10;
   const charHeight = 20;
 
-  const getRandomChar = () => {
-    return lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
-  };
+  const lettersAndSymbols =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>0123456789".split("");
 
-  const getRandomColor = () => {
-    return glitchColors[Math.floor(Math.random() * glitchColors.length)];
-  };
+  const getRandomChar = () =>
+    lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
+  const getRandomColor = () =>
+    glitchColors[Math.floor(Math.random() * glitchColors.length)];
 
-  const hexToRgb = hex => {
+  const hexToRgb = (hex) => {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, (m, r, g, b) => {
-      return r + r + g + g + b + b;
-    });
-
+    hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
       ? {
           r: parseInt(result[1], 16),
           g: parseInt(result[2], 16),
-          b: parseInt(result[3], 16)
+          b: parseInt(result[3], 16),
         }
       : null;
   };
 
   const interpolateColor = (start, end, factor) => {
-    const result = {
-      r: Math.round(start.r + (end.r - start.r) * factor),
-      g: Math.round(start.g + (end.g - start.g) * factor),
-      b: Math.round(start.b + (end.b - start.b) * factor)
-    };
-    return `rgb(${result.r}, ${result.g}, ${result.b})`;
+    const r = Math.round(start.r + (end.r - start.r) * factor);
+    const g = Math.round(start.g + (end.g - start.g) * factor);
+    const b = Math.round(start.b + (end.b - start.b) * factor);
+    return `rgb(${r}, ${g}, ${b})`;
   };
 
-  const calculateGrid = (width, height) => {
-    const columns = Math.ceil(width / charWidth);
-    const rows = Math.ceil(height / charHeight);
-    return { columns, rows };
-  };
+  const calculateGrid = (width, height) => ({
+    columns: Math.ceil(width / charWidth),
+    rows: Math.ceil(height / charHeight),
+  });
 
   const initializeLetters = (columns, rows) => {
     grid.current = { columns, rows };
-    const totalLetters = columns * rows;
-    letters.current = Array.from({ length: totalLetters }, () => ({
+    const total = columns * rows;
+    letters.current = Array.from({ length: total }, () => ({
       char: getRandomChar(),
       color: getRandomColor(),
       targetColor: getRandomColor(),
-      colorProgress: 1
+      colorProgress: 1,
     }));
   };
 
@@ -97,12 +91,13 @@ glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
   };
 
   const drawLetters = () => {
-    if (!context.current || letters.current.length === 0) return;
+    if (!context.current) return;
     const ctx = context.current;
     const { width, height } = canvasRef.current.getBoundingClientRect();
+
     ctx.clearRect(0, 0, width, height);
     ctx.font = `${fontSize}px monospace`;
-    ctx.textBaseline = 'top';
+    ctx.textBaseline = "top";
 
     letters.current.forEach((letter, index) => {
       const x = (index % grid.current.columns) * charWidth;
@@ -113,17 +108,11 @@ glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
   };
 
   const updateLetters = () => {
-    if (!letters.current || letters.current.length === 0) return;
-
-    const updateCount = Math.max(1, Math.floor(letters.current.length * 0.05));
-
-    for (let i = 0; i < updateCount; i++) {
+    const count = Math.max(1, Math.floor(letters.current.length * 0.05));
+    for (let i = 0; i < count; i++) {
       const index = Math.floor(Math.random() * letters.current.length);
-      if (!letters.current[index]) continue;
-
       letters.current[index].char = getRandomChar();
       letters.current[index].targetColor = getRandomColor();
-
       if (!smooth) {
         letters.current[index].color = letters.current[index].targetColor;
         letters.current[index].colorProgress = 1;
@@ -135,23 +124,19 @@ glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
 
   const handleSmoothTransitions = () => {
     let needsRedraw = false;
-    letters.current.forEach(letter => {
+    letters.current.forEach((letter) => {
       if (letter.colorProgress < 1) {
         letter.colorProgress += 0.05;
         if (letter.colorProgress > 1) letter.colorProgress = 1;
-
-        const startRgb = hexToRgb(letter.color);
-        const endRgb = hexToRgb(letter.targetColor);
-        if (startRgb && endRgb) {
-          letter.color = interpolateColor(startRgb, endRgb, letter.colorProgress);
+        const start = hexToRgb(letter.color);
+        const end = hexToRgb(letter.targetColor);
+        if (start && end) {
+          letter.color = interpolateColor(start, end, letter.colorProgress);
           needsRedraw = true;
         }
       }
     });
-
-    if (needsRedraw) {
-      drawLetters();
-    }
+    if (needsRedraw) drawLetters();
   };
 
   const animate = () => {
@@ -161,53 +146,72 @@ glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
       drawLetters();
       lastGlitchTime.current = now;
     }
-
-    if (smooth) {
-      handleSmoothTransitions();
+    if (smooth) handleSmoothTransitions();
+    if (isVisible) {
+      animationRef.current = requestAnimationFrame(animate);
     }
-
-    animationRef.current = requestAnimationFrame(animate);
   };
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
 
-    context.current = canvas.getContext('2d');
-    resizeCanvas();
-    animate();
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
-    let resizeTimeout;
+    const currentContainer = containerRef.current;
 
-    const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
+    return () => {
+      if (currentContainer) {
+        observer.unobserve(currentContainer);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      const canvas = canvasRef.current;
+      context.current = canvas.getContext("2d");
+      resizeCanvas();
+      animate();
+
+      const handleResize = () => {
         cancelAnimationFrame(animationRef.current);
         resizeCanvas();
         animate();
-      }, 100);
-    };
+      };
 
-    window.addEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
 
-    return () => {
+      return () => {
+        cancelAnimationFrame(animationRef.current);
+        window.removeEventListener("resize", handleResize);
+      };
+    } else {
       cancelAnimationFrame(animationRef.current);
-      window.removeEventListener('resize', handleResize);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [glitchSpeed, smooth]);
+    }
+  }, [isVisible]);
 
   return (
-    <div className="relative w-full h-full bg-black overflow-hidden">
-      <canvas ref={canvasRef} className="block w-full h-full" />
+    <div
+      ref={containerRef}
+      className="relative w-full min-h-screen overflow-hidden bg-black"
+    >
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0" />
       {outerVignette && (
-        <div
-          className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,rgba(0,0,0,0)_60%,rgba(0,0,0,1)_100%)]"></div>
+        <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle,rgba(0,0,0,0)_60%,rgba(0,0,0,1)_100%)]"></div>
       )}
       {centerVignette && (
-        <div
-          className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_60%)]"></div>
+        <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0)_60%)]"></div>
       )}
+      {/* Content goes above the canvas */}
+      <div className="relative z-20 w-full h-auto">{children}</div>
     </div>
   );
 };

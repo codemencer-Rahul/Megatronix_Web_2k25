@@ -23,7 +23,8 @@ export default function Navbar() {
 
     return (
         <>
-            <header className="shadow sticky z-50 top-0">
+            <header className="shadow sticky z-50 top-0 left-0">
+            {/* <header className="shadow fixed z-50 top-0 left-0 right-0"> */}
                 <nav className="px-4 lg:px-6 py-2.5"
                     style={{
                         fontFamily: "'Walter Turncoat', sans-serif",

@@ -1,11 +1,237 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {LetterGlitch, SpotlightCard, StatsSection, VideoComponent, Timeline} from '../components'
+import {
+  Target,
+  Users,
+  Code,
+  Lightbulb,
+  Trophy,
+  Calendar,
+  Gamepad,
+} from "lucide-react";
+import warVid from "../assets/warVid.mp4";
+import gamingEvent from "../assets/gamingEvent.mp4";
+import paridhiVid from "../assets/paridhiVid.mp4";
+import techxtraVid from "../assets/techxtraVid.mp4";
 
-export default function AboutSection() {
+function AboutSection() {
+  const milestones = [
+    {
+      year: "2012",
+      event: "Megatronix Founded",
+      description:
+        "In 2012, Megatronix was born as the official technical club of MSIT — a hub for curiosity, innovation, and creativity. What began as a small team with a vision soon became a space where students could explore, experiment, and bring ideas to life.",
+    },
+    {
+      year: "2012",
+      event: "First Paridhi",
+      description:
+        "Later that year, we organized our very first flagship event, Paridhi. It was more than just an event; it was the beginning of a tradition, a platform where talent could shine and the spirit of innovation could take center stage.",
+    },
+    {
+      year: "2024",
+      event: "First 15kg Robo War",
+      description:
+        "Fast forward to 2024, we witnessed the thrill of our inaugural 15kg Robo War competition. Students engineered, strategized, and battled, turning creativity into action. The event became a testament to the skills and determination nurtured within our community over the years.",
+      videoSrc: warVid,
+    },
+    {
+      year: "2025",
+      event: "First App Launch",
+      description:
+        "In 2025, we embraced the digital era by launching our very first official app for Paridhi. This app streamlined event management and registrations, making it easier for participants to engage while showcasing our commitment to innovation and seamless experiences.",
+    },
+    {
+      year: "2025",
+      event: "Organized MegaExpo for the first time",
+      description:
+        "The same year marked the debut of MegaExpo, a grand platform where ideas transformed into impact. From technological innovations to social solutions, students pitched their bold concepts to panels of startup founders, industry experts, and mentors, igniting collaboration and inspiration across the campus.",
+    },
+    {
+      year: "2025",
+      event: "Organized Proto-X for the first time",
+      description:
+        "Proto-X also made its first appearance, celebrating the art of creation. Participants built and demonstrated both hardware and software prototypes, turning raw ideas into tangible solutions. Guided by experts and innovators, the event became a journey of learning, discovery, and hands-on innovation.",
+    },
+    {
+      year: "2026",
+      event: "13 Years Strong",
+      description:
+        "By 2026, Megatronix had celebrated 13 remarkable years. From the sparks of early ideas to the glow of shared memories, our journey has been one of passion, creativity, and community. Each milestone strengthened our family, inspiring future innovators and leaving a legacy of growth, magic, and endless possibilities.",
+    },
+  ];
+
+  const events = [
+    {
+      title: "Paridhi",
+      description:
+        "Step into Paridhi, our flagship annual technical festival where innovation takes center stage. From thrilling competitions to hands-on workshops and dazzling tech showcases, participants experience the cutting edge of technology and creativity.",
+      icon: Trophy,
+      frequency: "Annual",
+      videoSrc: paridhiVid,
+    },
+    {
+      title: "TechXtra",
+      description:
+        "TechXtra sparks the imagination of first-year students with exclusive intra-college challenges. This annual compitition encourages experimentation, teamwork, and the joy of creating something extraordinary from scratch.",
+      icon: Code,
+      frequency: "Annually",
+      videoSrc: techxtraVid,
+    },
+    {
+      title: "Workshops",
+      description:
+        "Our hands-on workshops empower participants to turn ideas into reality. Dive into project development sessions, explore innovative tech solutions, and build skills that last a lifetime.",
+      icon: Lightbulb,
+      frequency: "Annually",
+    },
+    {
+      title: "Pre-Paridhi / Pre-TechXtra Events",
+      description:
+        "Kickstart the excitement with our quarterly pre-events that set the stage for Paridhi and TechXtra. These sessions include mini competitions, interactive workshops, and collaborative challenges, giving participants a head start to innovate, learn, and refine their ideas before the main events.",
+      icon: Calendar,
+      frequency: "Quarterly",
+    },
+    {
+      title: "Gaming Events",
+      description:
+        "Quarterly gaming events that bring together students in thrilling battles of strategy, skill, and teamwork. From esports tournaments to casual gaming challenges, these events foster friendly competition, sharpen reflexes, and build a vibrant community of gamers and tech enthusiasts.",
+      icon: Gamepad,
+      frequency: "Quarterly",
+      videoSrc: gamingEvent,
+    },
+    {
+      title: "Coding Competitions / Hackathons",
+      description:
+        "Immerse yourself in our quarterly coding competitions and hackathons, where every challenge sparks creativity and pushes boundaries. Collaborate with peers, tackle real-world problems, and bring your ideas to life — an arena to sharpen skills, innovate, and experience the thrill of coding at its best.",
+      icon: Target,
+      frequency: "Quarterly",
+    },
+    {
+      title: "Tech Talks",
+      description:
+        "Gain insights and inspiration from industry experts and thought leaders during our quarterly Tech Talks. Learn firsthand about emerging trends, real-world challenges, and the stories behind groundbreaking innovations.",
+      icon: Users,
+      frequency: "Quarterly",
+    },
+  ];
+
+  const [showModal, setShowModal] = useState(false);
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  const openModal = (videoSrc) => {
+    setActiveVideo(videoSrc);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setActiveVideo(null);
+  };
+
+
   return (
-    <div>
-      <p className='text-2xl'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos molestiae voluptate eius omnis rem assumenda nemo? Debitis odio dolores reiciendis quis ipsum optio ab, aperiam quos libero reprehenderit animi cum, illo beatae dignissimos officiis asperiores error nobis explicabo consequatur alias, ipsam corrupti molestiae ut quae! Rerum, sint. Architecto maiores non modi voluptas molestias asperiores ipsam natus quaerat earum mollitia impedit harum animi quam, eaque veniam aliquid deserunt, aspernatur vitae sequi quibusdam iste. Iste porro repudiandae esse ex, officia adipisci animi aliquam vel quasi eveniet doloribus corrupti, incidunt sequi labore consequuntur aperiam quia tempore blanditiis consectetur fugiat velit aspernatur. Earum consectetur deserunt culpa libero quibusdam! Saepe quia sapiente eveniet corrupti veniam id dolores, obcaecati placeat reprehenderit eos quasi magnam in natus architecto officia praesentium ea iure quaerat rerum blanditiis nesciunt? Ducimus distinctio architecto fugiat ea cupiditate impedit minus corrupti sit voluptatem et maxime ex inventore possimus aliquam, ullam maiores ipsum exercitationem incidunt. Vero aspernatur voluptate voluptates inventore iste quia distinctio non quidem optio saepe quae et, repellat consequuntur reiciendis. Commodi optio laboriosam a omnis in animi cupiditate, ratione mollitia, temporibus asperiores minus odit illum earum, at non explicabo quidem corporis possimus deleniti! Deleniti facere autem eos commodi, vero nulla quam dolorum quidem repellendus aliquid accusantium maxime ullam debitis beatae laborum dolorem esse odio laboriosam minus mollitia error necessitatibus deserunt. Voluptas quibusdam possimus vel dignissimos maiores laudantium pariatur id tenetur voluptatibus, ullam delectus, tempore nisi qui. A eveniet labore alias velit? Quo ea ipsum quam veniam dolorem cumque pariatur tenetur doloremque. Blanditiis, quibusdam. Fugit consequatur tempore iste repellendus eum perferendis aperiam neque hic temporibus veritatis enim, deserunt consectetur quae suscipit saepe nesciunt architecto error beatae praesentium. Qui laudantium, nesciunt voluptates hic molestias ad repudiandae at doloremque aliquam nihil quo nulla labore unde adipisci sequi aliquid quod totam sunt. Esse id possimus odio nulla aut doloribus non tempora aliquam, nisi pariatur minima, perspiciatis, laudantium vitae iste. Cupiditate possimus maxime veritatis quia consequatur nemo. Amet beatae natus, libero consequatur dignissimos esse repudiandae illum ex ipsa, harum corporis reprehenderit voluptates. Recusandae quo minus, quia, tempora quisquam consequuntur ab ipsum neque eaque commodi architecto magni totam similique vero eum provident! Ipsum iusto, dolorum soluta omnis error dolores nesciunt, et ad dolorem, corporis earum nobis facere eveniet. Nostrum dolores quo voluptatum consequatur pariatur hic mollitia ad quasi illo! Unde iure, similique consectetur ab dolore, deserunt saepe rem eum sint veniam odio dicta! In facere nobis cum nisi a quos, rem sapiente eos earum eum ab ipsum est fuga? Reiciendis maiores consectetur culpa voluptatem eligendi amet quis nulla a deleniti, corrupti dolores error harum hic quo itaque id deserunt commodi mollitia! Nemo natus quidem laudantium suscipit recusandae, praesentium fugiat vitae ullam impedit adipisci? Mollitia exercitationem nulla vero quas alias illum, minima laudantium nobis laboriosam magni quidem voluptatem numquam eaque minus debitis corrupti voluptate, nisi, sunt praesentium cumque fugiat doloribus veritatis officiis? Molestiae, est magni aspernatur debitis delectus ducimus laborum amet. Voluptatibus eos non obcaecati error. Impedit nemo accusamus, at officiis alias quasi vel ab consequuntur recusandae! Minima, quos?
-      </p>
-    </div>
-  )
+    <LetterGlitch>
+      <div className="min-h-screen pt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+
+          {/* Mission & Vision */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <SpotlightCard className="backdrop-blur-sm border border-blue-400/30 rounded-xl p-6"
+            spotlightColor="rgba(96, 165, 250, 0.2)" >
+              <div className="flex items-center space-x-2 mb-4">
+                <h2 className="text-2xl font-semibold text-green-300">
+                  Our Mission
+                </h2>
+              </div>
+              <p className="text-blue-100">
+                To foster technical excellence and innovation among students by
+                providing platforms for learning, collaboration, and skill
+                development in emerging technologies. We aim to bridge the gap
+                between academic knowledge and industry requirements.
+              </p>
+            </SpotlightCard>
+
+            <SpotlightCard className="backdrop-blur-sm border border-blue-400/30 rounded-xl p-6"
+            spotlightColor="rgba(96, 165, 250, 0.2)" >
+              <div className="flex items-center space-x-2 mb-4">
+                <h2 className="text-2xl font-semibold text-green-300">
+                  Our Vision
+                </h2>
+              </div>
+              <p className="text-blue-100">
+                To be the leading technical community that nurtures future
+                technology leaders and innovators. We envision creating a
+                ecosystem where creativity meets technology to solve real-world
+                problems and drive positive change in society.
+              </p>
+            </SpotlightCard>
+          </div>
+          
+          {/* History Timeline */}
+          <div className="my-8">
+            <h2 className="text-4xl font-extrabold text-center text-white">
+              Our Journey
+            </h2>
+            <Timeline milestones={milestones} openModal={openModal} />
+          </div>
+
+          {/* Stats Section */}
+          <div className="mb-16">
+            <StatsSection />
+          </div>
+
+          {/* Events We Conduct */}
+          <div>
+            <h2 className="text-3xl font-bold text-blue-200 text-center mb-12">
+              Events We Specialize In
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map((event, index) => (
+                <div
+                  key={index}
+                  className="bg-[#0b1e3a]/50 backdrop-blur-sm border border-blue-400/30 rounded-xl p-6 hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Header Section */}
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center space-x-2">
+                      <event.icon className="h-6 w-6 text-green-300" />
+                      <h3 className="text-lg font-semibold text-blue-100">
+                        {event.title}
+                      </h3>
+                    </div>
+                    <span className="text-sm text-green-300 bg-blue-400/10 px-2 py-1 rounded-full">
+                      {event.frequency}
+                    </span>
+                  </div>
+
+                  {/* 🎥 Show Video Button (below title) */}
+                  {event.videoSrc && (
+                    <button
+                      onClick={() => openModal(event.videoSrc)}
+                      className="hover:cursor-pointer mb-3 text-xs sm:text-sm text-green-300 border border-green-400/50 px-3 py-1 rounded-lg hover:bg-green-400/20 transition-all duration-300 font-medium backdrop-blur-sm whitespace-nowrap"
+                    >
+                      🎥 Show Video
+                    </button>
+                  )}
+
+                  {/* Description */}
+                  <p className="text-blue-200">{event.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+        {/* Video Modal */}
+        {showModal && (
+          <VideoComponent videoSrc={activeVideo} closeModal={closeModal} />
+        )}
+      </div>
+    </LetterGlitch>
+  );
 }
+
+export default AboutSection;
