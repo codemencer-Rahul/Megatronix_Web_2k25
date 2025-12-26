@@ -17,3 +17,58 @@ body {
     /* font-family: 'Walter Turncoat', sans-serif; */
     font-family: 'Iceberg';
 }
+
+/* Tailwind extended CSS (add in global.css or inside a <style> tag if using Tailwind) */
+@layer components {
+  .btn-25,
+  .btn-25::before,
+  .btn-25::after {
+    border: 0 solid;
+    box-sizing: border-box;
+  }
+
+  .btn-25 {
+    --background: #000;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background: none;
+    cursor: pointer;
+    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  }
+
+  .btn-25::before,
+  .btn-25::after {
+    --tilt: 20px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: #fff;
+    clip-path: polygon(0 50%, 0 0, 100% 0, 100% 50%, 100% 100%, 0 100%);
+    transition: clip-path 0.2s ease;
+  }
+
+  .btn-25::after {
+    --thickness: 3px;
+    background: var(--background);
+    height: calc(100% - var(--thickness) * 2);
+    width: calc(100% - var(--thickness) * 2);
+    top: var(--thickness);
+    left: var(--thickness);
+  }
+
+  .btn-25:hover::before,
+  .btn-25:hover::after {
+    clip-path: polygon(
+      0 50%,
+      var(--tilt) 0,
+      calc(100% - var(--tilt)) 0,
+      100% 50%,
+      calc(100% - var(--tilt)) 100%,
+      var(--tilt) 100%
+    );
+  }
+}
