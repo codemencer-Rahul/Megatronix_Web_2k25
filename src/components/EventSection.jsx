@@ -49,7 +49,7 @@ function EventSection() {
       time: "NA",
       participants: "200+ Participants",
       icon: Rocket,
-      gradient: "from-rose-600 to-purple-600",
+      gradient: "from-teal-800/40 to-red-500/40",
       status: "completed",
       comingSoon: false,
     },
@@ -64,7 +64,7 @@ function EventSection() {
       time: "3:00 PM - 5:00 PM",
       participants: "200+ Participants",
       icon: Users,
-      gradient: "from-rose-600 to-purple-600",
+      gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
     },
@@ -78,7 +78,7 @@ function EventSection() {
       time: "3:00 PM - 5:00 PM",
       participants: "50 per session",
       icon: Code,
-      gradient: "from-rose-600 to-purple-600",
+      gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
     },
@@ -92,7 +92,7 @@ function EventSection() {
       time: "10:00 AM - 5:00 PM",
       participants: "200+ Participants",
       icon: Code,
-      gradient: "from-rose-600 to-purple-600",
+      gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
     },
@@ -106,7 +106,7 @@ function EventSection() {
       time: "10:00 AM - 5:00 PM",
       participants: "500+ Expected",
       icon: Rocket,
-      gradient: "from-rose-600 to-purple-600",
+      gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
     },
@@ -115,11 +115,11 @@ function EventSection() {
   const getStatusColor = (status) => {
     switch (status) {
       case "upcoming":
-        return "bg-blue-700/60";
+        return "bg-cyan-600/70";
       case "ongoing":
         return "bg-red-500";
       case "completed":
-        return "bg-green-500/70";
+        return "bg-green-500/40";
       default:
         return "bg-gray-500";
     }

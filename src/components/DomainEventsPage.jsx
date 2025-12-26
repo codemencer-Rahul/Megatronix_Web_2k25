@@ -109,7 +109,7 @@ export default function DomainEventsPage() {
                     </div>
                     <div className="w-full flex flex-col gap-4 mt-2">
                       <button
-                        className="hover:cursor-pointer w-full h-10 rounded-xl bg-linear-to-r from-rose-600 to-purple-600 hover:scale-105 hover:shadow-lg transition-transform duration-300 text-white font-bold text-sm tracking-wide backdrop-blur"
+                        className="hover:cursor-pointer w-full h-10 rounded-xl bg-linear-to-r from-teal-700/50 to-red-500/40 hover:scale-105 hover:shadow-lg transition-transform duration-300 text-white font-bold text-sm tracking-wide backdrop-blur"
                         // onClick={() => openModal(ev)}
                       >
                         Register

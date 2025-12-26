@@ -84,10 +84,10 @@ export default function OrientationPage() {
             {yearList.map((year) => (
               <button
                 key={year}
-                className={`hover:cursor-pointer px-6 py-2 rounded-full font-semibold text-lg transition-all duration-200 border-2 border-blue-400/40 bg-white/10 hover:bg-blue-400/20 text-blue-100 ${
+                className={`px-6 py-2 rounded-full font-semibold text-lg transition-all duration-200 border-2 text-blue-100 ${
                   selectedYear === year
-                    ? "bg-linear-to-r from-rose-600 to-purple-600 text-white scale-105"
-                    : ""
+                    ? "bg-linear-to-tl to-red-500/60 text-white scale-105 border-blue-400/60"
+                    : "border-blue-400/60 hover:bg-emerald-800/40 hover:cursor-pointer"
                 }`}
                 onClick={() => setSelectedYear(year)}
               >

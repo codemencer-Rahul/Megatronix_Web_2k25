@@ -28,7 +28,6 @@ export default function Navbar() {
                 <nav className="px-4 lg:px-6 py-2.5"
                     style={{
                         fontFamily: "'Walter Turncoat', sans-serif",
-                        // glassmorphism
                         background: "hex(#060E0F)",
                         boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                         backdropFilter: "blur(9.5px)",
@@ -76,7 +75,7 @@ export default function Navbar() {
                                             lg:after:w-full lg:after:origin-left lg:after:scale-x-0 lg:after:bg-white lg:after:transition-transform 
                                             lg:after:duration-300 lg:hover:after:scale-x-100
                                             hover:bg-gray-700/50 lg:hover:bg-transparent
-                                            ${isActive ? "text-green-400" : "text-gray-400"}`
+                                            ${isActive ? "text-rose-500/80" : "text-gray-400"}`
                                                 }
                                             >
                                                 {item.name}
@@ -99,9 +98,9 @@ export default function Navbar() {
                                     return (
                                         <>
                                             <span>{day}</span>
-                                            <span className='mx-2 font-bold text-emerald-600'>//</span>
+                                            <span className='mx-2 font-bold text-red-900/80'>//</span>
                                             <span>{month}</span>
-                                            <span className='mx-2 font-bold text-emerald-600'>//</span>
+                                            <span className='mx-2 font-bold text-red-900/80'>//</span>
                                             <span>{year}</span>
                                         </>
                                     )
