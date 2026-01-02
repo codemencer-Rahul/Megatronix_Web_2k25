@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import megaLogo from '../assets/megaLogo.png'
 
@@ -13,18 +13,30 @@ export default function Navbar() {
         setIsMenuOpen(false);
     };
 
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMenuOpen]);
+
     const navItems = [
         { name: "Home", value: "", disabled: false },
         { name: "About Us", value: "about", disabled: false },
         { name: "Team", value: "team", disabled: false },
-        { name: "Gallery", value: "gallery", disabled: true},
+        { name: "Gallery", value: "gallery", disabled: true },
         { name: "Events", value: "event", disabled: false },
     ]
 
     return (
         <>
             <header className="shadow sticky z-50 top-0 left-0">
-            {/* <header className="shadow fixed z-50 top-0 left-0 right-0"> */}
+                {/* <header className="shadow fixed z-50 top-0 left-0 right-0"> */}
                 <nav className="px-4 lg:px-6 py-2.5"
                     style={{
                         fontFamily: "'Walter Turncoat', sans-serif",
@@ -38,8 +50,8 @@ export default function Navbar() {
                 >
                     <div className="flex justify-between items-center mx-auto max-w-7xl px-6 md:pd-0">
 
-                        <Link to="/" className="flex items-center"> 
-                             <img
+                        <Link to="/" className="flex items-center">
+                            <img
                                 src={megaLogo}
                                 alt="Mega Logo"
                                 className="h-8 sm:h-10 md:h-12 w-auto object-contain select-none drop-shadow-[0_0_4px_white]"
@@ -49,10 +61,10 @@ export default function Navbar() {
 
                         <div
                             className={`${isMenuOpen ? 'block' : 'hidden'}
-                            fixed lg:static top-16 left-0 right-0 transition-all duration-300 ease-in-out lg:flex lg:w-auto`}
+                            fixed lg:static top-[60px] left-0 right-0 transition-all duration-300 ease-in-out lg:flex lg:w-auto`}
                             id="mobile-menu-2"
                         >
-                            <ul className="flex flex-col italic w-full transition-all duration-300 ease-in-out space-y-4 lg:space-y-0 lg:flex-row lg:space-x-14 lg:w-auto bg-[rgba(13,11,62,0.95)] lg:bg-transparent p-4 lg:p-0">
+                            <ul className="flex flex-col items-center justify-center italic w-full min-h-screen lg:min-h-0 transition-all duration-300 ease-in-out space-y-4 lg:space-y-0 lg:flex-row lg:space-x-14 lg:w-auto bg-[rgba(17,19,20,0.95)] lg:bg-transparent p-4 lg:p-0">
                                 {navItems.map((item, idx) => (
                                     <li key={idx}>
                                         {item.disabled ? (
@@ -75,7 +87,7 @@ export default function Navbar() {
                                             lg:after:w-full lg:after:origin-left lg:after:scale-x-0 lg:after:bg-white lg:after:transition-transform 
                                             lg:after:duration-300 lg:hover:after:scale-x-100
                                             hover:bg-gray-700/50 lg:hover:bg-transparent
-                                            ${isActive ? "text-rose-500/80" : "text-gray-400"}`
+                                            ${isActive ? "text-cyan-500" : "text-gray-400"}`
                                                 }
                                             >
                                                 {item.name}
@@ -98,9 +110,9 @@ export default function Navbar() {
                                     return (
                                         <>
                                             <span>{day}</span>
-                                            <span className='mx-2 font-bold text-red-900/80'>//</span>
+                                            <span className='mx-2 font-bold text-cyan-500'>//</span>
                                             <span>{month}</span>
-                                            <span className='mx-2 font-bold text-red-900/80'>//</span>
+                                            <span className='mx-2 font-bold text-cyan-500'>//</span>
                                             <span>{year}</span>
                                         </>
                                     )
@@ -109,8 +121,8 @@ export default function Navbar() {
 
                             <Link
                                 to="/contact"
-                                className="text-white border-cyan-950 border-2 font-medium rounded-full text-sm px-4 py-2 lg:px-3.5 lg:py-2.5 mr-4 lg:mr-2 
-                                duration-200 transform hover:scale-90 hover:shadow-[0_0_10px_2px_rgba(34,211,238,0.6)] "
+                                className="text-white border-cyan-500 border font-medium rounded-full text-xs lg:text-sm px-3 py-2 lg:px-3.5 lg:py-2 mr-4 lg:mr-2 
+                                duration-200 transform hover:scale-95 hover:bg-cyan-300 hover:text-black"
                             >
                                 Contact Us
                             </Link>
