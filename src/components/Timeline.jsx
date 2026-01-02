@@ -93,7 +93,7 @@ function Timeline({ milestones, openModal }) {
                   : "-left-2.5"
               }`}
             />
-            <div className="text-box p-5 sm:py-5 sm:px-7 backdrop-blur-sm bg-blue-950/80 border border-blue-400/30 relative rounded-xl">
+            <div className="text-box p-5 sm:py-5 sm:px-7 backdrop-blur-sm bg-cyan-950/50 border border-blue-400/30 relative rounded-xl">
               <h2 className="text-lg sm:text-2xl font-semibold text-blue-100">{item.event}</h2>
               <small className="mb-3 inline-block text-green-300 font-bold text-sm sm:text-md">{item.year}</small>
               <p className='text-blue-200 text-sm sm:text-base leading-relaxed'>{item.description}</p>

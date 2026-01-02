@@ -140,7 +140,7 @@ function AboutSection() {
             <SpotlightCard className="backdrop-blur-sm border border-blue-400/30 rounded-xl p-6"
             spotlightColor="rgba(96, 165, 250, 0.2)" >
               <div className="flex items-center space-x-2 mb-4">
-                <h2 className="text-2xl font-semibold text-green-300">
+                <h2 className="text-2xl font-semibold text-cyan-400">
                   Our Mission
                 </h2>
               </div>
@@ -155,7 +155,7 @@ function AboutSection() {
             <SpotlightCard className="backdrop-blur-sm border border-blue-400/30 rounded-xl p-6"
             spotlightColor="rgba(96, 165, 250, 0.2)" >
               <div className="flex items-center space-x-2 mb-4">
-                <h2 className="text-2xl font-semibold text-green-300">
+                <h2 className="text-2xl font-semibold text-cyan-400">
                   Our Vision
                 </h2>
               </div>
