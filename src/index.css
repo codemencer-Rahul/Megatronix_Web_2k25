@@ -14,8 +14,10 @@
 body {
     background-color: black;
     color: white;
+    user-select: none;
+    /* padding-bottom: 10px; */
     /* font-family: 'Walter Turncoat', sans-serif; */
-    font-family: 'Iceberg';
+    /* font-family: 'Iceberg'; */
 }
 
 /* Tailwind extended CSS (add in global.css or inside a <style> tag if using Tailwind) */
