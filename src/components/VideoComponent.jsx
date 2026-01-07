@@ -13,16 +13,19 @@ const VideoComponent = ({ videoSrc, closeModal }) => {
         onClick={(e) => e.stopPropagation()} // prevent close on inner click
       >
         {/* Top Bar with Back Button */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-green-400/30">
+        <div className="flex items-center justify-between p-4 sm:p-5" style={{ borderBottomWidth: '1px', borderBottomStyle: 'solid', borderBottomColor: 'var(--yellow-border-soft)' }}>
           <button
             onClick={closeModal}
-            className="hover:cursor-pointer flex items-center gap-2 text-green-300 hover:text-green-400 transition text-sm sm:text-base"
+            className="hover:cursor-pointer flex items-center gap-2 transition text-sm sm:text-base"
+            style={{ color: 'var(--yellow-primary)' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--yellow-hover)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--yellow-primary)'}
           >
             <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             <span>Back</span>
           </button>
 
-          <h2 className="text-green-300 text-base sm:text-lg font-semibold tracking-wide">
+          <h2 className="text-base sm:text-lg font-semibold tracking-wide" style={{ color: 'var(--yellow-primary)' }}>
             Event Video
           </h2>
         </div>
@@ -33,7 +36,8 @@ const VideoComponent = ({ videoSrc, closeModal }) => {
             src={videoSrc}
             controls
             autoPlay
-            className="w-full h-auto max-h-[70vh] rounded-xl border-2 object-contain"
+            className="w-full h-auto max-h-[70vh] rounded-xl object-contain"
+            style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'var(--yellow-primary)' }}
           />
         </div>
       </div>

@@ -1,11 +1,13 @@
-import { TeamSection } from '../components'
 import React from 'react'
+import { TeamSection, LetterGlitch } from '../components'
 
 function TeamPage() {
   return (
-    <div>
-      <TeamSection/>
-    </div>
+    <LetterGlitch>
+      <div className="min-h-screen pt-10">
+        <TeamSection />
+      </div>
+    </LetterGlitch>
   )
 }
 
