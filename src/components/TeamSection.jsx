@@ -1,5 +1,4 @@
 import React from "react";
-import LetterGlitch from "./LetterGlitch";
 import ProfileCard from "./ProfileCard";
 import contactInfo from "../data/ContactInfo.json";
 
@@ -54,30 +53,27 @@ const TeamSection = () => {
   }));
 
   return (
-    <LetterGlitch>
-      <div className="min-h-screen pt-10">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          {membersByYear.map((group) => (
-            <div key={group.year} className="mb-30 mt-10">
-           
-              <div className="flex flex-wrap justify-center gap-8">
-                {group.members.map((member, index) => (
-                  <ProfileCard
-                    key={index}
-                    name={member.name}
-                    year={member.year}
-                    imageUrl={member.profilePicture}
-                    email={member.email}
-                    linkedin={member.linkedin}
-                    github={member.github}
-                  />
-                ))}
-              </div>
+    <div className="min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        {membersByYear.map((group) => (
+          <div key={group.year} className="mb-30 mt-10">
+            <div className="flex flex-wrap justify-center gap-8">
+              {group.members.map((member, index) => (
+                <ProfileCard
+                  key={index}
+                  name={member.name}
+                  year={member.year}
+                  imageUrl={member.profilePicture}
+                  email={member.email}
+                  linkedin={member.linkedin}
+                  github={member.github}
+                />
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </LetterGlitch>
+    </div>
   );
 };
 
