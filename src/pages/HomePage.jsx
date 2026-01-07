@@ -96,12 +96,12 @@ function HomePage() {
             type="button"
             className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tl-3xl rounded-br-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
             style={{ 
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              color: 'var(--yellow-primary)',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              color: 'var(--white)',
               borderWidth: '1px',
               borderStyle: 'solid',
-              borderColor: 'var(--yellow-primary)',
-              boxShadow: '0 0 20px var(--yellow-shadow)'
+              borderColor: 'var(--gray-text)',
+              boxShadow: '0 0 20px rgba(209, 213, 219, 0.2)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = 'var(--yellow-hover)';
@@ -116,7 +116,7 @@ function HomePage() {
           >
             <Link to='/event'>
             <span className="relative z-10 flex items-center gap-2 font-mono">
-              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--yellow-primary)' }}></span>
+              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
               Register
             </span>
             </Link>
