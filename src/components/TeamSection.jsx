@@ -58,10 +58,8 @@ const TeamSection = () => {
       <div className="min-h-screen pt-10">
         <div className="max-w-7xl mx-auto px-4 py-12">
           {membersByYear.map((group) => (
-            <div key={group.year} className="mb-30">
-              <h2 className="text-3xl font-bold text-indigo-200 text-center mb-12">
-                {group.year}
-              </h2>
+            <div key={group.year} className="mb-30 mt-10">
+           
               <div className="flex flex-wrap justify-center gap-8">
                 {group.members.map((member, index) => (
                   <ProfileCard
