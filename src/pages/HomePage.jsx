@@ -3,12 +3,13 @@ import LetterGlitch from "../components/LetterGlitch";
 import FuzzyText from "../components/FuzzyText";
 import Shuffle from "../components/shuffle";
 import ShinyText from '../components/ShinyText';
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
     <div className="relative min-h-screen">
       <LetterGlitch
-        glitchSpeed={50}
+        glitchSpeed={10}
         centerVignette={false}
         outerVignette={false}
         smooth={true}
@@ -90,29 +91,65 @@ function HomePage() {
         </div>
 
         {/* Two buttons inline under MEGATRONIX text */}
-        <div className="flex flex-col sm:flex-row gap-10 sm:gap-10 md:gap-16 lg:gap-20 translate-y-14 sm:translate-y-12">
+        <div className="flex flex-col sm:flex-row gap-10 sm:gap-6 md:gap-10 lg:gap-12 translate-y-14 sm:translate-y-12">
           <button
             type="button"
-            className="group relative overflow-hidden bg-black/80 text-emerald-400 uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base border border-emerald-400 rounded-tl-3xl rounded-br-3xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:text-emerald-300 hover:scale-96 hover:cursor-pointer before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-emerald-500/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:bg-black/60 after:-z-10"
-            // style={{ clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))' }}
+            className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tl-3xl rounded-br-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
+            style={{ 
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              color: 'var(--yellow-primary)',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: 'var(--yellow-primary)',
+              boxShadow: '0 0 20px var(--yellow-shadow)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--yellow-hover)';
+              e.currentTarget.style.borderColor = 'var(--yellow-hover)';
+              e.currentTarget.style.boxShadow = '0 0 28px var(--yellow-shadow-strong)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--yellow-primary)';
+              e.currentTarget.style.borderColor = 'var(--yellow-primary)';
+              e.currentTarget.style.boxShadow = '0 0 20px var(--yellow-shadow)';
+            }}
           >
+            <Link to='/event'>
             <span className="relative z-10 flex items-center gap-2 font-mono">
-              <span className="w-1.5 h-1.5 bg-emerald-400 animate-pulse rounded-full"></span>
+              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--yellow-primary)' }}></span>
               Register
-              <span className="text-emerald-500/70 text-[10px] inline">&lt;/&gt;</span>
             </span>
+            </Link>
           </button>
 
           <button
             type="button"
-            className="group relative overflow-hidden bg-black/80 text-red-500 uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base border border-red-500 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 shadow-[0_0_20px_rgba(239,68,68,0.4)] hover:text-red-400 hover:scale-96 hover:cursor-pointer before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-red-500/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:inset-[1px] after:bg-black/60 after:-z-10"
-            // style={{ clipPath: 'polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)' }}
+            className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tr-3xl rounded-bl-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
+            style={{ 
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              color: 'var(--white)',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: 'var(--gray-text)',
+              boxShadow: '0 0 20px rgba(209, 213, 219, 0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--yellow-primary)';
+              e.currentTarget.style.borderColor = 'var(--yellow-primary)';
+              e.currentTarget.style.boxShadow = '0 0 28px var(--yellow-shadow)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--white)';
+              e.currentTarget.style.borderColor = 'var(--gray-text)';
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(209, 213, 219, 0.2)';
+            }}
           >
+            <Link to="/about">
             <span className="relative z-10 flex items-center gap-2 font-mono">
-              <span className="w-1.5 h-1.5 bg-red-500 animate-pulse rounded-full"></span>
-              About Us
-              <span className="text-red-500/70 text-[10px] inline">[ ]</span>
+              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
+               About Us
             </span>
+             </Link>
           </button>
         </div>
 

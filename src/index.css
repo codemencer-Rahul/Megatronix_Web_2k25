@@ -1,5 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./global.css";
+
+@font-face {
+  font-family: "Bring_Race";
+  src: url("./assets/Bring%20Race.otf") format("opentype");
+  font-display: swap;
+}
 
 /* Hide scrollbar but allow scrolling */
 * {
@@ -12,8 +19,8 @@
 }
 
 body {
-    background-color: black;
-    color: white;
+    background-color: var(--black);
+    color: var(--white);
     user-select: none;
     /* padding-bottom: 10px; */
     /* font-family: 'Walter Turncoat', sans-serif; */
