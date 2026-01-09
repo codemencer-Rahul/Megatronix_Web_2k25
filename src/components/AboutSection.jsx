@@ -136,15 +136,16 @@ function AboutSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 
           {/* Mission & Vision */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <SpotlightCard className="backdrop-blur-sm border border-blue-400/30 rounded-xl p-6"
-            spotlightColor="rgba(96, 165, 250, 0.2)" >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-8">
+            <SpotlightCard className="backdrop-blur-sm rounded-xl p-6"
+            style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'var(--yellow-border-soft)' }}
+            spotlightColor="var(--yellow-shadow)" >
               <div className="flex items-center space-x-2 mb-4">
-                <h2 className="text-2xl font-semibold text-cyan-400">
+                <h2 className="text-2xl font-semibold" style={{ color: 'var(--yellow-primary)' }}>
                   Our Mission
                 </h2>
               </div>
-              <p className="text-blue-100">
+              <p style={{ color: 'var(--gray-text)' }}>
                 To foster technical excellence and innovation among students by
                 providing platforms for learning, collaboration, and skill
                 development in emerging technologies. We aim to bridge the gap
@@ -152,14 +153,15 @@ function AboutSection() {
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="backdrop-blur-sm border border-blue-400/30 rounded-xl p-6"
-            spotlightColor="rgba(96, 165, 250, 0.2)" >
+            <SpotlightCard className="backdrop-blur-sm rounded-xl p-6"
+            style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'var(--yellow-border-soft)' }}
+            spotlightColor="var(--yellow-shadow)" >
               <div className="flex items-center space-x-2 mb-4">
-                <h2 className="text-2xl font-semibold text-cyan-400">
+                <h2 className="text-2xl font-semibold" style={{ color: 'var(--yellow-primary)' }}>
                   Our Vision
                 </h2>
               </div>
-              <p className="text-blue-100">
+              <p style={{ color: 'var(--gray-text)' }}>
                 To be the leading technical community that nurtures future
                 technology leaders and innovators. We envision creating a
                 ecosystem where creativity meets technology to solve real-world
@@ -170,7 +172,7 @@ function AboutSection() {
           
           {/* History Timeline */}
           <div className="my-8">
-            <h2 className="text-4xl font-extrabold text-center text-white">
+            <h2 className="text-4xl font-extrabold text-center" style={{ color: 'var(--white)' }}>
               Our Journey
             </h2>
             <Timeline milestones={milestones} openModal={openModal} />
@@ -183,25 +185,31 @@ function AboutSection() {
 
           {/* Events We Conduct */}
           <div>
-            <h2 className="text-3xl font-bold text-blue-200 text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12">
               Events We Specialize In
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="bg-[#0b1e3a]/50 backdrop-blur-sm border border-blue-400/30 rounded-xl p-6 hover:scale-105 transition-all duration-300 animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="backdrop-blur-sm rounded-xl p-6 hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                  style={{ 
+                    animationDelay: `${index * 0.1}s`,
+                    backgroundColor: 'var(--surface-black)',
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: 'var(--yellow-border-soft)'
+                  }}
                 >
                   {/* Header Section */}
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
-                      <event.icon className="h-6 w-6 text-green-300" />
-                      <h3 className="text-lg font-semibold text-blue-100">
+                      <event.icon className="h-6 w-6" style={{ color: 'var(--yellow-primary)' }} />
+                      <h3 className="text-lg font-semibold" style={{ color: 'var(--white)' }}>
                         {event.title}
                       </h3>
                     </div>
-                    <span className="text-sm text-green-300 bg-blue-400/10 px-2 py-1 rounded-full">
+                    <span className="text-sm px-2 py-1 rounded-full" style={{ color: 'var(--yellow-primary)', backgroundColor: 'var(--yellow-border-soft)' }}>
                       {event.frequency}
                     </span>
                   </div>
@@ -210,14 +218,22 @@ function AboutSection() {
                   {event.videoSrc && (
                     <button
                       onClick={() => openModal(event.videoSrc)}
-                      className="hover:cursor-pointer mb-3 text-xs sm:text-sm text-green-300 border border-green-400/50 px-3 py-1 rounded-lg hover:bg-green-400/20 transition-all duration-300 font-medium backdrop-blur-sm whitespace-nowrap"
+                      className="hover:cursor-pointer mb-3 text-xs sm:text-sm px-3 py-1 rounded-lg transition-all duration-300 font-medium backdrop-blur-sm whitespace-nowrap"
+                      style={{
+                        color: 'var(--yellow-primary)',
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: 'var(--yellow-primary)'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--yellow-border-soft)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                     >
                       🎥 Show Video
                     </button>
                   )}
 
                   {/* Description */}
-                  <p className="text-blue-200">{event.description}</p>
+                  <p style={{ color: 'var(--gray-text)' }}>{event.description}</p>
                 </div>
               ))}
             </div>
