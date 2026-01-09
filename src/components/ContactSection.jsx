@@ -14,11 +14,10 @@ import {
   ChevronUp
 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../utils/firebase";
 import LetterGlitch from "./LetterGlitch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { contactUsService } from "../services/contactUsService";
 
 // --- DATA ---
 const facultyCoordinators = [
@@ -93,13 +92,21 @@ const ContactSection = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  async function callAppwriteFunction(data) {
+    return await contactUsService(data);
+  }
+
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await addDoc(collection(db, "feedbacks"), {
+      const submissionData = {
         ...data,
-        timestamp: new Date(),
-      });
+        source: 'website',
+        userAgent: navigator.userAgent,
+        pageUrl: window.location.href,
+      };
+
+      await callAppwriteFunction(submissionData);
       toast.success("Message Transmitted Successfully!");
       reset();
     } catch (err) {
@@ -114,10 +121,10 @@ const ContactSection = () => {
     <LetterGlitch>
       <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 font-orbitron">
         <ToastContainer theme="dark" position="bottom-right" />
-        
+
         {/* Main Grid Layout */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
+
           {/* --- LEFT COLUMN: FEEDBACK FORM (Spans 7 columns) --- */}
           <div className="lg:col-span-7 flex flex-col">
             <div
@@ -215,7 +222,7 @@ const ContactSection = () => {
 
                 <div className="space-y-1">
                   <input
-                    {...register("subject")}
+                    {...register("subject", { required: "Required" })}
                     placeholder="SUBJECT"
                     className="w-full p-3 focus:outline-none transition-all"
                     style={{
@@ -224,19 +231,26 @@ const ContactSection = () => {
                       color: 'var(--white)'
                     }}
                   />
+                  {errors.subject && <span className="text-red-400 text-xs">{errors.subject.message}</span>}
                 </div>
 
-                <textarea
-                  {...register("message", { required: "Required" })}
-                  rows="5"
-                  placeholder="ENTER YOUR MESSAGE DATA..."
-                  className="w-full p-3 focus:outline-none transition-all resize-none"
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid var(--yellow-border-soft)',
-                    color: 'var(--white)'
-                  }}
-                ></textarea>
+                {/* Honeypot Field for spam prevention, DONT REMOVE THIS */}
+                <input type="text" name="website" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+
+                <div className="space-y-1">
+                  <textarea
+                    {...register("message", { required: "Required" })}
+                    rows="5"
+                    placeholder="ENTER YOUR MESSAGE DATA..."
+                    className="w-full p-3 focus:outline-none transition-all resize-none"
+                    style={{
+                      backgroundColor: 'rgba(255,255,255,0.04)',
+                      border: '1px solid var(--yellow-border-soft)',
+                      color: 'var(--white)'
+                    }}
+                  />
+                  {errors.message && <span className="text-red-400 text-xs">{errors.message.message}</span>}
+                </div>
 
                 {/* CYBER BUTTON */}
                 <button
@@ -258,7 +272,7 @@ const ContactSection = () => {
 
           {/* --- RIGHT COLUMN STACK (Spans 5 columns) --- */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            
+
             {/* 1. MAP PANEL */}
             <div
               className="relative h-64 backdrop-blur-sm rounded-xl overflow-hidden"
@@ -268,7 +282,7 @@ const ContactSection = () => {
                 boxShadow: '0 0 20px rgba(255, 202, 40, 0.12)'
               }}
             >
-               <iframe
+              <iframe
                 title="TechFest Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.123456789!2d88.4150829!3d22.5105296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0273f14bca0c15%3A0xbd1ef59baa5eafd0!2sMeghnad%20Saha%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
                 width="100%"
@@ -292,7 +306,7 @@ const ContactSection = () => {
                 className="absolute top-0 right-0 w-8 h-8 rounded-tr-lg"
                 style={{ borderTop: '2px solid var(--yellow-primary)', borderRight: '2px solid var(--yellow-primary)' }}
               ></div>
-              
+
               <div className="flex items-center gap-4 group">
                 <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
                   <MapPin className="w-6 h-6" style={{ color: 'var(--yellow-primary)' }} />
@@ -323,7 +337,7 @@ const ContactSection = () => {
                 </div>
               </div>
 
-               <div className="flex items-center gap-4 group">
+              <div className="flex items-center gap-4 group">
                 <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
                   <Clock className="w-6 h-6" style={{ color: 'var(--yellow-primary)' }} />
                 </div>
@@ -343,19 +357,19 @@ const ContactSection = () => {
                 boxShadow: '0 0 20px rgba(255, 202, 40, 0.12)'
               }}
             >
-                <p className="text-xl font-bold tracking-widest hidden sm:block" style={{ color: 'var(--yellow-primary)' }}>Connect_with_us //</p>
-                <div className="flex gap-4 mx-auto sm:mx-0">
-                  {[Facebook, Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
-                    <a key={i} href="#" className="transition-colors hover:scale-110 transform" style={{ color: 'var(--gray-text)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--yellow-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-text)'}>
-                      <Icon size={20} />
-                    </a>
-                  ))}
-                </div>
+              <p className="text-xl font-bold tracking-widest hidden sm:block" style={{ color: 'var(--yellow-primary)' }}>Connect_with_us //</p>
+              <div className="flex gap-4 mx-auto sm:mx-0">
+                {[Facebook, Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
+                  <a key={i} href="#" className="transition-colors hover:scale-110 transform" style={{ color: 'var(--gray-text)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--yellow-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-text)'}>
+                    <Icon size={20} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* --- BOTTOM ROW: FACULTY (Left) & FAQ (Right) --- */}
-          
+
           {/* FACULTY SECTION */}
           <div
             className="lg:col-span-7 backdrop-blur-sm rounded-xl p-6 shadow-lg relative flex flex-col"
@@ -365,61 +379,61 @@ const ContactSection = () => {
               boxShadow: '0 0 20px rgba(255, 202, 40, 0.12)'
             }}
           >
-             <div
-               className="absolute bottom-0 left-0 w-8 h-8 rounded-bl-lg"
-               style={{ borderBottom: '2px solid var(--yellow-primary)', borderLeft: '2px solid var(--yellow-primary)' }}
-             ></div>
-             <h3
-               className="text-2xl font-bold mb-6 tracking-widest pb-2"
-               style={{ color: 'var(--yellow-primary)', borderBottom: '1px solid var(--yellow-border-soft)' }}
-             >
-               Faculty Coordinators
-             </h3>
-             
-             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 grow items-center">
-               {facultyCoordinators.map((member, idx) => (
-                 <div
-                   key={idx}
-                   className="backdrop-blur-md rounded-lg p-4 transition-all group flex flex-col justify-center"
-                   style={{
-                     backgroundColor: 'var(--surface-black)',
-                     border: '1px solid var(--yellow-border-soft)',
-                     boxShadow: '0 0 12px rgba(255, 202, 40, 0.08)'
-                   }}
-                 >
-                    <div
-                      className="w-16 h-16 mx-auto rounded-full mb-3 overflow-hidden"
-                      style={{ backgroundColor: 'rgba(255, 202, 40, 0.06)', border: '2px solid var(--yellow-border-soft)' }}
-                    >
-                       {/* You can put an <img> tag here */}
+            <div
+              className="absolute bottom-0 left-0 w-8 h-8 rounded-bl-lg"
+              style={{ borderBottom: '2px solid var(--yellow-primary)', borderLeft: '2px solid var(--yellow-primary)' }}
+            ></div>
+            <h3
+              className="text-2xl font-bold mb-6 tracking-widest pb-2"
+              style={{ color: 'var(--yellow-primary)', borderBottom: '1px solid var(--yellow-border-soft)' }}
+            >
+              Faculty Coordinators
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 grow items-center">
+              {facultyCoordinators.map((member, idx) => (
+                <div
+                  key={idx}
+                  className="backdrop-blur-md rounded-lg p-4 transition-all group flex flex-col justify-center"
+                  style={{
+                    backgroundColor: 'var(--surface-black)',
+                    border: '1px solid var(--yellow-border-soft)',
+                    boxShadow: '0 0 12px rgba(255, 202, 40, 0.08)'
+                  }}
+                >
+                  <div
+                    className="w-16 h-16 mx-auto rounded-full mb-3 overflow-hidden"
+                    style={{ backgroundColor: 'rgba(255, 202, 40, 0.06)', border: '2px solid var(--yellow-border-soft)' }}
+                  >
+                    {/* You can put an <img> tag here */}
+                  </div>
+                  <h4 className="font-bold text-sm text-center" style={{ color: 'var(--yellow-primary)' }}>{member.coordinator}</h4>
+                  <p className="text-xs mb-3 text-center" style={{ color: 'var(--gray-text)' }}>{member.domain}</p>
+                  <div className="space-y-2 mb-3">
+                    <div className="flex items-center space-x-2 text-xs">
+                      <Phone className="h-3 w-3 shrink-0" style={{ color: 'var(--yellow-primary)' }} />
+                      <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.phone}</span>
                     </div>
-                    <h4 className="font-bold text-sm text-center" style={{ color: 'var(--yellow-primary)' }}>{member.coordinator}</h4>
-                    <p className="text-xs mb-3 text-center" style={{ color: 'var(--gray-text)' }}>{member.domain}</p>
-                    <div className="space-y-2 mb-3">
-                      <div className="flex items-center space-x-2 text-xs">
-                        <Phone className="h-3 w-3 shrink-0" style={{ color: 'var(--yellow-primary)' }} />
-                        <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.phone}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-xs">
-                        <Mail className="h-3 w-3 shrink-0" style={{ color: 'var(--yellow-primary)' }} />
-                        <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.email}</span>
-                      </div>
+                    <div className="flex items-center space-x-2 text-xs">
+                      <Mail className="h-3 w-3 shrink-0" style={{ color: 'var(--yellow-primary)' }} />
+                      <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.email}</span>
                     </div>
-                    <button
-                      className="w-full text-[10px] uppercase px-3 py-1.5 rounded font-semibold transition-colors"
-                      style={{
-                        border: '1px solid var(--yellow-border-soft)',
-                        color: 'var(--yellow-primary)',
-                        backgroundColor: 'transparent'
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--yellow-primary)'; e.currentTarget.style.color = 'var(--surface-black)'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--yellow-primary)'; }}
-                    >
-                      Contact Coordinator
-                    </button>
-                 </div>
-               ))}
-             </div>
+                  </div>
+                  <button
+                    className="w-full text-[10px] uppercase px-3 py-1.5 rounded font-semibold transition-colors"
+                    style={{
+                      border: '1px solid var(--yellow-border-soft)',
+                      color: 'var(--yellow-primary)',
+                      backgroundColor: 'transparent'
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--yellow-primary)'; e.currentTarget.style.color = 'var(--surface-black)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--yellow-primary)'; }}
+                  >
+                    Contact Coordinator
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* FAQ SECTION (Accordion) */}
@@ -431,52 +445,52 @@ const ContactSection = () => {
               boxShadow: '0 0 20px rgba(255, 202, 40, 0.12)'
             }}
           >
-             <div
-               className="absolute bottom-0 right-0 w-8 h-8 rounded-br-lg"
-               style={{ borderBottom: '2px solid var(--yellow-primary)', borderRight: '2px solid var(--yellow-primary)' }}
-             ></div>
-             <h3
-               className="text-xl font-bold mb-6 tracking-widest pb-2"
-               style={{ color: 'var(--yellow-primary)', borderBottom: '1px solid var(--yellow-border-soft)' }}
-             >
-               Frequently Asked Questions
-             </h3>
-             
-             <div className="space-y-3">
-               {faqs.map((faq, index) => (
-                 <div
-                   key={index}
-                   className="rounded-lg overflow-hidden backdrop-blur-md"
-                   style={{
-                     backgroundColor: 'var(--surface-black)',
-                     border: '1px solid var(--yellow-border-soft)'
-                   }}
-                 >
-                   <button 
+            <div
+              className="absolute bottom-0 right-0 w-8 h-8 rounded-br-lg"
+              style={{ borderBottom: '2px solid var(--yellow-primary)', borderRight: '2px solid var(--yellow-primary)' }}
+            ></div>
+            <h3
+              className="text-xl font-bold mb-6 tracking-widest pb-2"
+              style={{ color: 'var(--yellow-primary)', borderBottom: '1px solid var(--yellow-border-soft)' }}
+            >
+              Frequently Asked Questions
+            </h3>
+
+            <div className="space-y-3">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="rounded-lg overflow-hidden backdrop-blur-md"
+                  style={{
+                    backgroundColor: 'var(--surface-black)',
+                    border: '1px solid var(--yellow-border-soft)'
+                  }}
+                >
+                  <button
                     onClick={() => toggleFaq(index)}
                     className="w-full flex justify-between items-center p-3 text-left text-sm font-semibold transition-colors"
                     style={{ color: 'var(--gray-text)' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--yellow-primary)')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--gray-text)')}
-                   >
-                     {faq.question}
-                     {openFaq === index ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                   </button>
-                   
-                   <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
-                     <p
-                       className="p-3 pt-0 text-xs leading-relaxed"
-                       style={{
-                         color: 'var(--gray-text)',
-                         borderTop: '1px solid var(--yellow-border-soft)'
-                       }}
-                     >
-                       {faq.answer}
-                     </p>
-                   </div>
-                 </div>
-               ))}
-             </div>
+                  >
+                    {faq.question}
+                    {openFaq === index ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </button>
+
+                  <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+                    <p
+                      className="p-3 pt-0 text-xs leading-relaxed"
+                      style={{
+                        color: 'var(--gray-text)',
+                        borderTop: '1px solid var(--yellow-border-soft)'
+                      }}
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
