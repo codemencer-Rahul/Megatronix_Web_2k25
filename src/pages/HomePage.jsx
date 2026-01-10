@@ -4,6 +4,7 @@ import FuzzyText from "../components/FuzzyText";
 import FuzzyText from "../components/FuzzyText";
 import Shuffle from "../components/shuffle";
 import ShinyText from '../components/ShinyText';
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (

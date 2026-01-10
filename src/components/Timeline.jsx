@@ -142,8 +142,8 @@ function Timeline({ milestones, openModal }) {
           >
             <div
               className={`timeline-dot absolute w-8 h-8 rounded-full top-8 z-10 ${item.position === "left"
-                  ? "right-[-21px]"
-                  : "-left-2.5"
+                ? "right-[-21px]"
+                : "-left-2.5"
                 }`}
               style={{
                 backgroundColor: 'var(--yellow-primary)',
@@ -178,8 +178,8 @@ function Timeline({ milestones, openModal }) {
               )}
               <span
                 className={`absolute top-7 z-10 ${item.position === "left"
-                    ? "timeline-arrow-left right-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-l-15"
-                    : "timeline-arrow-right left-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-r-15"
+                  ? "timeline-arrow-left right-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-l-15"
+                  : "timeline-arrow-right left-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-r-15"
                   }`}
                 style={{
                   borderLeftColor: item.position === "left" ? 'var(--yellow-border-soft)' : 'transparent',
