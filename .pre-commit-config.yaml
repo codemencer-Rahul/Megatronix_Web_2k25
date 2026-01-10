@@ -1,0 +1,16 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: detect-private-key
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: block-env-files
+        name: Block .env files from being committed
+        entry: bash -c 'if git diff --cached --name-only | grep -E "^\.env(\.|$)"; then echo "❌ .env files are not allowed in commits"; exit 1; fi'
+        language: system
