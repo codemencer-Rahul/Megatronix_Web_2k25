@@ -1,27 +1,27 @@
-/* global.css — Refined Color Variables Only */
+/* global.css — Refined Color Variables (Updated Palette) */
 
 :root {
   /* Base Blacks (better depth & contrast) */
-  --black: #000000;
-  --dark-black: #0b0e14;
-  --surface-black: #111318;
+  --black: #002626;           /* Evergreen */
+  --dark-black: #0e4749;      /* Dark Teal */
+  --surface-black: #123f41;   /* derived from Dark Teal */
 
-  /* Primary Yellow (less harsh, more premium) */
-  --yellow-primary: #ffca28;
-  --yellow-hover: #ffd866;
-  --yellow-soft: #ffe082;
+  /* Primary Yellow (mapped to Yellow Green) */
+  --yellow-primary: #95c623;  /* Yellow Green */
+  --yellow-hover: #a9d93a;
+  --yellow-soft: #c7e87a;
 
   /* Text Colors (eye-friendly) */
-  --white: #f9fafb;
-  --gray-text: #d1d5db;
-  --gray-muted: #9ca3af;
+  --white: #efe7da;           /* Soft Linen */
+  --gray-text: #cfd6c8;
+  --gray-muted: #9aa5a1;
 
   /* Utility / Effects */
-  --glass-white: rgba(255, 255, 255, 0.05);
-  --yellow-border-soft: rgba(255, 202, 40, 0.25);
-  --yellow-shadow: rgba(255, 202, 40, 0.35);
-  --yellow-shadow-strong: rgba(255, 202, 40, 0.5);
+  --glass-white: rgba(239, 231, 218, 0.08);
+  --yellow-border-soft: rgba(149, 198, 35, 0.25);
+  --yellow-shadow: rgba(149, 198, 35, 0.35);
+  --yellow-shadow-strong: rgba(149, 198, 35, 0.5);
 
   /* Borders / Dividers */
-  --border-dark: #2a2e35;
+  --border-dark: #1e5a5c;
 }
