@@ -33,14 +33,14 @@ const StatsSection = () => {
   return (
     <div>
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-blue-200 text-center mb-12">
           Club Statistics
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {stats.map((stat, idx) => (
             <div className="text-center" key={idx}>
               <div className="flex items-center justify-center mb-4">
-                <stat.icon className="h-12 w-12" style={{ color: 'var(--yellow-primary)' }} />
+                <stat.icon className="h-12 w-12 text-green-400" />
               </div>
               <div className="flex items-center justify-center mb-2">
                 <Counter
@@ -49,16 +49,15 @@ const StatsSection = () => {
                   separator=","
                   direction="up"
                   duration={2}
-                  className=" text-3xl font-bold mb-2"
-                  style={{ color: 'var(--white)' }}
+                  className=" text-3xl font-bold text-white mb-2"
                 />
                 {stat.suffix && (
-                  <p className=" text-3xl font-bold mb-2" style={{ color: 'var(--white)' }}>
+                  <p className=" text-3xl font-bold text-white mb-2">
                     {stat.suffix}
                   </p>
                 )}
               </div>
-              <p style={{ color: 'var(--gray-muted)' }}>{stat.label}</p>
+              <p className="text-gray-400">{stat.label}</p>
             </div>
           ))}
         </div>
