@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {LetterGlitch, SpotlightCard, StatsSection, VideoComponent, Timeline} from '../components'
+import { LetterGlitch, SpotlightCard, StatsSection, VideoComponent, Timeline } from '../components'
 import {
   Target,
   Users,
@@ -138,8 +138,8 @@ function AboutSection() {
           {/* Mission & Vision */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 mt-8">
             <SpotlightCard className="backdrop-blur-sm rounded-xl p-6"
-            style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'var(--yellow-border-soft)' }}
-            spotlightColor="var(--yellow-shadow)" >
+              style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'var(--yellow-border-soft)' }}
+              spotlightColor="var(--yellow-shadow)" >
               <div className="flex items-center space-x-2 mb-4">
                 <h2 className="text-2xl font-semibold" style={{ color: 'var(--yellow-primary)' }}>
                   Our Mission
@@ -154,8 +154,8 @@ function AboutSection() {
             </SpotlightCard>
 
             <SpotlightCard className="backdrop-blur-sm rounded-xl p-6"
-            style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'var(--yellow-border-soft)' }}
-            spotlightColor="var(--yellow-shadow)" >
+              style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'var(--yellow-border-soft)' }}
+              spotlightColor="var(--yellow-shadow)" >
               <div className="flex items-center space-x-2 mb-4">
                 <h2 className="text-2xl font-semibold" style={{ color: 'var(--yellow-primary)' }}>
                   Our Vision
@@ -169,7 +169,7 @@ function AboutSection() {
               </p>
             </SpotlightCard>
           </div>
-          
+
           {/* History Timeline */}
           <div className="my-8">
             <h2 className="text-4xl font-extrabold text-center" style={{ color: 'var(--white)' }}>
@@ -193,7 +193,7 @@ function AboutSection() {
                 <div
                   key={index}
                   className="backdrop-blur-sm rounded-xl p-6 hover:scale-105 transition-all duration-300 animate-fade-in-up"
-                  style={{ 
+                  style={{
                     animationDelay: `${index * 0.1}s`,
                     backgroundColor: 'var(--surface-black)',
                     borderWidth: '1px',

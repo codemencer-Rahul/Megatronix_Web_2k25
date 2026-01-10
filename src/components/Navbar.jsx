@@ -94,39 +94,39 @@ export default function Navbar() {
           </NavLink>
 
           {/* HAMBURGER */}
-         <button
-  className="lg:hidden p-2 relative z-50 flex items-center justify-center"
-  onClick={toggleMenu}
-  aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
->
-  <div className="w-6 h-6 flex items-center justify-center">
-    {!isMenuOpen ? (
-      /* Hamburger */
-      <div className="w-6 h-6 flex flex-col justify-between">
-        <span
-          className="h-0.5 w-full"
-          style={{ background: "var(--gray-text)" }}
-        />
-        <span
-          className="h-0.5 w-full"
-          style={{ background: "var(--gray-text)" }}
-        />
-        <span
-          className="h-0.5 w-full"
-          style={{ background: "var(--gray-text)" }}
-        />
-      </div>
-    ) : (
-      /* Close (X) */
-      <span
-        className="text-2xl font-light leading-none"
-        style={{ color: "var(--yellow-primary)" }}
-      >
-        ×
-      </span>
-    )}
-  </div>
-</button>
+          <button
+            className="lg:hidden p-2 relative z-50 flex items-center justify-center"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          >
+            <div className="w-6 h-6 flex items-center justify-center">
+              {!isMenuOpen ? (
+                /* Hamburger */
+                <div className="w-6 h-6 flex flex-col justify-between">
+                  <span
+                    className="h-0.5 w-full"
+                    style={{ background: "var(--gray-text)" }}
+                  />
+                  <span
+                    className="h-0.5 w-full"
+                    style={{ background: "var(--gray-text)" }}
+                  />
+                  <span
+                    className="h-0.5 w-full"
+                    style={{ background: "var(--gray-text)" }}
+                  />
+                </div>
+              ) : (
+                /* Close (X) */
+                <span
+                  className="text-2xl font-light leading-none"
+                  style={{ color: "var(--yellow-primary)" }}
+                >
+                  ×
+                </span>
+              )}
+            </div>
+          </button>
 
 
         </nav>
@@ -134,9 +134,8 @@ export default function Navbar() {
 
       {/* MOBILE MENU OVERLAY */}
       <div
-        className={`fixed inset-0 z-40 transition-opacity duration-300 lg:hidden ${
-          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-40 transition-opacity duration-300 lg:hidden ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
         style={{ backgroundColor: "var(--black)" }}
       >
         {/* CLOSE BUTTON */}

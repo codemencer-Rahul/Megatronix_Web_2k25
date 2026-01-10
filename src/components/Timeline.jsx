@@ -132,21 +132,19 @@ function Timeline({ milestones, openModal }) {
         }
       `}</style>
       <div className="timeline relative max-w-6xl mx-auto my-0 sm:my-12">
-        
+
         {timelineData.map((item, index) => (
           <div
             key={index}
             ref={(el) => (cardRefs.current[index] = el)}
-            className={`timeline-container py-2.5 px-12 w-1/2 relative opacity-0 z-2 ${
-              item.position === "left" ? "left-0" : "left-1/2"
-            } ${visibleCards.includes(index) ? (item.position === "left" ? "card-visible-left" : "card-visible-right") : ""}`}
+            className={`timeline-container py-2.5 px-12 w-1/2 relative opacity-0 z-2 ${item.position === "left" ? "left-0" : "left-1/2"
+              } ${visibleCards.includes(index) ? (item.position === "left" ? "card-visible-left" : "card-visible-right") : ""}`}
           >
             <div
-              className={`timeline-dot absolute w-8 h-8 rounded-full top-8 z-10 ${
-                item.position === "left" 
+              className={`timeline-dot absolute w-8 h-8 rounded-full top-8 z-10 ${item.position === "left"
                   ? "right-[-21px]"
                   : "-left-2.5"
-              }`}
+                }`}
               style={{
                 backgroundColor: 'var(--yellow-primary)',
                 boxShadow: '0 0 15px 3px var(--yellow-shadow-strong)'
@@ -179,11 +177,10 @@ function Timeline({ milestones, openModal }) {
                 </button>
               )}
               <span
-                className={`absolute top-7 z-10 ${
-                  item.position === "left"
+                className={`absolute top-7 z-10 ${item.position === "left"
                     ? "timeline-arrow-left right-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-l-15"
                     : "timeline-arrow-right left-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-r-15"
-                }`}
+                  }`}
                 style={{
                   borderLeftColor: item.position === "left" ? 'var(--yellow-border-soft)' : 'transparent',
                   borderRightColor: item.position === "right" ? 'var(--yellow-border-soft)' : 'transparent'
