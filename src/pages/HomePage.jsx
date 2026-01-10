@@ -87,16 +87,18 @@ function HomePage() {
             style={{ transform: "scaleY(1.2) skewX(-3deg)"}}
           >
           </FuzzyText> */}
-            MEGATRONIX
+          MEGATRONIX
         </div>
 
         {/* Two buttons inline under MEGATRONIX text */}
         <div className="flex flex-col sm:flex-row gap-10 sm:gap-6 md:gap-10 lg:gap-12 translate-y-14 sm:translate-y-12">
-          <button
-            type="button"
-            className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tl-3xl rounded-br-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
-            style={{ 
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+
+          {/* REGISTER BUTTON */}
+          <Link
+            to='/event'
+            className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tl-3xl rounded-br-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before: inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10 inline-block"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
               color: 'var(--white)',
               borderWidth: '1px',
               borderStyle: 'solid',
@@ -109,23 +111,22 @@ function HomePage() {
               e.currentTarget.style.boxShadow = '0 0 28px var(--yellow-shadow-strong)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = 'var(--yellow-primary)';
-              e.currentTarget.style.borderColor = 'var(--yellow-primary)';
+              e.currentTarget.style.color = 'var(--white)';
+              e.currentTarget.style.borderColor = 'var(--gray-text)';
               e.currentTarget.style.boxShadow = '0 0 20px var(--yellow-shadow)';
             }}
           >
-            <Link to='/event'>
             <span className="relative z-10 flex items-center gap-2 font-mono">
               <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
               Register
             </span>
-            </Link>
-          </button>
+          </Link>
 
-          <button
-            type="button"
+          {/* ABOUT US BUTTON */}
+          <Link
+            to="/about"
             className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tr-3xl rounded-bl-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
-            style={{ 
+            style={{
               backgroundColor: 'rgba(0, 0, 0, 0.8)',
               color: 'var(--white)',
               borderWidth: '1px',
@@ -144,13 +145,11 @@ function HomePage() {
               e.currentTarget.style.boxShadow = '0 0 20px rgba(209, 213, 219, 0.2)';
             }}
           >
-            <Link to="/about">
             <span className="relative z-10 flex items-center gap-2 font-mono">
               <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
-               About Us
+              About Us
             </span>
-             </Link>
-          </button>
+          </Link>
         </div>
 
       </div>
