@@ -2,8 +2,8 @@ import { useRef, useEffect, useState } from "react";
 
 const LetterGlitch = ({
   children,
-  glitchColors = ["#0F4C8166", "#4B5ED9", "#07598"],
-  glitchSpeed = 50,
+  glitchColors = ["#ebd34c80", "#ffc35370", "#FFFF0070", "#FFB90070", "#FFE13570"],
+  glitchSpeed = 10,
   centerVignette = true,
   outerVignette = false,
   smooth = true,
@@ -35,10 +35,10 @@ const LetterGlitch = ({
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
       ? {
-          r: parseInt(result[1], 16),
-          g: parseInt(result[2], 16),
-          b: parseInt(result[3], 16),
-        }
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
       : null;
   };
 
@@ -201,7 +201,8 @@ const LetterGlitch = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full min-h-screen overflow-hidden bg-black"
+      className="relative w-full min-h-screen overflow-hidden"
+      style={{ backgroundColor: 'var(--black)' }}
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0" />
       {outerVignette && (

@@ -58,44 +58,50 @@ export default function DomainPage() {
     return (
       <LetterGlitch>
         <div className="min-h-screen pt-20 flex flex-col items-center justify-center">
-          <h2 className="text-3xl font-bold text-blue-200 text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12" >
             Reboot Event Winners
           </h2>
           <div className="flex flex-col md:flex-row gap-12 items-center justify-center">
             {/* SnapSync Card */}
-            <div className="bg-linear-to-br from-blue-900/30 to-blue-600/10 backdrop-blur-lg border border-blue-400/30 rounded-3xl shadow-xl overflow-hidden animate-fade-in-up hover:scale-105 hover:shadow-2xl hover:border-blue-300/70 transition-all duration-300 flex flex-col items-center w-80 p-8 min-h-112"
+            <div className="backdrop-blur-lg rounded-3xl overflow-hidden animate-fade-in-up hover:scale-105 transition-all duration-300 flex flex-col items-center w-80 p-8 min-h-112"
               style={{
-                boxShadow: "0 8px 32px 0 rgba(0, 102, 255, 0.25)",
+                backgroundColor: 'var(--surface-black)',
+                border: '1.5px solid',
+                borderColor: 'var(--yellow-border-soft)',
+                boxShadow: '0 0 20px rgba(255, 202, 40, 0.15)',
               }}>
               <img
                 src={snapsyncPoster}
                 alt="SnapSync"
                 className="object-fit w-full h-60  rounded-2xl  mb-4"
               />
-              <h3 className="text-2xl font-bold text-green-300 mb-2">
+              <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--yellow-primary)' }}>
                 SnapSync
               </h3>
-              <div className="text-blue-200 font-semibold mb-2">Winners:</div>
-              <ul className="list-disc list-inside text-blue-100 text-lg">
+              <div className="font-semibold mb-2" style={{ color: 'var(--gray-text)' }}>Winners:</div>
+              <ul className="list-disc list-inside text-lg" style={{ color: 'var(--white)' }}>
                 <li>Shuvojit Banik</li>
                 <li>Tapobrata Roy</li>
               </ul>
             </div>
             {/* CodeManthan Card */}
-            <div className="bg-linear-to-br from-blue-900/30 to-blue-600/10 backdrop-blur-lg border border-blue-400/30 rounded-3xl shadow-xl overflow-hidden animate-fade-in-up hover:scale-105 hover:shadow-2xl hover:border-blue-300/70 transition-all duration-300 flex flex-col items-center w-80 p-8 min-h-112"
+            <div className="backdrop-blur-lg rounded-3xl overflow-hidden animate-fade-in-up hover:scale-105 transition-all duration-300 flex flex-col items-center w-80 p-8 min-h-112"
               style={{
-                boxShadow: "0 8px 32px 0 rgba(0, 102, 255, 0.25)",
+                backgroundColor: 'var(--surface-black)',
+                border: '1.5px solid',
+                borderColor: 'var(--yellow-border-soft)',
+                boxShadow: '0 0 20px rgba(255, 202, 40, 0.15)',
               }}>
               <img
                 src={codemanthanPoster}
                 alt="CodeManthan"
                 className="object-fit w-full h-60 rounded-2xl mb-4"
               />
-              <h3 className="text-2xl font-bold text-green-300 mb-2">
+              <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--yellow-primary)' }}>
                 CodeManthan
               </h3>
-              <div className="text-blue-200 font-semibold mb-2">Winners:</div>
-              <ul className="list-disc list-inside text-blue-100 text-lg">
+              <div className="font-semibold mb-2" style={{ color: 'var(--gray-text)' }}>Winners:</div>
+              <ul className="list-disc list-inside text-lg" style={{ color: 'var(--white)' }}>
                 <li>Parul Priya</li>
               </ul>
             </div>
@@ -109,17 +115,20 @@ export default function DomainPage() {
     <LetterGlitch>
       <div className="min-h-screen pt-20 relative">
         {/* Soft background accent */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-green-400/10 rounded-full blur-3xl z-0" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl z-0" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl z-0" style={{ backgroundColor: 'rgba(255, 202, 40, 0.08)' }} />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-3xl z-0" style={{ backgroundColor: 'rgba(255, 202, 40, 0.08)' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {DOMAINS.map((domain, index) => (
               <div
                 key={domain.key}
-                className={`bg-linear-to-br from-blue-900/30 to-blue-600/10 backdrop-blur-lg border border-blue-400/30 rounded-3xl shadow-xl overflow-hidden animate-fade-in-up hover:scale-105 hover:shadow-2xl hover:border-blue-300/70 transition-all duration-300 cursor-pointer flex flex-col items-center`}
+                className={`backdrop-blur-lg rounded-3xl overflow-hidden animate-fade-in-up hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col items-center`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
-                  boxShadow: "0 8px 32px 0 rgba(0, 102, 255, 0.25)",
+                  backgroundColor: 'var(--surface-black)',
+                  border: '1.5px solid',
+                  borderColor: 'var(--yellow-border-soft)',
+                  boxShadow: '0 0 20px rgba(255, 202, 40, 0.15)',
                 }}
                 onClick={() => navigate(`/event/${mainEvent}/${domain.key}`)}
               >
@@ -144,7 +153,7 @@ export default function DomainPage() {
                       {/* <div className="p-3 rounded-full bg-gradient-to-r from-green-600 to-blue-600 shadow">
                         <domain.icon className="h-7 w-7 text-white" />
                       </div> */}
-                      <h2 className="text-xl font-extrabold text-blue-100 tracking-wide">
+                      <h2 className="text-xl font-extrabold tracking-wide" style={{ color: 'var(--white)' }}>
                         {domain.label}
                       </h2>
                       {/* <span
@@ -153,7 +162,7 @@ export default function DomainPage() {
                         {getStatusText()}
                       </span> */}
                     </div>
-                    <p className="text-blue-200 mb-3 text-sm text-center font-medium line-clamp-2">
+                    <p className="mb-3 text-sm text-center font-medium line-clamp-2" style={{ color: 'var(--gray-text)' }}>
                       {domain.description}
                     </p>
                     <div className="w-full">
@@ -173,7 +182,7 @@ export default function DomainPage() {
                           </li>
                         ))}
                       </ul> */}
-                      <button className="w-full h-10 rounded-xl bg-linear-to-r from-teal-800/40 to-red-500/40 hover:scale-105 hover:shadow-lg transition-transform duration-300 text-white font-bold text-sm tracking-wide backdrop-blur">
+                      <button className="w-full h-10 rounded-xl hover:scale-105 hover:shadow-lg transition-transform duration-300 font-bold text-sm tracking-wide backdrop-blur" style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)' }}>
                         View Domain
                       </button>
                     </div>
