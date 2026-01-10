@@ -1,27 +1,27 @@
-/* global.css — Refined Color Variables Only */
+/* global.css — Refined Color Variables (Sand Dune × Night Blue) */
 
 :root {
   /* Base Blacks (better depth & contrast) */
-  --black: #000000;
-  --dark-black: #0b0e14;
-  --surface-black: #111318;
+  --black: #102a30;          /* deeper night blue shadow (no green) */
+  --dark-black: #2b4a52;     /* neutral night blue */
+  --surface-black: #1c3a41;  /* softened surface tone */
 
-  /* Primary Yellow (less harsh, more premium) */
-  --yellow-primary: #ffca28;
-  --yellow-hover: #ffd866;
-  --yellow-soft: #ffe082;
+  /* Primary Yellow (Sand Dune tone) */
+  --yellow-primary: #e1b382; /* Sand Tan */
+  --yellow-hover: #e6c29a;
+  --yellow-soft: #f2dcc3;
 
-  /* Text Colors (eye-friendly) */
-  --white: #f9fafb;
-  --gray-text: #d1d5db;
-  --gray-muted: #9ca3af;
+  /* Text Colors (warm dune neutrals) */
+  --white: #f7f1e8;          /* warm off-white sand */
+  --gray-text: #d8c8b5;      /* sand-muted */
+  --gray-muted: #bfae9a;     /* dry dune tone */
 
   /* Utility / Effects */
-  --glass-white: rgba(255, 255, 255, 0.05);
-  --yellow-border-soft: rgba(255, 202, 40, 0.25);
-  --yellow-shadow: rgba(255, 202, 40, 0.35);
-  --yellow-shadow-strong: rgba(255, 202, 40, 0.5);
+  --glass-white: rgba(247, 241, 232, 0.08);
+  --yellow-border-soft: rgba(225, 179, 130, 0.3);
+  --yellow-shadow: rgba(200, 150, 102, 0.35);        /* Sand Tan Shadow */
+  --yellow-shadow-strong: rgba(200, 150, 102, 0.55);
 
   /* Borders / Dividers */
-  --border-dark: #2a2e35;
+  --border-dark: #314f56;
 }

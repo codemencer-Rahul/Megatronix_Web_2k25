@@ -18,86 +18,15 @@ function HomePage() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-2 text-white px-4"
       >
-        <div
-          className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] font-normal tracking-wide
-          font-['Bring_Race'] scale-y-[2] sm:scale-y-[1.2] -skew-x-3"
-        >
-          {/* <Shuffle
-          {/* <Shuffle
-            text="MEGA"
-            shuffleDirection="right"
-            duration={2}
-            animationMode="evenodd"
-            shuffleTimes={1}
-            // ease="power3.out"
-            ease="back.out(1.1)"
-            stagger={1}
-            threshold={0.1}
-            triggerOnce={true}
-            triggerOnHover={false}
-            respectReducedMotion={true}
-            className="shuffle-overlay"
-            style={{
-              color: "darkred",
-              color: "darkred",
-              fontSize: "9rem",
-              display: "inline-block",
-            }}
-          />
+      <div
+  className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem]
+  font-normal tracking-wide font-['Bring_Race']
+  scale-y-[2] sm:scale-y-[1.2] -skew-x-3"
+  style={{ color: "var(--yellow-primary)" }}
+>
+  MEGATRONIX
+</div>
 
-          <Shuffle
-            text="TRONIX"
-            shuffleDirection="right"
-            duration={2}
-            duration={2}
-            animationMode="evenodd"
-            shuffleTimes={1}
-            // ease="power3.out"
-            ease="back.out(1.1)"
-            stagger={1}
-            shuffleTimes={1}
-            // ease="power3.out"
-            ease="back.out(1.1)"
-            stagger={1}
-            threshold={0.1}
-            triggerOnce={true}
-            triggerOnHover={false}
-            respectReducedMotion={true}
-            className="shuffle-overlay"
-            style={{
-              color: "darkred",
-              fontSize: "9rem",
-              color: "darkred",
-              fontSize: "9rem",
-              display: "inline-block",
-            }}
-          /> */}
-
-
-          {/* <ShinyText
-              text="MegatroniX"
-              speed={2}
-              delay={0}
-              color="#ff0033"
-              shineColor="#ffffff"
-              spread={100}
-              direction="left"
-              yoyo={true}
-              pauseOnHover={false}
-            /> */}
-
-          {/* <FuzzyText
-            baseIntensity={0.21}
-            hoverIntensity={0.88}
-            fuzzRange={20}
-            fps={45}
-            fontSize={"7.2rem"}
-            fontWeight={400}
-            style={{ transform: "scaleY(1.2) skewX(-3deg)"}}
-          >
-          </FuzzyText> */}
-          MEGATRONIX
-        </div>
 
         {/* Two buttons inline under MEGATRONIX text */}
         <div className="flex flex-col sm:flex-row gap-10 sm:gap-6 md:gap-10 lg:gap-12 translate-y-14 sm:translate-y-12">

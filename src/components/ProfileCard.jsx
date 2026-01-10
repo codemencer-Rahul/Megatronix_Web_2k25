@@ -4,8 +4,23 @@ import { Mail, Linkedin, Github, User } from 'lucide-react';
 export default function ProfileCard({ name, year, imageUrl, email, linkedin, github }) {
   return (
     <div className="relative w-[260px] h-[300px]">
-      {/* Outer glowing border */}
-      <div className="absolute inset-0 rounded-2xl blur-md" style={{ background: 'linear-gradient(to bottom right, var(--yellow-shadow), var(--yellow-border-soft), var(--surface-black))' }}></div>
+{/* Soft ambient glow behind card */}
+<div
+  className="absolute rounded-3xl blur-2xl opacity-40"
+  style={{
+    background:
+      'radial-gradient(circle at top left, var(--yellow-shadow), transparent 60%)',
+  }}
+></div>
+
+{/* Outer glowing border */}
+<div
+  className="absolute inset-0 rounded-2xl blur-md"
+  style={{
+    background:
+      'linear-gradient(to bottom right, var(--yellow-shadow), var(--yellow-border-soft), var(--surface-black))',
+  }}
+></div>
 
       {/* Inner card */}
       <div className="relative rounded-2xl overflow-hidden h-full" style={{ background: 'linear-gradient(to bottom right, var(--black), var(--surface-black), var(--dark-black))', borderWidth: '2px', borderStyle: 'solid', borderColor: 'var(--yellow-primary)', boxShadow: '0 0 6px var(--yellow-shadow)', backdropFilter: 'blur(4px)' }}>
