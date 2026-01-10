@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR WRAPPER */}
-      <header className="fixed z-50 top-4 left-4 right-4 sm:left-8 sm:right-8 xl:left-24 xl:right-24">
+      <header className="fixed z-50 top-4 left-4 right-4 sm:left-8 sm:right-8 xl:left-60 xl:right-60">
         <nav
           className="mx-auto flex items-center justify-between px-4 py-2 rounded-full"
           style={{
