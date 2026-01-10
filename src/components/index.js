@@ -14,7 +14,7 @@ import StatsSection from './StatsSection'
 import Counter from "./Counter"
 import VideoComponent from './VideoComponent'
 
-export {Navbar, AboutSection, ContactSection, DomainEventsPage, 
+export {Navbar, AboutSection, ContactSection, DomainEventsPage,
     DomainPage, EventSection, IntroSection, OrientationPage, TeamSection,
-    Timeline, LetterGlitch, SpotlightCard, StatsSection, Counter, 
+    Timeline, LetterGlitch, SpotlightCard, StatsSection, Counter,
     VideoComponent }

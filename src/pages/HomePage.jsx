@@ -22,9 +22,9 @@ function HomePage() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-2 text-white px-4"
         >
           <div
-            className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] font-normal tracking-wide 
+            className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] font-normal tracking-wide
           font-['Bring_Race'] scale-y-[2] sm:scale-y-[1.2] -skew-x-3"
-            className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] font-normal tracking-wide 
+            className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] font-normal tracking-wide
           font-['Bring_Race'] scale-y-[2] sm:scale-y-[1.2] -skew-x-3"
           >
             {/* <Shuffle

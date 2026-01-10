@@ -51,19 +51,19 @@ function Timeline({ milestones, openModal }) {
           .timeline::after {
             left: 31px;
           }
-          
+
           .timeline-container {
             width: 100%;
             padding-left: 80px;
             padding-right: 25px;
             left: 0 !important;
           }
-          
+
           .timeline-dot {
             left: 21px !important;
             right: auto !important;
           }
-          
+
           .timeline-arrow-left,
           .timeline-arrow-right {
             left: -15px !important;
@@ -71,11 +71,11 @@ function Timeline({ milestones, openModal }) {
             border-left: 0 !important;
             border-right: 15px solid var(--yellow-border-soft) !important;
           }
-          
+
           .text-box p {
             font-size: 13px;
           }
-          
+
           .text-box small {
             margin-bottom: 10px;
           }
