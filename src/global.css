@@ -1,0 +1,27 @@
+/* global.css — Refined Color Variables Only */
+
+:root {
+  /* Base Blacks (better depth & contrast) */
+  --black: #000000;
+  --dark-black: #0b0e14;
+  --surface-black: #111318;
+
+  /* Primary Yellow (less harsh, more premium) */
+  --yellow-primary: #ffca28;
+  --yellow-hover: #ffd866;
+  --yellow-soft: #ffe082;
+
+  /* Text Colors (eye-friendly) */
+  --white: #f9fafb;
+  --gray-text: #d1d5db;
+  --gray-muted: #9ca3af;
+
+  /* Utility / Effects */
+  --glass-white: rgba(255, 255, 255, 0.05);
+  --yellow-border-soft: rgba(255, 202, 40, 0.25);
+  --yellow-shadow: rgba(255, 202, 40, 0.35);
+  --yellow-shadow-strong: rgba(255, 202, 40, 0.5);
+
+  /* Borders / Dividers */
+  --border-dark: #2a2e35;
+}
