@@ -14,11 +14,10 @@ import {
   ChevronUp
 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../utils/firebase";
 import LetterGlitch from "./LetterGlitch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { contactUsService } from "../services/contactUsService";
 
 // --- DATA ---
 const facultyCoordinators = [
@@ -93,13 +92,21 @@ const ContactSection = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  async function callAppwriteFunction(data) {
+    return await contactUsService(data);
+  }
+
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await addDoc(collection(db, "feedbacks"), {
+      const submissionData = {
         ...data,
-        timestamp: new Date(),
-      });
+        source: 'website',
+        userAgent: navigator.userAgent,
+        pageUrl: window.location.href,
+      };
+
+      await callAppwriteFunction(submissionData);
       toast.success("Message Transmitted Successfully!");
       reset();
     } catch (err) {
@@ -215,7 +222,7 @@ const ContactSection = () => {
 
                 <div className="space-y-1">
                   <input
-                    {...register("subject")}
+                    {...register("subject", { required: "Required" })}
                     placeholder="SUBJECT"
                     className="w-full p-3 focus:outline-none transition-all"
                     style={{
@@ -224,19 +231,26 @@ const ContactSection = () => {
                       color: 'var(--white)'
                     }}
                   />
+                  {errors.subject && <span className="text-red-400 text-xs">{errors.subject.message}</span>}
                 </div>
 
-                <textarea
-                  {...register("message", { required: "Required" })}
-                  rows="5"
-                  placeholder="ENTER YOUR MESSAGE DATA..."
-                  className="w-full p-3 focus:outline-none transition-all resize-none"
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.04)',
-                    border: '1px solid var(--yellow-border-soft)',
-                    color: 'var(--white)'
-                  }}
-                ></textarea>
+                {/* Honeypot Field for spam prevention, DONT REMOVE THIS */}
+                <input type="text" name="website" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+
+                <div className="space-y-1">
+                  <textarea
+                    {...register("message", { required: "Required" })}
+                    rows="5"
+                    placeholder="ENTER YOUR MESSAGE DATA..."
+                    className="w-full p-3 focus:outline-none transition-all resize-none"
+                    style={{
+                      backgroundColor: 'rgba(255,255,255,0.04)',
+                      border: '1px solid var(--yellow-border-soft)',
+                      color: 'var(--white)'
+                    }}
+                  />
+                  {errors.message && <span className="text-red-400 text-xs">{errors.message.message}</span>}
+                </div>
 
                 {/* CYBER BUTTON */}
                 <button
