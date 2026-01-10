@@ -3,13 +3,12 @@ import LetterGlitch from "../components/LetterGlitch";
 import FuzzyText from "../components/FuzzyText";
 import Shuffle from "../components/shuffle";
 import ShinyText from '../components/ShinyText';
-import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
     <div className="relative min-h-screen">
       <LetterGlitch
-        glitchSpeed={10}
+        glitchSpeed={50}
         centerVignette={false}
         outerVignette={false}
         smooth={true}
@@ -117,8 +116,9 @@ function HomePage() {
             }}
           >
             <span className="relative z-10 flex items-center gap-2 font-mono">
-              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
+              <span className="w-1.5 h-1.5 bg-emerald-400 animate-pulse rounded-full"></span>
               Register
+              <span className="text-emerald-500/70 text-[10px] inline">&lt;/&gt;</span>
             </span>
           </Link>
 
@@ -152,8 +152,8 @@ function HomePage() {
           </Link>
         </div>
 
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

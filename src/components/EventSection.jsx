@@ -115,9 +115,9 @@ function EventSection() {
   const getStatusColor = (status) => {
     switch (status) {
       case "upcoming":
-        return "bg-yellow-600/70";
+        return "bg-cyan-600/70";
       case "ongoing":
-        return "bg-yellow-500";
+        return "bg-red-500";
       case "completed":
         return "bg-green-500/40";
       default:
@@ -147,60 +147,33 @@ function EventSection() {
 
           {/* Upcoming Events */}
           <div>
-            <h2 className="text-3xl font-bold text-center mb-8">
+            <h2 className="text-3xl font-bold text-blue-200 text-center mb-8">
               Upcoming Events
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {upcomingEvents.map((event, index) => (
                 <div
                   key={index}
-                  className="group backdrop-blur-xl rounded-2xl p-6 transition-all duration-500 animate-fade-in-up hover:shadow-2xl"
-                  style={{ 
-                    animationDelay: `${index * 0.1}s`,
-                    backgroundColor: 'var(--surface-black)',
-                    border: '1.5px solid',
-                    borderColor: 'var(--yellow-border-soft)',
-                    boxShadow: '0 0 20px rgba(255, 202, 40, 0.1), inset 0 0 20px rgba(255, 202, 40, 0.05)',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
+                  className="bg-blue-700/10 backdrop-blur-sm shadow-[0_0_4px_2px_rgba(0,200,255,0.4)]
+                  rounded-xl p-6 hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  {/* Animated gradient accent */}
-                  <div 
-                    className="absolute top-0 left-0 w-full h-0.5 from-transparent via-yellow-primary to-transparent group-hover:h-1 transition-all duration-500"
-                    style={{ background: 'linear-gradient(to right, transparent, var(--yellow-primary), transparent)' }}
-                  />
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <span 
-                        className="text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider transition-all duration-300 group-hover:scale-105"
-                        style={{ 
-                          color: 'var(--black)',
-                          background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))',
-                        }}
-                      >
-                        {event.type}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-base font-bold mb-4 leading-snug transition-colors duration-300" style={{ color: 'var(--white)' }}>
+                  <div className="pb-3">
+                    <h3 className="text-lg font-semibold text-blue-100">
                       {event.title}
                     </h3>
-                    
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3 text-sm transition-colors duration-300" style={{ color: 'var(--gray-text)' }}>
-                        <div className="p-2 rounded-lg" style={{ backgroundColor: 'var(--yellow-border-soft)' }}>
-                          <Calendar className="h-4 w-4" style={{ color: 'var(--yellow-primary)' }} />
-                        </div>
-                        <span>{event.date}</span>
-                      </div>
-                      <div className="flex items-center space-x-3 text-sm transition-colors duration-300" style={{ color: 'var(--gray-text)' }}>
-                        <div className="p-2 rounded-lg" style={{ backgroundColor: 'var(--yellow-border-soft)' }}>
-                          <Clock className="h-4 w-4" style={{ color: 'var(--yellow-primary)' }} />
-                        </div>
-                        <span>{event.time}</span>
-                      </div>
+                    <span className="text-xs text-green-300 bg-green-300/10 px-2 py-1 rounded-full">
+                      {event.type}
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-sm text-blue-300">
+                      <Calendar className="h-4 w-4" />
+                      <span>{event.date}</span>
+                    </div>
+                    <div className="flex items-center space-x-2 text-sm text-blue-300">
+                      <Clock className="h-4 w-4" />
+                      <span>{event.time}</span>
                     </div>
                   </div>
                 </div>
@@ -210,25 +183,19 @@ function EventSection() {
 
           {/* Main Events */}
           <div className="space-y-12 mt-16">
-            <h2 className="text-3xl font-bold text-center mb-8">
+            <h2 className="text-3xl font-bold text-blue-200 text-center mb-8">
               Our Events
             </h2>
             {mainEvents.map((event, index) => {
               return (
                 <div
                   key={index}
-                  className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${
+                  className={`relative bg-blue-700/10 backdrop-blur-sm border border-blue-700/30 overflow-hidden animate-fade-in-up transition-transform duration-200 ${
                     event.comingSoon
                       ? "cursor-not-allowed"
                       : "hover:scale-[1.02] cursor-pointer"
                   }`}
-                  style={{ 
-                    animationDelay: `${index * 0.2}s`,
-                    backgroundColor: 'var(--surface-black)',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: 'var(--yellow-border-soft)'
-                  }}
+                  style={{ animationDelay: `${index * 0.2}s` }}
                   onClick={() =>
                     !event.comingSoon && navigate(`/event/${event.key}`)
                   }
@@ -246,13 +213,12 @@ function EventSection() {
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-center space-x-3">
                             <div
-                              className={`p-3 rounded-full`}
-                              style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))' }}
+                              className={`p-3 rounded-full bg-linear-to-r ${event.gradient}`}
                             >
-                              <event.icon className="h-8 w-8" style={{ color: 'var(--black)' }} />
+                              <event.icon className="h-8 w-8 text-white" />
                             </div>
                             <div>
-                              <h2 className="text-2xl font-bold" style={{ color: 'var(--white)' }}>
+                              <h2 className="text-2xl font-bold text-blue-100">
                                 {event.title}
                               </h2>
                               <span
@@ -266,24 +232,24 @@ function EventSection() {
                           </div>
                         </div>
 
-                        <p className="mb-6" style={{ color: 'var(--gray-text)' }}>
+                        <p className="text-blue-200 mb-6">
                           {event.description}
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
+                          <div className="flex items-center space-x-2 text-blue-300">
                             <Calendar className="h-4 w-4" />
                             <span>{event.date}</span>
                           </div>
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
+                          <div className="flex items-center space-x-2 text-blue-300">
                             <MapPin className="h-4 w-4" />
                             <span>{event.location}</span>
                           </div>
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
+                          <div className="flex items-center space-x-2 text-blue-300">
                             <Clock className="h-4 w-4" />
                             <span>{event.time}</span>
                           </div>
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
+                          <div className="flex items-center space-x-2 text-blue-300">
                             <Users className="h-4 w-4" />
                             <span>{event.participants}</span>
                           </div>
@@ -292,12 +258,13 @@ function EventSection() {
 
                       <div className="lg:w-80">
                         <button
-                          className={`w-full h-12 rounded-2xl ${
+                          className={`w-full h-12 rounded-2xl bg-linear-to-r ${
+                            event.gradient
+                          } ${
                             event.comingSoon
                               ? "opacity-50 cursor-not-allowed"
                               : "hover:scale-105"
                           } transition-transform duration-300`}
-                          style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)', fontWeight: 'bold' }}
                           disabled={event.comingSoon}
                         >
                           Learn More

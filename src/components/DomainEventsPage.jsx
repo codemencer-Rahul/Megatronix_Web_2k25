@@ -71,20 +71,17 @@ export default function DomainEventsPage() {
     <LetterGlitch>
       <div className="min-h-screen pt-20 relative">
         {/* Soft background accent */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl z-0" style={{ backgroundColor: 'rgba(255, 202, 40, 0.08)' }} />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-3xl z-0" style={{ backgroundColor: 'rgba(255, 202, 40, 0.08)' }} />
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-green-400/10 rounded-full blur-3xl z-0" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl z-0" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-wrap gap-12 items-center justify-center">
             {events.map((ev, idx) => (
               <div
                 key={ev.name}
-                className="backdrop-blur-lg rounded-3xl overflow-hidden animate-fade-in-up hover:scale-105 transition-all duration-300 cursor-pointer flex flex-col items-center w-80"
+                className="bg-linear-to-br from-blue-900/30 to-blue-600/10 backdrop-blur-lg border border-blue-400/30 rounded-3xl shadow-xl overflow-hidden animate-fade-in-up hover:scale-105 hover:shadow-2xl hover:border-blue-300/70 transition-all duration-300 cursor-pointer flex flex-col items-center w-80"
                 style={{
                   animationDelay: `${idx * 0.1}s`,
-                  backgroundColor: 'var(--surface-black)',
-                  border: '1.5px solid',
-                  borderColor: 'var(--yellow-border-soft)',
-                  boxShadow: '0 0 20px rgba(255, 202, 40, 0.15)',
+                  boxShadow: "0 8px 32px 0 rgba(0, 102, 255, 0.25)",
                 }}
               >
                 <div className="p-8 flex flex-col items-center w-full h-full">
@@ -98,26 +95,26 @@ export default function DomainEventsPage() {
                         />
                       </div>
                     ) : (
-                      <div className="w-56 h-56 flex items-center justify-center rounded-2xl border-2 text-lg font-bold" style={{ backgroundColor: 'var(--surface-black)', borderColor: 'var(--yellow-border-soft)', color: 'var(--yellow-primary)' }}>
+                      <div className="w-56 h-56 flex items-center justify-center bg-blue-900/30 rounded-2xl border-2 border-blue-400/30 text-blue-300 text-lg font-bold">
                         No Image
                       </div>
                     )}
                   </div>
                   <div className="flex-1 w-full flex flex-col justify-center items-center">
-                    <div className="text-xl font-extrabold tracking-wide mb-2 text-center" style={{ color: 'var(--white)' }}>
+                    <div className="text-xl font-extrabold text-blue-100 tracking-wide mb-2 text-center">
                       {ev.name}
                     </div>
-                    <div className="mb-4 text-center font-medium text-sm line-clamp-3" style={{ color: 'var(--gray-text)' }}>
+                    <div className="text-blue-200 mb-4 text-center font-medium text-sm line-clamp-3">
                       {ev.description}
                     </div>
                     <div className="w-full flex flex-col gap-4 mt-2">
                       <button
-                        className="hover:cursor-pointer w-full h-10 rounded-xl hover:scale-105 hover:shadow-lg transition-transform duration-300 font-bold text-sm tracking-wide backdrop-blur" style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)' }}
+                        className="hover:cursor-pointer w-full h-10 rounded-xl bg-linear-to-r from-teal-700/50 to-red-500/40 hover:scale-105 hover:shadow-lg transition-transform duration-300 text-white font-bold text-sm tracking-wide backdrop-blur"
                         // onClick={() => openModal(ev)}
                       >
                         Register
                       </button>
-                      <button className="hover:cursor-pointer w-full h-10 rounded-xl border-2 bg-white/10 hover:scale-105 hover:shadow-lg transition-transform duration-300 font-bold text-sm tracking-wide backdrop-blur" style={{ borderColor: 'var(--yellow-border-soft)', color: 'var(--white)' }}>
+                      <button className="hover:cursor-pointer w-full h-10 rounded-xl border-2 border-blue-400/40 bg-white/10 hover:bg-blue-400/10 hover:scale-105 hover:shadow-lg transition-transform duration-300 text-blue-100 font-bold text-sm tracking-wide backdrop-blur">
                         Rulebook
                       </button>
                     </div>
