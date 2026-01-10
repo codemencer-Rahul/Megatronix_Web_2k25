@@ -235,7 +235,16 @@ const ContactSection = () => {
                 </div>
 
                 {/* Honeypot Field for spam prevention, DONT REMOVE THIS */}
-                <input type="text" name="website" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+                <input
+                  type="text"
+                  name="website"
+                  style={{ display: 'none' }}
+                  tabIndex="-1"
+                  autoComplete="off"
+                  {...register("website", {
+                    validate: (value) => value === "" || "Bot detected"
+                  })}
+                />
 
                 <div className="space-y-1">
                   <textarea
