@@ -10,7 +10,12 @@ repos:
 
   - repo: local
     hooks:
-      - id: block-env-files
-        name: Block .env files from being committed
-        entry: bash -c 'if git diff --cached --name-only | grep -E "^\.env(\.|$)"; then echo "❌ .env files are not allowed in commits"; exit 1; fi'
+      - id: block-real-env-files
+        name: Block real .env files (allow .env.example)
+        entry: >
+          bash -c 'git diff --cached --name-only
+          | grep -E "^\.env(\.|$)"
+          | grep -Ev "^\.env\.example$|^\.env\.sample$"
+          && { echo "❌ Real .env files are not allowed in commits"; exit 1; }
+          || exit 0'
         language: system

@@ -4,7 +4,7 @@ import {LetterGlitch } from '../components'
 function IntroSection() {
   return (
     <LetterGlitch>
-      
+
     </LetterGlitch>
   )
 }

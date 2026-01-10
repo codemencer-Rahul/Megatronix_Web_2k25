@@ -6,16 +6,16 @@ export default function ProfileCard({ name, year, imageUrl, email, linkedin, git
     <div className="relative w-[260px] h-[300px]">
       {/* Outer glowing border */}
       <div className="absolute inset-0 rounded-2xl blur-md" style={{ background: 'linear-gradient(to bottom right, var(--yellow-shadow), var(--yellow-border-soft), var(--surface-black))' }}></div>
-      
+
       {/* Inner card */}
       <div className="relative rounded-2xl overflow-hidden h-full" style={{ background: 'linear-gradient(to bottom right, var(--black), var(--surface-black), var(--dark-black))', borderWidth: '2px', borderStyle: 'solid', borderColor: 'var(--yellow-primary)', boxShadow: '0 0 6px var(--yellow-shadow)', backdropFilter: 'blur(4px)' }}>
-        
+
         {/* Image section */}
         <div className="relative h-[180px] flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), var(--dark-black))', borderBottomWidth: '1px', borderBottomStyle: 'solid', borderBottomColor: 'var(--yellow-border-soft)' }}>
           {imageUrl ? (
-            <img 
-              src={imageUrl} 
-              alt={name} 
+            <img
+              src={imageUrl}
+              alt={name}
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.target.style.display = 'none';
