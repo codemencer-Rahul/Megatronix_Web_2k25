@@ -1,3 +1,6 @@
+.env
+appwrite.*
+
 # Logs
 logs
 *.log
