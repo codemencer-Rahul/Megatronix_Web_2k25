@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import LetterGlitch from "./LetterGlitch";
-import codemanthanPoster from "../assets/codemanthanPoster.jpg";
-import snapsyncPoster from "../assets/snapsyncPoster.jpg";
-import rebootPoster from "../assets/rebootPoster.jpg";
+import { LetterGlitch } from "../animations";
+import codemanthanPoster from "../../assets/images/codemanthanPoster.jpg";
+import snapsyncPoster from "../../assets/images/snapsyncPoster.jpg";
+import rebootPoster from "../../assets/images/rebootPoster.jpg";
 
 const DOMAIN_EVENTS = {
   robotics: [
@@ -113,7 +113,7 @@ export default function DomainEventsPage() {
                     <div className="w-full flex flex-col gap-4 mt-2">
                       <button
                         className="hover:cursor-pointer w-full h-10 rounded-xl hover:scale-105 hover:shadow-lg transition-transform duration-300 font-bold text-sm tracking-wide backdrop-blur" style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)' }}
-                        // onClick={() => openModal(ev)}
+                      // onClick={() => openModal(ev)}
                       >
                         Register
                       </button>

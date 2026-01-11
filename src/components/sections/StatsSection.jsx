@@ -1,6 +1,6 @@
 import { Calendar, Trophy, Users, Zap } from "lucide-react";
 import React from "react";
-import {Counter } from '../components';
+import { Counter } from '../ui';
 
 const stats = [
   {

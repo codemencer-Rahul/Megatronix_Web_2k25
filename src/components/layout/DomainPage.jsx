@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import LetterGlitch from "./LetterGlitch";
-import codemanthanPoster from "../assets/codemanthanPoster.jpg";
-import snapsyncPoster from "../assets/snapsyncPoster.jpg";
-import rebootPoster from "../assets/rebootPoster.jpg";
+import { LetterGlitch } from "../animations";
+import codemanthanPoster from "../../assets/images/codemanthanPoster.jpg";
+import snapsyncPoster from "../../assets/images/snapsyncPoster.jpg";
+import rebootPoster from "../../assets/images/rebootPoster.jpg";
 
 const DOMAINS = [
   {

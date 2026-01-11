@@ -1,5 +1,5 @@
 import React from 'react'
-import {LetterGlitch } from '../components'
+import { LetterGlitch } from '../animations'
 
 function IntroSection() {
   return (

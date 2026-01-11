@@ -14,10 +14,10 @@ import {
   ChevronUp
 } from "lucide-react";
 import { useForm } from "react-hook-form";
-import LetterGlitch from "./LetterGlitch";
+import { LetterGlitch } from "../animations";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { contactUsService } from "../services/contactUsService";
+import { contactUsService } from "../../lib/services/contactUsService";
 
 // --- DATA ---
 const facultyCoordinators = [

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Calendar, Clock, MapPin, Users, Code, Rocket } from "lucide-react";
-import {LetterGlitch } from '../components'
+import { LetterGlitch } from '../animations'
 import { useNavigate } from 'react-router-dom';
 
 function EventSection() {
@@ -217,11 +217,10 @@ function EventSection() {
               return (
                 <div
                   key={index}
-                  className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${
-                    event.comingSoon
+                  className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${event.comingSoon
                       ? "cursor-not-allowed"
                       : "hover:scale-[1.02] cursor-pointer"
-                  }`}
+                    }`}
                   style={{
                     animationDelay: `${index * 0.2}s`,
                     backgroundColor: 'var(--surface-black)',
@@ -292,11 +291,10 @@ function EventSection() {
 
                       <div className="lg:w-80">
                         <button
-                          className={`w-full h-12 rounded-2xl ${
-                            event.comingSoon
+                          className={`w-full h-12 rounded-2xl ${event.comingSoon
                               ? "opacity-50 cursor-not-allowed"
                               : "hover:scale-105"
-                          } transition-transform duration-300`}
+                            } transition-transform duration-300`}
                           style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)', fontWeight: 'bold' }}
                           disabled={event.comingSoon}
                         >

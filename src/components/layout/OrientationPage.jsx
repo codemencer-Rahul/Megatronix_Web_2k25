@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import LetterGlitch from "./LetterGlitch";
-import forklifter from "../assets/forklifter.JPG";
-import homeautomation from "../assets/homeautomation.png";
-import pothole from "../assets/pothole.png";
-import trussbridge from "../assets/trussbridge.png";
-import windcharging from "../assets/windcharging.JPG";
-import edgeandobstacle from "../assets/edgeandobstacle.jpg";
-import airhockey from "../assets/airhockey.JPG";
-import hydraulic from "../assets/hydraulic.jpg";
+import { LetterGlitch } from "../animations";
+import forklifter from "../../assets/images/forklifter.JPG";
+import homeautomation from "../../assets/images/homeautomation.png";
+import pothole from "../../assets/images/pothole.png";
+import trussbridge from "../../assets/images/trussbridge.png";
+import windcharging from "../../assets/images/windcharging.JPG";
+import edgeandobstacle from "../../assets/images/edgeandobstacle.jpg";
+import airhockey from "../../assets/images/airhockey.JPG";
+import hydraulic from "../../assets/images/hydraulic.jpg";
 
 const projectsByYear = {
   2022: [
@@ -84,11 +84,10 @@ export default function OrientationPage() {
             {yearList.map((year) => (
               <button
                 key={year}
-                className={`px-6 py-2 rounded-full font-semibold text-lg transition-all duration-200 border-2 ${
-                  selectedYear === year
+                className={`px-6 py-2 rounded-full font-semibold text-lg transition-all duration-200 border-2 ${selectedYear === year
                     ? "text-black scale-105"
                     : "hover:cursor-pointer"
-                }`}
+                  }`}
                 style={{
                   background: selectedYear === year ? 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))' : 'transparent',
                   borderColor: selectedYear === year ? 'var(--yellow-primary)' : 'var(--yellow-border-soft)',

@@ -3,7 +3,8 @@ import { TeamSection, LetterGlitch } from '../components'
 
 function TeamPage() {
   return (
-    <LetterGlitch>
+    <LetterGlitch glitchSpeed={100} smooth={false}>
+      {/* // <LetterGlitch> */}
       <div className="min-h-screen pt-10">
         <TeamSection />
       </div>

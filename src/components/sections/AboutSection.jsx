@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LetterGlitch, SpotlightCard, StatsSection, VideoComponent, Timeline } from '../components'
+import { LetterGlitch, SpotlightCard, StatsSection, VideoComponent, Timeline } from '../'
 import {
   Target,
   Users,
@@ -9,10 +9,10 @@ import {
   Calendar,
   Gamepad,
 } from "lucide-react";
-import warVid from "../assets/warVid.mp4";
-import gamingEvent from "../assets/gamingEvent.mp4";
-import paridhiVid from "../assets/paridhiVid.mp4";
-import techxtraVid from "../assets/techxtraVid.mp4";
+import warVid from "../../assets/videos/warVid.mp4";
+import gamingEvent from "../../assets/videos/gamingEvent.mp4";
+import paridhiVid from "../../assets/videos/paridhiVid.mp4";
+import techxtraVid from "../../assets/videos/techxtraVid.mp4";
 
 function AboutSection() {
   const milestones = [
