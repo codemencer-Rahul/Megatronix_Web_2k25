@@ -1,32 +1,29 @@
-import React, { useState } from 'react'
-import { LetterGlitch, SpotlightCard, StatsSection, VideoComponent, Timeline } from '../'
 import {
-  Target,
-  Users,
-  Code,
-  Lightbulb,
-  Trophy,
   Calendar,
   Gamepad,
+  Trophy
 } from "lucide-react";
-import warVid from "../../assets/videos/warVid.mp4";
+import { useState } from 'react';
+import { LetterGlitch, SpotlightCard, StatsSection, Timeline, VideoComponent } from '../';
 import gamingEvent from "../../assets/videos/gamingEvent.mp4";
 import paridhiVid from "../../assets/videos/paridhiVid.mp4";
 import techxtraVid from "../../assets/videos/techxtraVid.mp4";
+import warVid from "../../assets/videos/warVid.mp4";
+import { BulbSvg, CodeXmlIcon, TargetIcon, UsersGroupIcon } from "../ui/icons";
 
 function AboutSection() {
   const milestones = [
     {
-      year: "2012",
+      year: "2009",
       event: "Megatronix Founded",
       description:
-        "In 2012, Megatronix was born as the official technical club of MSIT — a hub for curiosity, innovation, and creativity. What began as a small team with a vision soon became a space where students could explore, experiment, and bring ideas to life.",
+        "In 2009, Megatronix was born as the official technical club of MSIT — a hub for curiosity, innovation, and creativity. What began as a small team with a vision soon became a space where students could explore, experiment, and bring ideas to life.",
     },
     {
       year: "2012",
       event: "First Paridhi",
       description:
-        "Later that year, we organized our very first flagship event, Paridhi. It was more than just an event; it was the beginning of a tradition, a platform where talent could shine and the spirit of innovation could take center stage.",
+        "In 2012, we organized our very first flagship event, Paridhi. It was more than just an event; it marked the beginning of a tradition—a platform where talent could shine and the spirit of innovation could take center stage. Over time, Paridhi grew to become one of Eastern India’s largest technical festivals, uniting creativity, competition, and cutting-edge ideas on a grand stage.",
     },
     {
       year: "2024",
@@ -45,19 +42,19 @@ function AboutSection() {
       year: "2025",
       event: "Organized MegaExpo for the first time",
       description:
-        "The same year marked the debut of MegaExpo, a grand platform where ideas transformed into impact. From technological innovations to social solutions, students pitched their bold concepts to panels of startup founders, industry experts, and mentors, igniting collaboration and inspiration across the campus.",
+        "The same year marked the debut of MegaExpo, a grand platform where ideas transformed into impact. From technological innovations to social solutions, young innovators from multiple institutions and diverse backgrounds pitched their bold concepts to panels of startup founders, industry experts, and mentors, igniting collaboration and inspiration across the campus.",
     },
     {
       year: "2025",
       event: "Organized Proto-X for the first time",
       description:
-        "Proto-X also made its first appearance, celebrating the art of creation. Participants built and demonstrated both hardware and software prototypes, turning raw ideas into tangible solutions. Guided by experts and innovators, the event became a journey of learning, discovery, and hands-on innovation.",
+        "Proto-X made its first appearance as an inter-college event, welcoming innovators beyond just college students from diverse backgrounds. Participants built and showcased hardware and software prototypes, transforming ideas into tangible solutions. Guided by experts, the event became a hands-on journey of learning and discovery.",
     },
     {
       year: "2026",
-      event: "13 Years Strong",
+      event: "16 Years Strong",
       description:
-        "By 2026, Megatronix had celebrated 13 remarkable years. From the sparks of early ideas to the glow of shared memories, our journey has been one of passion, creativity, and community. Each milestone strengthened our family, inspiring future innovators and leaving a legacy of growth, magic, and endless possibilities.",
+        "By 2026, Megatronix marked 16 unforgettable years of dreams, dedication, and determination. From the first spark of an idea to shared moments of pride, our journey has been driven by passion, creativity, and a deep sense of belonging. Each milestone brought us closer as a family, inspiring generations and leaving a legacy of growth and endless possibilities.",
     },
   ];
 
@@ -74,7 +71,7 @@ function AboutSection() {
       title: "TechXtra",
       description:
         "TechXtra sparks the imagination of first-year students with exclusive intra-college challenges. This annual compitition encourages experimentation, teamwork, and the joy of creating something extraordinary from scratch.",
-      icon: Code,
+      icon: CodeXmlIcon,
       frequency: "Annually",
       videoSrc: techxtraVid,
     },
@@ -82,7 +79,7 @@ function AboutSection() {
       title: "Workshops",
       description:
         "Our hands-on workshops empower participants to turn ideas into reality. Dive into project development sessions, explore innovative tech solutions, and build skills that last a lifetime.",
-      icon: Lightbulb,
+      icon: BulbSvg,
       frequency: "Annually",
     },
     {
@@ -104,14 +101,14 @@ function AboutSection() {
       title: "Coding Competitions / Hackathons",
       description:
         "Immerse yourself in our quarterly coding competitions and hackathons, where every challenge sparks creativity and pushes boundaries. Collaborate with peers, tackle real-world problems, and bring your ideas to life — an arena to sharpen skills, innovate, and experience the thrill of coding at its best.",
-      icon: Target,
+      icon: TargetIcon,
       frequency: "Quarterly",
     },
     {
       title: "Tech Talks",
       description:
         "Gain insights and inspiration from industry experts and thought leaders during our quarterly Tech Talks. Learn firsthand about emerging trends, real-world challenges, and the stories behind groundbreaking innovations.",
-      icon: Users,
+      icon: UsersGroupIcon,
       frequency: "Quarterly",
     },
   ];
@@ -204,7 +201,7 @@ function AboutSection() {
                   {/* Header Section */}
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
-                      <event.icon className="h-6 w-6" style={{ color: 'var(--yellow-primary)' }} />
+                      <event.icon className="h-6 w-6" style={{ color: 'var(--yellow-primary)' }} color="var(--yellow-primary)" />
                       <h3 className="text-lg font-semibold" style={{ color: 'var(--white)' }}>
                         {event.title}
                       </h3>

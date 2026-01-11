@@ -6,10 +6,9 @@
   --dark-black: #2b4a52; /* neutral night blue */
   --surface-black: #1c3a41; /* softened surface tone */
 
-  /* Primary Yellow (Sand Dune tone) */
-  --yellow-primary: #e1c982; /* Sand Tan */
-  --yellow-hover: #e6c29a;
-  --yellow-soft: #f2dcc3;
+  --yellow-primary: #ffc300; /* School Bus Yellow */
+  --yellow-hover: #ffd60a; /* Gold */
+  --yellow-soft: #ffe169;
 
   /* Text Colors (warm dune neutrals) */
   --white: #f7f1e8; /* warm off-white sand */
