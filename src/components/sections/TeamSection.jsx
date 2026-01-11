@@ -2,11 +2,20 @@ import React, { useMemo } from "react";
 import { ProfileCard } from "../ui";
 import contactInfo from "../../lib/data/ContactInfo.json";
 
+// Helper function to capitalize names (moved outside component)
+const capitalizeName = (name) => {
+  return name
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 const TeamSection = () => {
   // Memoize the data transformations to avoid recalculating on every render
   const membersByYear = useMemo(() => {
     const teamMembers = contactInfo.map((member) => ({
-      name: member["Name"].toLocaleLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+      name: capitalizeName(member["Name"]),
       email: member["Email"],
       linkedin: member["LinkedIn Profile Link"],
       github: member["GitHub Account Link"],
@@ -19,9 +28,11 @@ const TeamSection = () => {
     const years = ["4th Year", "3rd Year"];
     return years.map((year) => ({
       year,
-      members: teamMembers.filter((m) => m.year === year).sort((a, b) => a.name.localeCompare(b.name)),
+      members: teamMembers
+        .filter((m) => m.year === year)
+        .sort((a, b) => a.name.localeCompare(b.name)),
     }));
-  }, []);
+  }, []); // Empty dependency array is correct since contactInfo is static
 
   return (
     <div className="min-h-screen">

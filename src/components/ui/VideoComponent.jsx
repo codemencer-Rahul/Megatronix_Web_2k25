@@ -1,4 +1,5 @@
 import { ArrowLeft } from "lucide-react";
+import { ArrowBigLeftDashIcon } from "./icons";
 
 const VideoComponent = ({ videoSrc, closeModal }) => {
   if (!videoSrc) return null;
@@ -21,7 +22,7 @@ const VideoComponent = ({ videoSrc, closeModal }) => {
             onMouseEnter={(e) => e.currentTarget.style.color = 'var(--yellow-hover)'}
             onMouseLeave={(e) => e.currentTarget.style.color = 'var(--yellow-primary)'}
           >
-            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            <ArrowBigLeftDashIcon className="w-5 h-5 sm:w-6 sm:h-6" />
             <span>Back</span>
           </button>
 

@@ -1,10 +1,10 @@
-import { Calendar, Trophy, Users, Zap } from "lucide-react";
-import React from "react";
+import { Calendar, Trophy, Zap } from "lucide-react";
 import { Counter } from '../ui';
+import { UsersIcon } from "../ui/icons";
 
 const stats = [
   {
-    icon: Users,
+    icon: UsersIcon,
     to: 2000,
     suffix: "+",
     label: "Participants",
@@ -40,7 +40,7 @@ const StatsSection = () => {
           {stats.map((stat, idx) => (
             <div className="text-center" key={idx}>
               <div className="flex items-center justify-center mb-4">
-                <stat.icon className="h-12 w-12" style={{ color: 'var(--yellow-primary)' }} />
+                <stat.icon className="h-12 w-12" color="var(--yellow-primary)" style={{ color: 'var(--yellow-primary)' }} />
               </div>
               <div className="flex items-center justify-center mb-2">
                 <Counter

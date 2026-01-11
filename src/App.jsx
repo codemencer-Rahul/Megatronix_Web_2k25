@@ -4,10 +4,11 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import EventPage from "./pages/EventPage";
 import HomePage from "./pages/HomePage";
-import TeamPage from "./pages/TeamPage";
+import { lazy } from "react";
+
+const TeamPage = lazy(() => import("./pages/TeamPage"));
 
 function App() {
-
   return (
     <BrowserRouter>
       <Navbar />

@@ -23,9 +23,10 @@ const LetterGlitch = ({
   const context = useRef(null);
   const lastGlitchTime = useRef(Date.now());
 
-  const fontSize = 16;
-  const charWidth = 10;
-  const charHeight = 20;
+  // Larger characters = fewer letters = faster initialization
+  const fontSize = 18;
+  const charWidth = 12;
+  const charHeight = 24;
 
   const lettersAndSymbols =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>0123456789".split("");

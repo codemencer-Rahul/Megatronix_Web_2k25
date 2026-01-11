@@ -1,0 +1,17 @@
+export { default as ArrowBigLeftDashIcon } from "./arrow-big-left-dash-icon";
+export { default as BulbSvg } from "./bulb-svg";
+export { default as CodeXmlIcon } from "./code-xml-icon";
+export { default as FacebookIcon } from "./facebook-icon";
+export { default as GithubIcon } from "./github-icon";
+export { default as GmailIcon } from "./gmail-icon";
+export { default as InstagramIcon } from "./instagram-icon";
+export { default as LinkedinIcon } from "./linkedin-icon";
+export { default as MailFilledIcon } from "./mail-filled-icon";
+export { default as MessageCircleIcon } from "./message-circle-icon";
+export { default as PhoneVolume } from "./phone-volume";
+export { default as RocketIcon } from "./rocket-icon";
+export { default as TargetIcon } from "./target-icon";
+export { default as TwitterXIcon } from "./twitter-x-icon";
+export { default as UsersGroupIcon } from "./users-group-icon";
+export { default as UsersIcon } from "./users-icon";
+export { default as YoutubeIcon } from "./youtube-icon";
