@@ -2,24 +2,24 @@
 
 :root {
   /* Base Blacks (better depth & contrast) */
-  --black: #102a30;          /* deeper night blue shadow (no green) */
-  --dark-black: #2b4a52;     /* neutral night blue */
-  --surface-black: #1c3a41;  /* softened surface tone */
+  --black: #102a30; /* deeper night blue shadow (no green) */
+  --dark-black: #2b4a52; /* neutral night blue */
+  --surface-black: #1c3a41; /* softened surface tone */
 
   /* Primary Yellow (Sand Dune tone) */
-  --yellow-primary: #e1b382; /* Sand Tan */
+  --yellow-primary: #e1c982; /* Sand Tan */
   --yellow-hover: #e6c29a;
   --yellow-soft: #f2dcc3;
 
   /* Text Colors (warm dune neutrals) */
-  --white: #f7f1e8;          /* warm off-white sand */
-  --gray-text: #d8c8b5;      /* sand-muted */
-  --gray-muted: #bfae9a;     /* dry dune tone */
+  --white: #f7f1e8; /* warm off-white sand */
+  --gray-text: #d8c8b5; /* sand-muted */
+  --gray-muted: #bfae9a; /* dry dune tone */
 
   /* Utility / Effects */
   --glass-white: rgba(247, 241, 232, 0.08);
   --yellow-border-soft: rgba(225, 179, 130, 0.3);
-  --yellow-shadow: rgba(200, 150, 102, 0.35);        /* Sand Tan Shadow */
+  --yellow-shadow: rgba(200, 150, 102, 0.35); /* Sand Tan Shadow */
   --yellow-shadow-strong: rgba(200, 150, 102, 0.55);
 
   /* Borders / Dividers */

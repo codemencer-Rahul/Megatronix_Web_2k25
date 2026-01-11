@@ -1,20 +1,24 @@
-import Navbar from "./Navbar"
-import AboutSection from "./AboutSection"
-import ContactSection from "./ContactSection"
-import DomainEventsPage from "./DomainEventsPage"
-import DomainPage from "./DomainPage"
-import EventSection from "./EventSection"
-import IntroSection from "./IntroSection"
-import OrientationPage from "./OrientationPage"
-import TeamSection from "./TeamSection"
-import Timeline from "./Timeline"
-import LetterGlitch from './LetterGlitch'
-import SpotlightCard from './SpotlightCard'
-import StatsSection from './StatsSection'
-import Counter from "./Counter"
-import VideoComponent from './VideoComponent'
+// Layout Components
+export {
+  Navbar,
+  DomainEventsPage,
+  DomainPage,
+  OrientationPage,
+  Timeline,
+} from "./layout";
 
-export {Navbar, AboutSection, ContactSection, DomainEventsPage,
-    DomainPage, EventSection, IntroSection, OrientationPage, TeamSection,
-    Timeline, LetterGlitch, SpotlightCard, StatsSection, Counter,
-    VideoComponent }
+// Section Components
+export {
+  AboutSection,
+  ContactSection,
+  EventSection,
+  IntroSection,
+  StatsSection,
+  TeamSection,
+} from "./sections";
+
+// UI Components
+export { SpotlightCard, ProfileCard, Counter, VideoComponent } from "./ui";
+
+// Animation Components
+export { LetterGlitch, FuzzyText, Shuffle, ShinyText } from "./animations";
