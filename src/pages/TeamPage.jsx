@@ -33,7 +33,7 @@ function TeamPage() {
 
   return (
     <LetterGlitch glitchSpeed={150} smooth={false}>
-      <div className="min-h-screen pt-10">
+      <div className="min-h-screen pt-15">
         <TeamSection />
       </div>
     </LetterGlitch>
