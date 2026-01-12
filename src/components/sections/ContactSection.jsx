@@ -108,7 +108,7 @@ const ContactSection = () => {
 
   return (
     <LetterGlitch>
-      <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 font-orbitron">
+      <div className="min-h-screen pt-35 pb-12 px-4 sm:px-6 lg:px-8 font-orbitron">
         <ToastContainer theme="dark" position="bottom-right" />
 
         {/* Main Grid Layout */}
