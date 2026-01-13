@@ -1,27 +1,25 @@
-/* global.css — Refined Color Variables (Sand Dune × Night Blue) */
-
 :root {
-  /* Base Blacks (better depth & contrast) */
-  --black: #102a30;          /* deeper night blue shadow (no green) */
-  --dark-black: #2b4a52;     /* neutral night blue */
-  --surface-black: #1c3a41;  /* softened surface tone */
+  /* Base Blacks (Magical night tones) */
+  --black: #0b1320;          
+  --dark-black: #1a2436;     
+  --surface-black: #141c2e;  
 
-  /* Primary Yellow (Sand Dune tone) */
-  --yellow-primary: #e1b382; /* Sand Tan */
-  --yellow-hover: #e6c29a;
-  --yellow-soft: #f2dcc3;
+  /* Primary Bract Gradient (Bougainvillea) */
+  --yellow-primary: #be0772; /* main bougainvillea bract */
+  --yellow-hover: #b5dcfa;    /* soft bract glow */
+  --yellow-soft: #be0772;   /* brighter petal glow */
 
-  /* Text Colors (warm dune neutrals) */
-  --white: #f7f1e8;          /* warm off-white sand */
-  --gray-text: #d8c8b5;      /* sand-muted */
-  --gray-muted: #bfae9a;     /* dry dune tone */
+  /* Text Colors */
+  --white: #f6f1e7;          
+  --gray-text: #d4cfc4;
+  --gray-muted: #a9a395;
 
   /* Utility / Effects */
-  --glass-white: rgba(247, 241, 232, 0.08);
-  --yellow-border-soft: rgba(225, 179, 130, 0.3);
-  --yellow-shadow: rgba(200, 150, 102, 0.35);        /* Sand Tan Shadow */
-  --yellow-shadow-strong: rgba(200, 150, 102, 0.55);
+  --glass-white: rgba(246, 241, 231, 0.08);
+  --yellow-border-soft: rgba(233, 30, 99, 0.35);    /* bract neon border */
+  --yellow-shadow: rgba(236, 64, 122, 0.4);         /* petal glow shadow */
+  --yellow-shadow-strong: rgba(240, 98, 146, 0.65); /* intense bract glow */
 
   /* Borders / Dividers */
-  --border-dark: #314f56;
+  --border-dark: #2b3550;
 }
