@@ -2,7 +2,8 @@ import {
   ChevronDown,
   ChevronUp,
   Clock,
-  MapPin
+  MapPin,
+  MessageSquare,
 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
