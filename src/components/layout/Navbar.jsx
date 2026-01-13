@@ -26,7 +26,7 @@ export default function Navbar() {
       {/* NAVBAR WRAPPER */}
       <header className="fixed z-50 top-6 left-4 right-4 sm:left-8 sm:right-8 xl:left-60 xl:right-60">
         <nav
-          className="mx-auto flex items-center justify-between px-6 py-1 sm:py-2 lg:py-2.5 rounded-full transition-transform duration-300 hover:scale-[0.99] hover:-translate-y-0.5"
+          className="mx-auto flex items-center justify-between px-6 py-1 sm:py-2 lg:py-2.5 rounded-full"
           style={{
             background: "var(--glass-white)",
             backdropFilter: "blur(10px)",
@@ -81,8 +81,7 @@ export default function Navbar() {
               color: "var(--white)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--yellow-soft)";
+              e.currentTarget.style.backgroundColor = "var(--yellow-soft)";
               e.currentTarget.style.color = "var(--black)";
             }}
             onMouseLeave={(e) => {
@@ -127,19 +126,16 @@ export default function Navbar() {
               )}
             </div>
           </button>
-
-
         </nav>
       </header>
 
       {/* MOBILE MENU OVERLAY */}
       <div
-        className={`fixed inset-0 z-40 transition-opacity duration-300 lg:hidden ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
+        className={`fixed inset-0 z-40 transition-opacity duration-300 lg:hidden ${
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
         style={{ backgroundColor: "var(--black)" }}
       >
-
-
         {/* MOBILE LINKS */}
         <ul className="flex flex-col items-center justify-center h-full space-y-6 text-lg">
           {navItems.map((item, idx) => (
@@ -177,8 +173,7 @@ export default function Navbar() {
               color: "var(--white)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor =
-                "var(--yellow-primary)";
+              e.currentTarget.style.backgroundColor = "var(--yellow-primary)";
               e.currentTarget.style.color = "var(--black)";
             }}
             onMouseLeave={(e) => {

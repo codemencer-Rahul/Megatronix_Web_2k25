@@ -13,24 +13,7 @@ function HomePage() {
         smooth={true}
       />
       {/* centered column: Shuffle row and button underneath */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-2 text-white px-4">
-        {/* <div
-          className="flex items-baseline text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem]
-    font-normal tracking-wide font-['Bring_Race']
-    scale-y-[2] sm:scale-y-[1.2] -skew-x-3
-    bg-clip-text text-transparent"
-          style={{
-            backgroundImage: `radial-gradient(
-      circle at center,
-      var(--yellow-hover),
-      var(--yellow-primary),
-      var(--yellow-soft)
-    )`,
-          }}
-        >
-          MEGATRONIX
-        </div> */}
-
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-20 text-white px-4">
         {/* main megatronix text */}
         <HoverText />
 
@@ -96,7 +79,10 @@ function HomePage() {
             }}
           >
             <span className="relative z-10 flex items-center gap-2 font-mono">
-              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
+              <span
+                className="w-1.5 h-1.5 animate-pulse rounded-full"
+                style={{ backgroundColor: "var(--gray-text)" }}
+              ></span>
               Register
             </span>
           </Link>
