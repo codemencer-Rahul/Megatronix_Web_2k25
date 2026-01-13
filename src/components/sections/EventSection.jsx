@@ -1,7 +1,8 @@
 import React from 'react'
 import { Calendar, Clock, MapPin, Users, Code, Rocket } from "lucide-react";
-import {LetterGlitch } from '../components'
+import { LetterGlitch } from '../animations'
 import { useNavigate } from 'react-router-dom';
+import { CodeXmlIcon, RocketIcon, UsersGroupIcon, UsersIcon } from '../ui/icons';
 
 function EventSection() {
 
@@ -48,7 +49,7 @@ function EventSection() {
       location: "Online",
       time: "NA",
       participants: "200+ Participants",
-      icon: Rocket,
+      icon: RocketIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "completed",
       comingSoon: false,
@@ -63,7 +64,7 @@ function EventSection() {
       location: "TBD",
       time: "3:00 PM - 5:00 PM",
       participants: "200+ Participants",
-      icon: Users,
+      icon: UsersIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
@@ -77,7 +78,7 @@ function EventSection() {
       location: "MSIT Campus",
       time: "3:00 PM - 5:00 PM",
       participants: "50 per session",
-      icon: Code,
+      icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
@@ -91,7 +92,7 @@ function EventSection() {
       location: "MSIT Campus",
       time: "10:00 AM - 5:00 PM",
       participants: "200+ Participants",
-      icon: Code,
+      icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
@@ -105,7 +106,7 @@ function EventSection() {
       location: "MSIT Campus",
       time: "10:00 AM - 5:00 PM",
       participants: "500+ Expected",
-      icon: Rocket,
+      icon: RocketIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
@@ -217,11 +218,10 @@ function EventSection() {
               return (
                 <div
                   key={index}
-                  className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${
-                    event.comingSoon
-                      ? "cursor-not-allowed"
-                      : "hover:scale-[1.02] cursor-pointer"
-                  }`}
+                  className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${event.comingSoon
+                    ? "cursor-not-allowed"
+                    : "hover:scale-[1.02] cursor-pointer"
+                    }`}
                   style={{
                     animationDelay: `${index * 0.2}s`,
                     backgroundColor: 'var(--surface-black)',
@@ -249,7 +249,7 @@ function EventSection() {
                               className={`p-3 rounded-full`}
                               style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))' }}
                             >
-                              <event.icon className="h-8 w-8" style={{ color: 'var(--black)' }} />
+                              <event.icon className="h-8 w-8" style={{ color: 'var(--black)' }} color="var(--black)" />
                             </div>
                             <div>
                               <h2 className="text-2xl font-bold" style={{ color: 'var(--white)' }}>
@@ -284,7 +284,7 @@ function EventSection() {
                             <span>{event.time}</span>
                           </div>
                           <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
-                            <Users className="h-4 w-4" />
+                            <UsersGroupIcon className="h-4 w-4" />
                             <span>{event.participants}</span>
                           </div>
                         </div>
@@ -292,11 +292,10 @@ function EventSection() {
 
                       <div className="lg:w-80">
                         <button
-                          className={`w-full h-12 rounded-2xl ${
-                            event.comingSoon
-                              ? "opacity-50 cursor-not-allowed"
-                              : "hover:scale-105"
-                          } transition-transform duration-300`}
+                          className={`w-full h-12 rounded-2xl ${event.comingSoon
+                            ? "opacity-50 cursor-not-allowed"
+                            : "hover:scale-105"
+                            } transition-transform duration-300`}
                           style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)', fontWeight: 'bold' }}
                           disabled={event.comingSoon}
                         >

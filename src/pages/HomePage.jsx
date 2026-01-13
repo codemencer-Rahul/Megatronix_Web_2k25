@@ -1,8 +1,5 @@
 import React from "react";
-import LetterGlitch from "../components/LetterGlitch";
-// import FuzzyText from "../components/FuzzyText";
-// import Shuffle from "../components/shuffle";
-// import ShinyText from '../components/ShinyText';
+import { LetterGlitch } from "../components";
 import { Link } from "react-router-dom";
 import HoverText from "../components/HoverText";
 
@@ -99,7 +96,7 @@ function HomePage() {
             }}
           >
             <span className="relative z-10 flex items-center gap-2 font-mono">
-              <span className="w-1.5 h-1.5 bg-emerald-400 animate-pulse rounded-full"></span>
+              <span className="w-1.5 h-1.5 animate-pulse rounded-full" style={{ backgroundColor: 'var(--gray-text)' }}></span>
               Register
             </span>
           </Link>
@@ -107,7 +104,7 @@ function HomePage() {
           {/* ABOUT US BUTTON */}
           <Link
             to="/about"
-            className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tr-3xl rounded-bl-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
+            className="group relative overflow-hidden uppercase px-4 sm:px-6 py-2.5 tracking-widest text-[10px] sm:text-sm md:text-base rounded-tr-3xl rounded-bl-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 cursor-pointer before:absolute before:inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10"
             style={{
               backgroundColor: "rgba(0, 0, 0, 0.8)",
               color: "var(--white)",

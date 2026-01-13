@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import megaLogo from "../assets/megaLogo.png";
+import megaLogo from "../../assets/images/megaLogo.png";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,14 +24,14 @@ export default function Navbar() {
   return (
     <>
       {/* NAVBAR WRAPPER */}
-      <header className="fixed z-50 top-4 left-4 right-4 sm:left-8 sm:right-8 xl:left-60 xl:right-60">
+      <header className="fixed z-50 top-6 left-4 right-4 sm:left-8 sm:right-8 xl:left-60 xl:right-60">
         <nav
-          className="mx-auto flex items-center justify-between px-4 py-2 rounded-full"
+          className="mx-auto flex items-center justify-between px-6 py-1 sm:py-2 lg:py-2.5 rounded-full transition-transform duration-300 hover:scale-[0.99] hover:-translate-y-0.5"
           style={{
             background: "var(--glass-white)",
             backdropFilter: "blur(10px)",
             border: "1px solid var(--yellow-border-soft)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+            boxShadow: "0px 2px 30px var(--yellow-shadow)",
           }}
         >
           {/* LOGO */}
@@ -39,7 +39,7 @@ export default function Navbar() {
             <img
               src={megaLogo}
               alt="Mega Logo"
-              className="h-7 sm:h-8 lg:h-9 object-contain select-none"
+              className="h-6 sm:h-7 lg:h-9 object-contain select-none"
               draggable={false}
             />
           </Link>
@@ -77,12 +77,12 @@ export default function Navbar() {
             to="/contact"
             className="hidden lg:block rounded-full px-4 py-1.5 text-sm transition-all"
             style={{
-              border: "1px solid var(--yellow-primary)",
+              border: "1px solid var(--yellow-hover)",
               color: "var(--white)",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor =
-                "var(--yellow-primary)";
+                "var(--yellow-soft)";
               e.currentTarget.style.color = "var(--black)";
             }}
             onMouseLeave={(e) => {
@@ -138,18 +138,7 @@ export default function Navbar() {
           }`}
         style={{ backgroundColor: "var(--black)" }}
       >
-        {/* CLOSE BUTTON */}
-        <button
-          onClick={closeMenu}
-          className="absolute top-6 right-6 h-11 w-11 rounded-full flex items-center justify-center text-2xl"
-          style={{
-            color: "var(--yellow-primary)",
-            border: "2px solid var(--yellow-primary)",
-            backgroundColor: "rgba(0,0,0,0.8)",
-          }}
-        >
-          ×
-        </button>
+
 
         {/* MOBILE LINKS */}
         <ul className="flex flex-col items-center justify-center h-full space-y-6 text-lg">

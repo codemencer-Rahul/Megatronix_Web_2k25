@@ -1,23 +1,16 @@
-import React, { useState } from "react";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  MessageSquare,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Youtube,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Clock,
+  MapPin
 } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import LetterGlitch from "./LetterGlitch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { contactUsService } from "../services/contactUsService";
+import { contactUsService } from "../../lib/services/contactUsService";
+import { LetterGlitch } from "../animations";
+import { FacebookIcon, GmailIcon, InstagramIcon, LinkedinIcon, MailFilledIcon, MessageCircleIcon, PhoneVolume, TwitterXIcon, YoutubeIcon } from "../ui/icons";
 
 // --- DATA ---
 const facultyCoordinators = [
@@ -51,15 +44,11 @@ const faqs = [
   },
   {
     question: "What is the registration fee?",
-    answer: "Registration fees vary by event. Individual events range from ₹500-₹2000 per team. Check the specific event page for detailed pricing.",
+    answer: "Registration fees vary by event. Individual events range from ₹100-500 for solo participants and ₹500-₹2000 per team. Check the specific event page for detailed pricing.",
   },
   {
     question: "Can I participate in multiple events?",
     answer: "Yes! You can participate in multiple events across different domains. However, please check the schedule to avoid timing conflicts.",
-  },
-  {
-    question: "Is accommodation provided?",
-    answer: "Yes, we provide accommodation for outstation participants. Contact us at least 15 days before the event to book your stay.",
   },
   {
     question: "What should I bring to the event?",
@@ -119,7 +108,7 @@ const ContactSection = () => {
 
   return (
     <LetterGlitch>
-      <div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 font-orbitron">
+      <div className="min-h-screen pt-35 pb-12 px-4 sm:px-6 lg:px-8 font-orbitron">
         <ToastContainer theme="dark" position="bottom-right" />
 
         {/* Main Grid Layout */}
@@ -358,17 +347,8 @@ const ContactSection = () => {
               ></div>
 
               <div className="flex items-center gap-4 group">
-                <div
-                  className="p-3 rounded-lg transition-all"
-                  style={{
-                    backgroundColor: "var(--yellow-border-soft)",
-                    border: "1px solid var(--yellow-border-soft)",
-                  }}
-                >
-                  <MapPin
-                    className="w-6 h-6"
-                    style={{ color: "var(--yellow-primary)" }}
-                  />
+                <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
+                  <MapPin className="w-6 h-6" color="var(--yellow-primary)" />
                 </div>
                 <div>
                   <h4
@@ -385,17 +365,8 @@ const ContactSection = () => {
               </div>
 
               <div className="flex items-center gap-4 group">
-                <div
-                  className="p-3 rounded-lg transition-all"
-                  style={{
-                    backgroundColor: "var(--yellow-border-soft)",
-                    border: "1px solid var(--yellow-border-soft)",
-                  }}
-                >
-                  <Phone
-                    className="w-6 h-6"
-                    style={{ color: "var(--yellow-primary)" }}
-                  />
+                <div className="flex items-center p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
+                  <PhoneVolume className="w-6 h-6" color="var(--yellow-primary)" />
                 </div>
                 <div>
                   <h4
@@ -411,28 +382,22 @@ const ContactSection = () => {
               </div>
 
               <div className="flex items-center gap-4 group">
-                <div
-                  className="p-3 rounded-lg transition-all"
-                  style={{
-                    backgroundColor: "var(--yellow-border-soft)",
-                    border: "1px solid var(--yellow-border-soft)",
-                  }}
-                >
-                  <Mail
-                    className="w-6 h-6"
-                    style={{ color: "var(--yellow-primary)" }}
-                  />
+                <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
+                  <GmailIcon className="w-6 h-6" color="var(--yellow-primary)" />
                 </div>
                 <div>
-                  <h4
-                    className="font-bold text-sm tracking-wide"
-                    style={{ color: "var(--yellow-primary)" }}
-                  >
-                    EMAIL
-                  </h4>
-                  <p className="text-sm" style={{ color: "var(--gray-text)" }}>
-                    megatronix@msit.edu.in
-                  </p>
+                  <h4 className="font-bold text-sm tracking-wide" style={{ color: 'var(--yellow-primary)' }}>EMAIL</h4>
+                  <p className="text-sm" style={{ color: 'var(--gray-text)' }}>info@techfest2024.edu</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 group">
+                <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
+                  <Clock className="w-6 h-6" color="var(--yellow-primary)" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm tracking-wide" style={{ color: 'var(--yellow-primary)' }}>HOURS</h4>
+                  <p className="text-sm" style={{ color: 'var(--gray-text)' }}>Weekdays: 9 AM - 6 PM</p>
                 </div>
               </div>
             </div>
@@ -453,24 +418,11 @@ const ContactSection = () => {
                 Connect_with_us //
               </p>
               <div className="flex gap-4 mx-auto sm:mx-0">
-                {[Facebook, Twitter, Instagram, Linkedin, Youtube].map(
-                  (Icon, i) => (
-                    <a
-                      key={i}
-                      href="#"
-                      className="transition-colors hover:scale-110 transform"
-                      style={{ color: "var(--gray-text)" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "var(--yellow-primary)")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "var(--gray-text)")
-                      }
-                    >
-                      <Icon size={20} />
-                    </a>
-                  )
-                )}
+                {[FacebookIcon, TwitterXIcon, InstagramIcon, LinkedinIcon, YoutubeIcon].map((Icon, i) => (
+                  <a key={i} href="#" className="transition-colors hover:scale-110 transform" style={{ color: 'var(--gray-text)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--yellow-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-text)'}>
+                    <Icon size={20} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -537,28 +489,12 @@ const ContactSection = () => {
                   </p>
                   <div className="space-y-2 mb-3">
                     <div className="flex items-center space-x-2 text-xs">
-                      <Phone
-                        className="h-3 w-3 shrink-0"
-                        style={{ color: "var(--yellow-primary)" }}
-                      />
-                      <span
-                        className="truncate"
-                        style={{ color: "var(--gray-text)" }}
-                      >
-                        {member.phone}
-                      </span>
+                      <PhoneVolume className="flex items-center h-3 w-3 shrink-0" color='var(--yellow-primary)' />
+                      <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.phone}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-xs">
-                      <Mail
-                        className="h-3 w-3 shrink-0"
-                        style={{ color: "var(--yellow-primary)" }}
-                      />
-                      <span
-                        className="truncate"
-                        style={{ color: "var(--gray-text)" }}
-                      >
-                        {member.email}
-                      </span>
+                      <MailFilledIcon className="flex items-center h-3 w-3 shrink-0" color='var(--yellow-primary)' />
+                      <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.email}</span>
                     </div>
                   </div>
                   <button
