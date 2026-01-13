@@ -2,7 +2,8 @@ import {
   ChevronDown,
   ChevronUp,
   Clock,
-  MapPin
+  MapPin,
+  MessageSquare,
 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -347,7 +348,13 @@ const ContactSection = () => {
               ></div>
 
               <div className="flex items-center gap-4 group">
-                <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
+                <div
+                  className="p-3 rounded-lg transition-all"
+                  style={{
+                    backgroundColor: "var(--yellow-border-soft)",
+                    border: "1px solid var(--yellow-border-soft)",
+                  }}
+                >
                   <MapPin className="w-6 h-6" color="var(--yellow-primary)" />
                 </div>
                 <div>
@@ -365,8 +372,17 @@ const ContactSection = () => {
               </div>
 
               <div className="flex items-center gap-4 group">
-                <div className="flex items-center p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
-                  <PhoneVolume className="w-6 h-6" color="var(--yellow-primary)" />
+                <div
+                  className="flex items-center p-3 rounded-lg transition-all"
+                  style={{
+                    backgroundColor: "var(--yellow-border-soft)",
+                    border: "1px solid var(--yellow-border-soft)",
+                  }}
+                >
+                  <PhoneVolume
+                    className="w-6 h-6"
+                    color="var(--yellow-primary)"
+                  />
                 </div>
                 <div>
                   <h4
@@ -382,22 +398,28 @@ const ContactSection = () => {
               </div>
 
               <div className="flex items-center gap-4 group">
-                <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
-                  <GmailIcon className="w-6 h-6" color="var(--yellow-primary)" />
+                <div
+                  className="p-3 rounded-lg transition-all"
+                  style={{
+                    backgroundColor: "var(--yellow-border-soft)",
+                    border: "1px solid var(--yellow-border-soft)",
+                  }}
+                >
+                  <GmailIcon
+                    className="w-6 h-6"
+                    color="var(--yellow-primary)"
+                  />
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm tracking-wide" style={{ color: 'var(--yellow-primary)' }}>EMAIL</h4>
-                  <p className="text-sm" style={{ color: 'var(--gray-text)' }}>info@techfest2024.edu</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 group">
-                <div className="p-3 rounded-lg transition-all" style={{ backgroundColor: 'var(--yellow-border-soft)', border: '1px solid var(--yellow-border-soft)' }}>
-                  <Clock className="w-6 h-6" color="var(--yellow-primary)" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-sm tracking-wide" style={{ color: 'var(--yellow-primary)' }}>HOURS</h4>
-                  <p className="text-sm" style={{ color: 'var(--gray-text)' }}>Weekdays: 9 AM - 6 PM</p>
+                  <h4
+                    className="font-bold text-sm tracking-wide"
+                    style={{ color: "var(--yellow-primary)" }}
+                  >
+                    EMAIL
+                  </h4>
+                  <p className="text-sm" style={{ color: "var(--gray-text)" }}>
+                    megatronix@msit.edu.in
+                  </p>
                 </div>
               </div>
             </div>
@@ -418,8 +440,25 @@ const ContactSection = () => {
                 Connect_with_us //
               </p>
               <div className="flex gap-4 mx-auto sm:mx-0">
-                {[FacebookIcon, TwitterXIcon, InstagramIcon, LinkedinIcon, YoutubeIcon].map((Icon, i) => (
-                  <a key={i} href="#" className="transition-colors hover:scale-110 transform" style={{ color: 'var(--gray-text)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--yellow-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--gray-text)'}>
+                {[
+                  FacebookIcon,
+                  TwitterXIcon,
+                  InstagramIcon,
+                  LinkedinIcon,
+                  YoutubeIcon,
+                ].map((Icon, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="transition-colors hover:scale-110 transform"
+                    style={{ color: "var(--gray-text)" }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "var(--yellow-primary)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "var(--gray-text)")
+                    }
+                  >
                     <Icon size={20} />
                   </a>
                 ))}
@@ -489,12 +528,28 @@ const ContactSection = () => {
                   </p>
                   <div className="space-y-2 mb-3">
                     <div className="flex items-center space-x-2 text-xs">
-                      <PhoneVolume className="flex items-center h-3 w-3 shrink-0" color='var(--yellow-primary)' />
-                      <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.phone}</span>
+                      <PhoneVolume
+                        className="flex items-center h-3 w-3 shrink-0"
+                        color="var(--yellow-primary)"
+                      />
+                      <span
+                        className="truncate"
+                        style={{ color: "var(--gray-text)" }}
+                      >
+                        {member.phone}
+                      </span>
                     </div>
                     <div className="flex items-center space-x-2 text-xs">
-                      <MailFilledIcon className="flex items-center h-3 w-3 shrink-0" color='var(--yellow-primary)' />
-                      <span className="truncate" style={{ color: 'var(--gray-text)' }}>{member.email}</span>
+                      <MailFilledIcon
+                        className="flex items-center h-3 w-3 shrink-0"
+                        color="var(--yellow-primary)"
+                      />
+                      <span
+                        className="truncate"
+                        style={{ color: "var(--gray-text)" }}
+                      >
+                        {member.email}
+                      </span>
                     </div>
                   </div>
                   <button
