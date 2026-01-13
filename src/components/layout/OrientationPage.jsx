@@ -77,8 +77,14 @@ export default function OrientationPage() {
   return (
     <LetterGlitch>
       <div className="min-h-screen pt-20 relative">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl z-0" style={{ backgroundColor: 'rgba(255, 202, 40, 0.08)' }} />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-3xl z-0" style={{ backgroundColor: 'rgba(255, 202, 40, 0.08)' }} />
+        <div
+          className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl z-0"
+          style={{ backgroundColor: "rgba(255, 202, 40, 0.08)" }}
+        />
+        <div
+          className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full blur-3xl z-0"
+          style={{ backgroundColor: "rgba(255, 202, 40, 0.08)" }}
+        />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex justify-center gap-4 mb-12">
             {yearList.map((year) => (
@@ -89,9 +95,16 @@ export default function OrientationPage() {
                     : "hover:cursor-pointer"
                   }`}
                 style={{
-                  background: selectedYear === year ? 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))' : 'transparent',
-                  borderColor: selectedYear === year ? 'var(--yellow-primary)' : 'var(--yellow-border-soft)',
-                  color: selectedYear === year ? 'var(--black)' : 'var(--white)'
+                  background:
+                    selectedYear === year
+                      ? "linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))"
+                      : "transparent",
+                  borderColor:
+                    selectedYear === year
+                      ? "var(--yellow-primary)"
+                      : "var(--yellow-border-soft)",
+                  color:
+                    selectedYear === year ? "var(--black)" : "var(--white)",
                 }}
                 onClick={() => setSelectedYear(year)}
               >
@@ -101,7 +114,10 @@ export default function OrientationPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.length === 0 && (
-              <div className="text-center col-span-full" style={{ color: 'var(--gray-text)' }}>
+              <div
+                className="text-center col-span-full"
+                style={{ color: "var(--gray-text)" }}
+              >
                 No projects for this year.
               </div>
             )}
@@ -111,12 +127,20 @@ export default function OrientationPage() {
                 className="backdrop-blur-lg rounded-3xl overflow-hidden animate-fade-in-up hover:scale-105 transition-all duration-300 flex flex-col items-center"
                 style={{
                   animationDelay: `${idx * 0.1}s`,
-                  backgroundColor: 'var(--surface-black)',
-                  border: '1.5px solid',
-                  borderColor: 'var(--yellow-border-soft)',
-                  boxShadow: '0 0 20px rgba(255, 202, 40, 0.15)',
+                  backgroundColor: "var(--surface-black)",
+                  border: "1.5px solid",
+                  borderColor: "var(--yellow-border-soft)",
+                  boxShadow: "0 0 20px rgba(255, 202, 40, 0.15)",
                 }}
               >
+                <div
+                  className="absolute top-0 left-0 w-full h-0.5 from-transparent via-yellow-primary to-transparent group-hover:h-1 transition-all duration-500"
+                  style={{
+                    background:
+                      "linear-gradient(to right, transparent, var(--yellow-primary), transparent)",
+                  }}
+                />
+
                 <div className="p-8 flex flex-col items-center w-full h-full">
                   <div className="shrink-0 flex items-center justify-center w-full mb-4">
                     {project.image ? (
@@ -128,20 +152,41 @@ export default function OrientationPage() {
                         />
                       </div>
                     ) : (
-                      <div className="w-56 h-56 flex items-center justify-center rounded-2xl border-2 text-lg font-bold" style={{ backgroundColor: 'var(--surface-black)', borderColor: 'var(--yellow-border-soft)', color: 'var(--yellow-primary)' }}>
+                      <div
+                        className="w-56 h-56 flex items-center justify-center rounded-2xl border-2 text-lg font-bold"
+                        style={{
+                          backgroundColor: "var(--surface-black)",
+                          borderColor: "var(--yellow-border-soft)",
+                          color: "var(--yellow-primary)",
+                        }}
+                      >
                         No Image
                       </div>
                     )}
                   </div>
                   <div className="flex-1 w-full flex flex-col justify-center items-center">
-                    <div className="text-xl font-extrabold tracking-wide mb-2 text-center" style={{ color: 'var(--white)' }}>
+                    <div
+                      className="text-xl font-extrabold tracking-wide mb-2 text-center"
+                      style={{ color: "var(--white)" }}
+                    >
                       {project.name}
                     </div>
-                    <div className="mb-4 text-center font-medium text-base leading-relaxed px-2" style={{ color: 'var(--gray-text)' }}>
+                    <div
+                      className="mb-4 text-center font-medium text-base leading-relaxed px-2"
+                      style={{ color: "var(--gray-text)" }}
+                    >
                       {project.description}
                     </div>
-                    <div className="w-full my-2" style={{ borderTop: '1px solid var(--yellow-border-soft)' }}></div>
-                    <div className="text-xs mb-2 text-center" style={{ color: 'var(--yellow-primary)' }}>
+                    <div
+                      className="w-full my-2"
+                      style={{
+                        borderTop: "1px solid var(--yellow-border-soft)",
+                      }}
+                    ></div>
+                    <div
+                      className="text-xs mb-2 text-center"
+                      style={{ color: "var(--yellow-primary)" }}
+                    >
                       Year: {selectedYear}
                     </div>
                   </div>

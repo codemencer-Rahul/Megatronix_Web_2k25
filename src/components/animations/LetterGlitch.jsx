@@ -3,15 +3,16 @@ import { useRef, useEffect, useState, useCallback } from "react";
 const LetterGlitch = ({
   children,
   glitchColors = [
-    "#2b4a52", // dark-black (more presence)
-    "#1c3a41", // surface-black
-    "#8b6f3f", // dimmed gold
-    "#2b4a52", // dark-black
-    "#4a5f66", // muted blue-gray
+    "#2E7D32A0", // main rich leaf green (balanced)
+    "#66BB6A85", // secondary light leaf glow
+    "#81C78490", // base soft light leaf green
+    "#1B5E2085", // accent darker mature leaf
+    "#0B3D1E90", // deep shadow / sparkle leaf
   ],
+
   glitchSpeed = 10,
   centerVignette = true,
-  outerVignette = false,
+  outerVignette = true,
   smooth = true,
 }) => {
   const canvasRef = useRef(null);
@@ -42,10 +43,10 @@ const LetterGlitch = ({
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
       ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
       : null;
   };
 
@@ -213,17 +214,13 @@ const LetterGlitch = ({
     <div
       ref={containerRef}
       className="relative w-full min-h-screen overflow-hidden"
-      style={{
-        backgroundColor: 'var(--black)',
-        minHeight: '100vh',
-        height: 'auto'
-      }}
+      style={{ backgroundColor: "var(--black)" }}
     >
       <canvas
         ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full z-0"
-        style={{ display: 'block' }}
+        className="absolute inset-0 w-full h-full z-0 blur-[1.5px]"
       />
+
       {outerVignette && (
         <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(circle,rgba(0,0,0,0)_60%,rgba(0,0,0,1)_100%)]"></div>
       )}
