@@ -37,7 +37,7 @@ const HoverText = () => {
           var(--yellow-primary) 55%,
           var(--yellow-soft) 80%
         )`,
-        transition: "background-image 0.45s ease-out",
+        transition: "background-image 1s ease-out",
       }}
     >
       MEGATRONIX
