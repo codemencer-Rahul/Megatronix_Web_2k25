@@ -5,12 +5,14 @@ import ContactPage from "./pages/ContactPage";
 import EventPage from "./pages/EventPage";
 import HomePage from "./pages/HomePage";
 import { lazy } from "react";
+import BackgroundMusic from "./components/BackgroundMusic";
 
 const TeamPage = lazy(() => import("./pages/TeamPage"));
 
 function App() {
   return (
     <BrowserRouter>
+      <BackgroundMusic/>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
