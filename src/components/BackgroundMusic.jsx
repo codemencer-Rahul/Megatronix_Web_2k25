@@ -1,20 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
 // Import your songs
-import song1 from "../assets/videos/Sickick - Infected (lyrics) [4BQ1sCRWNdA].mp3";
-import song2 from "../assets/videos/!GOATED! ♾️.mp3";
-import song3 from "../assets/videos/Aventhis_-_Me_vs_Me_Fightin_Man_Blues_(mp3.pm).mp3";
-import song4 from "../assets/videos/Battle of the Best.mp3";
-import song5 from "../assets/videos/Megatronix Anthem.mp3";
-import song6 from "../assets/videos/practicing hot (Add Instrumental).mp3";
+import song1 from "../../src/assets/videos/Forrest-Frank-feat-Connor-Price-UP-(CeeNaija.com).mp3";
 
 const PLAYLIST = [
-  { src: song1, title: "Sickick – Infected" },
-  { src: song2, title: "!GOATED! ♾️" },
-  { src: song3, title: "Aventhis – Me vs Me Fightin Man Blues" },
-  { src: song4, title: "Battle of the Best" },
-  { src: song5, title: "Megatronix Anthem" },
-  { src: song6, title: "Practicing Hot (Add Instrumental)" },
+  { src: song1, title: "UP! by Forrest Frank ft Conner Price" },
 ];
 
 export default function BackgroundMusic() {
@@ -30,7 +20,7 @@ export default function BackgroundMusic() {
     const attemptAutoplay = async () => {
       if (!audioRef.current || started) return;
 
-      audioRef.current.volume = 0.15;
+      audioRef.current.volume = 1;
       audioRef.current.muted = muted;
 
       try {

@@ -3,21 +3,13 @@ import { LetterGlitch } from "../animations";
 import forklifter from "../../assets/images/forklifter.JPG";
 import homeautomation from "../../assets/images/homeautomation.png";
 import pothole from "../../assets/images/pothole.png";
-import trussbridge from "../../assets/images/trussbridge.png";
+// import trussbridge from "../../assets/images/trussbridge.png";
 import windcharging from "../../assets/images/windcharging.JPG";
 import edgeandobstacle from "../../assets/images/edgeandobstacle.jpg";
 import airhockey from "../../assets/images/airhockey.JPG";
 import hydraulic from "../../assets/images/hydraulic.jpg";
 
 const projectsByYear = {
-  2022: [
-    {
-      name: "Truss Bridge",
-      description:
-        "A mechanical model demonstrating the structural efficiency and load distribution of truss bridges.",
-      image: trussbridge,
-    },
-  ],
   2023: [
     {
       name: "Pothole Filling Bot",

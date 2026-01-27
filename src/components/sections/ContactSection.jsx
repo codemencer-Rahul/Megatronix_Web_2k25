@@ -11,54 +11,48 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { contactUsService } from "../../lib/services/contactUsService";
 import { LetterGlitch } from "../animations";
-import { FacebookIcon, GmailIcon, InstagramIcon, LinkedinIcon, MailFilledIcon, MessageCircleIcon, PhoneVolume, TwitterXIcon, YoutubeIcon } from "../ui/icons";
+import { FacebookIcon, GmailIcon, InstagramIcon, LinkedinIcon, MailFilledIcon, PhoneVolume, TwitterXIcon, YoutubeIcon } from "../ui/icons";
 
 // --- DATA ---
 const facultyCoordinators = [
   {
-    domain: "Core Technical",
-    coordinator: "Dr. A. Sharma",
+    domain: "Technical Head",
+    coordinator: "Soumya Shubra Khan",
     phone: "+91 90000 12345",
     email: "asharma@techfest.edu",
     image: "/api/placeholder/100/100", // Replace with real image
-  },
-  {
-    domain: "Management",
-    coordinator: "Prof. B. Sen",
-    phone: "+91 90000 54321",
-    email: "bsen@techfest.edu",
-    image: "/api/placeholder/100/100",
-  },
-  {
-    domain: "Media & Publicity",
-    coordinator: "Dr. C. Verma",
-    phone: "+91 90000 67890",
-    email: "cverma@techfest.edu",
-    image: "/api/placeholder/100/100",
-  },
+  }
 ];
 
 const faqs = [
   {
-    question: "How do I register for events?",
-    answer: "You can register for events through our events page. Click on any event and use the registration button. Online registration closes 24 hours before each event.",
+    question: "What is Megatronix?",
+    answer: "Megatronix is the official technical club of Meghnad Saha Institute of Technology (MSIT), dedicated to fostering innovation, technical skills, and a passion for technology among students through various events, workshops, and projects.",
   },
   {
-    question: "What is the registration fee?",
-    answer: "Registration fees vary by event. Individual events range from ₹100-500 for solo participants and ₹500-₹2000 per team. Check the specific event page for detailed pricing.",
+    question: "Do the events require prior registration?",
+    answer: "No only the gaming events requires prior registration. For other events, participants can register on the spot at the venue before the event starts.",
+  },
+  {
+    question: "Is there any fee involved in participating in the workshops?",
+    answer: "The workshops are generally free to attend, but some specialized workshops may have a nominal fee to cover materials and resources. Please check the specific workshop details for any fees.",
+  },
+  {
+    question: "Can the 1st yrs join the club?",
+    answer: "No the 1st yrs cant join the club as members but they can participate in TechXtra and other intra-college events organized exclusively for them.",
+  },
+  {
+    question: "How do I register for events?",
+    answer: "You can register for events through our events page. Click on any event and use the registration button. Online registration closes 24 hours before each event.",
   },
   {
     question: "Can I participate in multiple events?",
     answer: "Yes! You can participate in multiple events across different domains. However, please check the schedule to avoid timing conflicts.",
   },
   {
-    question: "What should I bring to the event?",
-    answer: "Bring your college ID, registration confirmation, and any specific materials mentioned in your event guidelines. All basic facilities will be provided.",
-  },
-  {
-    question: "Are there any age restrictions?",
-    answer: "TechFest is primarily for college students. However, some events are open to professionals and school students. Check individual event requirements.",
-  },
+    question: "What is Paridhi?",
+    answer: "Paridhi is the annual technical fest organized by Megatronix, featuring a variety of competitions, workshops, guest lectures, and exhibitions that showcase the technical talents of students from MSIT and other institutions throughout the nation.",
+  }
 ];
 
 // --- STYLES ---
@@ -117,7 +111,7 @@ const ContactSection = () => {
           {/* --- LEFT COLUMN: FEEDBACK FORM (Spans 7 columns) --- */}
           <div className="lg:col-span-7 flex flex-col">
             <div
-              className="relative h-full backdrop-blur-sm rounded-xl p-8 overflow-hidden"
+              className="relative backdrop-blur-sm rounded-xl p-8 overflow-hidden"
               style={{
                 backgroundColor: "var(--surface-black)",
                 border: "1px solid var(--yellow-border-soft)",
@@ -389,10 +383,10 @@ const ContactSection = () => {
                     className="font-bold text-sm tracking-wide"
                     style={{ color: "var(--yellow-primary)" }}
                   >
-                    CONTACT
+                    CONVENOR'S  CONTACT
                   </h4>
                   <p className="text-sm" style={{ color: "var(--gray-text)" }}>
-                    +91 9007154749
+                    +91 9007154749 - Debdip Bhattacharya ( 4TH YR MEGATRON )
                   </p>
                 </div>
               </div>
@@ -418,14 +412,14 @@ const ContactSection = () => {
                     EMAIL
                   </h4>
                   <p className="text-sm" style={{ color: "var(--gray-text)" }}>
-                    megatronix@msit.edu.in
+                    megatronixmsitofficial@gmail.com
                   </p>
                 </div>
               </div>
             </div>
 
             {/* 3. SOCIALS STRIP */}
-            <div
+            {/* <div
               className="backdrop-blur-sm rounded-xl p-4 flex justify-between items-center"
               style={{
                 backgroundColor: "var(--surface-black)",
@@ -441,15 +435,16 @@ const ContactSection = () => {
               </p>
               <div className="flex gap-4 mx-auto sm:mx-0">
                 {[
-                  FacebookIcon,
-                  TwitterXIcon,
-                  InstagramIcon,
-                  LinkedinIcon,
-                  YoutubeIcon,
-                ].map((Icon, i) => (
+                  { Icon: FacebookIcon, url: "https://www.facebook.com/share/17pM9fRame/" },
+                  { Icon: InstagramIcon, url: "https://www.instagram.com/megatronix__msit?igsh=djQ5cjJkaWJhNG53" },
+                  // { Icon: LinkedinIcon, url: "https://linkedin.com/company/megatronix" },
+                  { Icon: YoutubeIcon, url: "https://www.youtube.com/@megatronixmsit921" },
+                ].map(({ Icon, url }) => (
                   <a
-                    key={i}
-                    href="#"
+                    key={Icon}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="transition-colors hover:scale-110 transform"
                     style={{ color: "var(--gray-text)" }}
                     onMouseEnter={(e) =>
@@ -463,14 +458,14 @@ const ContactSection = () => {
                   </a>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* --- BOTTOM ROW: FACULTY (Left) & FAQ (Right) --- */}
 
           {/* FACULTY SECTION */}
           <div
-            className="lg:col-span-7 backdrop-blur-sm rounded-xl p-6 shadow-lg relative flex flex-col"
+            className="lg:col-span-12 backdrop-blur-sm rounded-xl p-3 shadow-lg relative self-start"
             style={{
               backgroundColor: "var(--surface-black)",
               border: "1px solid var(--yellow-border-soft)",
@@ -485,7 +480,7 @@ const ContactSection = () => {
               }}
             ></div>
             <h3
-              className="text-2xl font-bold mb-6 tracking-widest pb-2"
+              className="text-base font-bold mb-2 tracking-widest pb-1.5"
               style={{
                 color: "var(--yellow-primary)",
                 borderBottom: "1px solid var(--yellow-border-soft)",
@@ -494,42 +489,50 @@ const ContactSection = () => {
               Faculty Coordinators
             </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 grow items-center">
+            <div className="items-center">
               {facultyCoordinators.map((member, idx) => (
                 <div
                   key={idx}
-                  className="backdrop-blur-md rounded-lg p-4 transition-all group flex flex-col justify-center"
+                  className="backdrop-blur-md rounded-xl p-3 transition-all group flex items-center gap-3"
                   style={{
                     backgroundColor: "var(--surface-black)",
                     border: "1px solid var(--yellow-border-soft)",
-                    boxShadow: "0 0 12px rgba(255, 202, 40, 0.08)",
+                    boxShadow: "0 0 18px rgba(255, 202, 40, 0.12)",
                   }}
                 >
-                  <div
-                    className="w-16 h-16 mx-auto rounded-full mb-3 overflow-hidden"
-                    style={{
-                      backgroundColor: "rgba(255, 202, 40, 0.06)",
-                      border: "2px solid var(--yellow-border-soft)",
-                    }}
-                  >
-                    {/* You can put an <img> tag here */}
+                  {/* LEFT: Image + Name */}
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className="w-16 h-16 rounded-full overflow-hidden shrink-0"
+                      style={{
+                        backgroundColor: "rgba(255, 202, 40, 0.06)",
+                        border: "2px solid var(--yellow-border-soft)",
+                      }}
+                    >
+                      {/* You can put an <img> tag here */}
+                    </div>
+
+                    <div className="min-w-0">
+                      <h4
+                        className="font-bold text-base leading-tight truncate"
+                        style={{ color: "var(--yellow-primary)" }}
+                      >
+                        {member.coordinator}
+                      </h4>
+                      <p
+                        className="text-xs truncate"
+                        style={{ color: "var(--gray-text)" }}
+                      >
+                        {member.domain}
+                      </p>
+                    </div>
                   </div>
-                  <h4
-                    className="font-bold text-sm text-center"
-                    style={{ color: "var(--yellow-primary)" }}
-                  >
-                    {member.coordinator}
-                  </h4>
-                  <p
-                    className="text-xs mb-3 text-center"
-                    style={{ color: "var(--gray-text)" }}
-                  >
-                    {member.domain}
-                  </p>
-                  <div className="space-y-2 mb-3">
-                    <div className="flex items-center space-x-2 text-xs">
+
+                  {/* RIGHT: Contact info */}
+                  <div className="ml-auto space-y-1 text-right">
+                    <div className="flex items-center justify-end space-x-2 text-xs">
                       <PhoneVolume
-                        className="flex items-center h-3 w-3 shrink-0"
+                        className="h-3.5 w-3.5 shrink-0"
                         color="var(--yellow-primary)"
                       />
                       <span
@@ -539,9 +542,10 @@ const ContactSection = () => {
                         {member.phone}
                       </span>
                     </div>
-                    <div className="flex items-center space-x-2 text-xs">
+
+                    <div className="flex items-center justify-end space-x-2 text-xs">
                       <MailFilledIcon
-                        className="flex items-center h-3 w-3 shrink-0"
+                        className="h-3.5 w-3.5 shrink-0"
                         color="var(--yellow-primary)"
                       />
                       <span
@@ -552,33 +556,35 @@ const ContactSection = () => {
                       </span>
                     </div>
                   </div>
-                  <button
-                    className="w-full text-[10px] uppercase px-3 py-1.5 rounded font-semibold transition-colors"
-                    style={{
-                      border: "1px solid var(--yellow-border-soft)",
-                      color: "var(--yellow-primary)",
-                      backgroundColor: "transparent",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor =
-                        "var(--yellow-primary)";
-                      e.currentTarget.style.color = "var(--surface-black)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "transparent";
-                      e.currentTarget.style.color = "var(--yellow-primary)";
-                    }}
-                  >
-                    Contact Coordinator
-                  </button>
+
+                  {/* <button
+    className="w-full text-[10px] uppercase px-3 py-1.5 rounded font-semibold transition-colors"
+    style={{
+      border: "1px solid var(--yellow-border-soft)",
+      color: "var(--yellow-primary)",
+      backgroundColor: "transparent",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor =
+        "var(--yellow-primary)";
+      e.currentTarget.style.color = "var(--surface-black)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = "transparent";
+      e.currentTarget.style.color = "var(--yellow-primary)";
+    }}
+  >
+    Contact Coordinator
+  </button> */}
                 </div>
+
               ))}
             </div>
           </div>
 
           {/* FAQ SECTION (Accordion) */}
           <div
-            className="lg:col-span-5 backdrop-blur-sm rounded-xl p-6 shadow-lg relative"
+            className="lg:col-span-12 backdrop-blur-sm rounded-xl p-6 shadow-lg relative self-start"
             style={{
               backgroundColor: "var(--surface-black)",
               border: "1px solid var(--yellow-border-soft)",

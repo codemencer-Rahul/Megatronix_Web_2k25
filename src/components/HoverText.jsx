@@ -14,20 +14,24 @@ const HoverText = () => {
     <div
       onMouseMove={handleMove}
       className="
-     flex items-baseline
+     flex items-baseline justify-center
   text-[35px] sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem]
-  font-normal font-['Bring_Race']
+  font-normal
   tracking-normal
   bg-clip-text text-transparent
   cursor-pointer
   transition-all duration-300 ease-out
+  whitespace-nowrap
+  px-4 sm:px-6 md:px-8
+  w-full
       "
       style={{
+        fontFamily: "'Bring Race', 'Arial Black', sans-serif",
         backgroundImage: `radial-gradient(
           circle at ${pos.x}% ${pos.y}%,
-          var(--yellow-hover) 0%,
-          var(--yellow-primary) 55%,
-          var(--yellow-soft) 80%
+          #b8f3d8 0%,
+          #76c893 35%,
+          #5fa878 60%
         )`,
         transition: "background-image 1s ease-out",
       }}
