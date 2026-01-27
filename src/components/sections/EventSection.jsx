@@ -1,27 +1,24 @@
-import React from 'react'
-import { Calendar, Clock, MapPin, Users, Code, Rocket } from "lucide-react";
+import React, { useState } from 'react'
+import { Calendar, Clock, MapPin, Users, Code, Rocket, X } from "lucide-react";
 import { LetterGlitch } from '../animations'
 import { useNavigate } from 'react-router-dom';
 import { CodeXmlIcon, RocketIcon, UsersGroupIcon, UsersIcon } from '../ui/icons';
+import rebootPoster from "../../assets/images/rebootPoster.jpg";
+import orientationPoster from "../../assets/images/orientationPoster.jpeg";
 
 function EventSection() {
+  const [modalImage, setModalImage] = useState(null);
 
   const upcomingEvents = [
     {
       title: "Orientation Program for 1st Year Students",
-      date: "24th Nov, 2024 - 28th Nov, 2024",
+      date: "2nd Feb, 2026 - 6th Feb, 2026",
       time: "3:00 PM - 5:00 PM",
       type: "Orientation",
     },
     {
-      title: "Gaming Tournament organized by Krafton x Megatronix",
-      date: "TBD",
-      time: "TBD",
-      type: "Gaming Competition",
-    },
-    {
       title: "Workshop on Robotics, Coding, Electrical and Civil",
-      date: "15th Dec, 2024",
+      date: "TBD",
       time: "3:00 PM - 5:00 PM",
       type: "Wokrshop",
     },
@@ -53,21 +50,23 @@ function EventSection() {
       gradient: "from-teal-800/40 to-red-500/40",
       status: "completed",
       comingSoon: false,
+      poster: rebootPoster,
     },
 
     {
       key: "orientation",
       title: "Orientation Program for 1st year Students",
       description:
-        "Comprehensive orientation program for 1st year students to get familiar with club domains, activities and upcoming events",
-      date: "Nov 24-28, 2024",
-      location: "TBD",
+        "Comprehensive orientation program for 1st year students of MSIT to get familiar with club domains, activities and upcoming events",
+      date: "Feb 2nd-6th, 2026",
+      location: "JC Bose Auditorium ( BSH Seminar Hall ), MSIT",
       time: "3:00 PM - 5:00 PM",
-      participants: "200+ Participants",
+      participants: "100+ Participants",
       icon: UsersIcon,
       gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
+      status: "ongoing",
       comingSoon: false,
+      poster: orientationPoster,
     },
     {
       key: "workshop",
@@ -81,7 +80,8 @@ function EventSection() {
       icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
-      comingSoon: false,
+      comingSoon: true,
+      poster: null,
     },
     {
       key: "techxtra",
@@ -95,7 +95,8 @@ function EventSection() {
       icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
-      comingSoon: false,
+      comingSoon: true,
+      poster: null,
     },
     {
       key: "paridhi",
@@ -109,7 +110,8 @@ function EventSection() {
       icon: RocketIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
-      comingSoon: false,
+      comingSoon: true,
+      poster: null,
     },
   ];
 
@@ -118,7 +120,7 @@ function EventSection() {
       case "upcoming":
         return "bg-yellow-600/70";
       case "ongoing":
-        return "bg-yellow-500";
+        return "bg-yellow-800";
       case "completed":
         return "bg-green-500/40";
       default:
@@ -220,7 +222,7 @@ function EventSection() {
                   key={index}
                   className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${event.comingSoon
                     ? "cursor-not-allowed"
-                    : "hover:scale-[1.02] cursor-pointer"
+                    : "hover:scale-[1.02]"
                     }`}
                   style={{
                     animationDelay: `${index * 0.2}s`,
@@ -234,15 +236,34 @@ function EventSection() {
                   }
                 >
                   {event.comingSoon && (
-                    <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-10">
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-10">
                       <span className="text-white text-3xl font-bold">
                         Coming Soon
                       </span>
                     </div>
                   )}
                   <div className="p-8">
-                    <div className="flex flex-col lg:flex-row gap-8">
-                      <div className="flex-1">
+                    <div className={`flex flex-col lg:flex-row gap-8 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                      {/* Poster - appears on right for even index, left for odd index */}
+                      {event.poster && (
+                        <div className="lg:w-96 flex items-center">
+                          <img
+                            src={event.poster}
+                            alt={`${event.title} poster`}
+                            className="w-full h-auto object-contain rounded-lg cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                            style={{
+                              border: '2px solid var(--yellow-border-soft)',
+                              boxShadow: '0 4px 20px rgba(118, 200, 147, 0.2)'
+                            }}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setModalImage(event.poster);
+                            }}
+                          />
+                        </div>
+                      )}
+
+                      <div className="flex-1 flex flex-col">
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-center space-x-3">
                             <div
@@ -288,19 +309,20 @@ function EventSection() {
                             <span>{event.participants}</span>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="lg:w-80">
-                        <button
-                          className={`w-full h-12 rounded-2xl ${event.comingSoon
-                            ? "opacity-50 cursor-not-allowed"
-                            : "hover:scale-105"
-                            } transition-transform duration-300`}
-                          style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)', fontWeight: 'bold' }}
-                          disabled={event.comingSoon}
-                        >
-                          Learn More
-                        </button>
+                        {/* Learn More button at bottom */}
+                        <div className="mt-auto">
+                          <button
+                            className={`w-full h-12 rounded-2xl hover:cursor-pointer ${event.comingSoon
+                              ? "opacity-50 cursor-not-allowed"
+                              : "hover:scale-105"
+                              } transition-transform duration-300`}
+                            style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)', fontWeight: 'bold' }}
+                            disabled={event.comingSoon}
+                          >
+                            Learn More
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -310,6 +332,60 @@ function EventSection() {
           </div>
 
         </div>
+
+        {/* Image Modal */}
+        {modalImage && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.9)',
+              backdropFilter: 'blur(10px)',
+              animation: 'fadeIn 0.3s ease-out'
+            }}
+            onClick={() => setModalImage(null)}
+          >
+            {/* Modal Image */}
+            <div
+              className="max-w-3xl max-h-[70vh]"
+              style={{
+                animation: 'zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
+              }}
+            >
+              <img
+                src={modalImage}
+                alt="Event poster"
+                className="w-full h-full object-contain rounded-lg"
+                style={{
+                  border: '3px solid var(--yellow-primary)',
+                  boxShadow: '0 0 40px rgba(118, 200, 147, 0.4)'
+                }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        )}
+
+        <style>{`
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+
+          @keyframes zoomIn {
+            from {
+              opacity: 0;
+              transform: scale(0.5);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+        `}</style>
       </div>
     </LetterGlitch>
   )

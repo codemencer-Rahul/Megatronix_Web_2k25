@@ -9,7 +9,7 @@ import gamingEvent from "../../assets/videos/gamingEvent.mp4";
 import paridhiVid from "../../assets/videos/paridhiVid.mp4";
 import techxtraVid from "../../assets/videos/techxtraVid.mp4";
 import warVid from "../../assets/videos/warVid.mp4";
-import { BulbSvg, CodeXmlIcon, TargetIcon, UsersGroupIcon } from "../ui/icons";
+import { CodeXmlIcon, TargetIcon } from "../ui/icons";
 
 function AboutSection() {
   const milestones = [
@@ -30,7 +30,6 @@ function AboutSection() {
       event: "First 15kg Robo War",
       description:
         "Fast forward to 2024, we witnessed the thrill of our inaugural 15kg Robo War competition. Students engineered, strategized, and battled, turning creativity into action. The event became a testament to the skills and determination nurtured within our community over the years.",
-      videoSrc: warVid,
     },
     {
       year: "2025",
@@ -52,49 +51,53 @@ function AboutSection() {
     },
     {
       year: "2026",
-      event: "16 Years Strong",
+      event: "14 Years Strong",
       description:
-        "By 2026, Megatronix marked 16 unforgettable years of dreams, dedication, and determination. From the first spark of an idea to shared moments of pride, our journey has been driven by passion, creativity, and a deep sense of belonging. Each milestone brought us closer as a family, inspiring generations and leaving a legacy of growth and endless possibilities.",
+        "By 2026, Megatronix marked 14 unforgettable years of dreams, dedication, and determination. From the first spark of an idea to shared moments of pride, our journey has been driven by passion, creativity, and a deep sense of belonging. Each milestone brought us closer as a family, inspiring generations and leaving a legacy of growth and endless possibilities.",
     },
   ];
 
   const events = [
-    {
-      title: "Paridhi",
-      description:
-        "Step into Paridhi, our flagship annual technical festival where innovation takes center stage. From thrilling competitions to hands-on workshops and dazzling tech showcases, participants experience the cutting edge of technology and creativity.",
-      icon: Trophy,
-      frequency: "Annual",
-      videoSrc: paridhiVid,
-    },
+    // {
+    //   title: "Orientation",
+    //   description:
+    //     "Gain insights and inspiration from industry experts and thought leaders during our quarterly Tech Talks. Learn firsthand about emerging trends, real-world challenges, and the stories behind groundbreaking innovations.",
+    //   icon: UsersGroupIcon,
+    //   frequency: "Annually",
+    // },
+    // {
+    //   title: "Workshops",
+    //   description:
+    //     "Our hands-on workshops empower participants to turn ideas into reality. Dive into project development sessions, explore innovative tech solutions, and build skills that last a lifetime.",
+    //   icon: BulbSvg,
+    //   frequency: "Annually",
+    // },
     {
       title: "TechXtra",
       description:
         "TechXtra sparks the imagination of first-year students with exclusive intra-college challenges. This annual compitition encourages experimentation, teamwork, and the joy of creating something extraordinary from scratch.",
       icon: CodeXmlIcon,
-      frequency: "Annually",
       videoSrc: techxtraVid,
     },
+    // {
+    //   title: "Pre-Paridhi / Pre-TechXtra Events",
+    //   description:
+    //     "Kickstart the excitement with our quarterly pre-events that set the stage for Paridhi and TechXtra. These sessions include mini competitions, interactive workshops, and collaborative challenges, giving participants a head start to innovate, learn, and refine their ideas before the main events.",
+    //   icon: Calendar,
+    //   frequency: "Quarterly",
+    // },
     {
-      title: "Workshops",
+      title: "Paridhi",
       description:
-        "Our hands-on workshops empower participants to turn ideas into reality. Dive into project development sessions, explore innovative tech solutions, and build skills that last a lifetime.",
-      icon: BulbSvg,
-      frequency: "Annually",
-    },
-    {
-      title: "Pre-Paridhi / Pre-TechXtra Events",
-      description:
-        "Kickstart the excitement with our quarterly pre-events that set the stage for Paridhi and TechXtra. These sessions include mini competitions, interactive workshops, and collaborative challenges, giving participants a head start to innovate, learn, and refine their ideas before the main events.",
-      icon: Calendar,
-      frequency: "Quarterly",
+        "Step into Paridhi, our flagship annual technical festival where innovation takes center stage. From thrilling competitions to hands-on workshops and dazzling tech showcases, participants experience the cutting edge of technology and creativity.",
+      icon: Trophy,
+      videoSrc: paridhiVid,
     },
     {
       title: "Gaming Events",
       description:
         "Quarterly gaming events that bring together students in thrilling battles of strategy, skill, and teamwork. From esports tournaments to casual gaming challenges, these events foster friendly competition, sharpen reflexes, and build a vibrant community of gamers and tech enthusiasts.",
       icon: Gamepad,
-      frequency: "Quarterly",
       videoSrc: gamingEvent,
     },
     {
@@ -102,15 +105,21 @@ function AboutSection() {
       description:
         "Immerse yourself in our quarterly coding competitions and hackathons, where every challenge sparks creativity and pushes boundaries. Collaborate with peers, tackle real-world problems, and bring your ideas to life — an arena to sharpen skills, innovate, and experience the thrill of coding at its best.",
       icon: TargetIcon,
-      frequency: "Quarterly",
+    }, 
+    {
+      title: "RoboWar",
+      description:
+        "An intense robotics combat event where participants design and battle robots in a controlled arena. RoboWar challenges engineering skills, strategic thinking, and teamwork while delivering an electrifying competitive experience.",
+      icon: TargetIcon,
+      videoSrc: warVid,
     },
     {
-      title: "Tech Talks",
+      title: "Robo Race",
       description:
-        "Gain insights and inspiration from industry experts and thought leaders during our quarterly Tech Talks. Learn firsthand about emerging trends, real-world challenges, and the stories behind groundbreaking innovations.",
-      icon: UsersGroupIcon,
-      frequency: "Quarterly",
-    },
+        "A fast-paced robotics competition focused on speed, control, and precision. Participants race their robots through challenging tracks and obstacles, testing mechanical design, programming accuracy, and problem-solving skills.",
+      icon: TargetIcon,
+    }
+
   ];
 
   const [showModal, setShowModal] = useState(false);
@@ -205,10 +214,6 @@ function AboutSection() {
                       <h3 className="text-lg font-semibold" style={{ color: 'var(--white)' }}>
                         {event.title}
                       </h3>
-                    </div>
-                    <span className="text-sm px-2 py-1 rounded-full" style={{ color: 'var(--yellow-primary)', backgroundColor: 'var(--yellow-border-soft)' }}>
-                      {event.frequency}
-                    </span>
                   </div>
 
                   {/* 🎥 Show Video Button (below title) */}
@@ -228,6 +233,7 @@ function AboutSection() {
                       🎥 Show Video
                     </button>
                   )}
+                  </div>
 
                   {/* Description */}
                   <p style={{ color: 'var(--gray-text)' }}>{event.description}</p>

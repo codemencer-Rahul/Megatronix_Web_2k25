@@ -1,6 +1,7 @@
 // Layout Components
 export {
   Navbar,
+  Footer,
   DomainEventsPage,
   DomainPage,
   OrientationPage,

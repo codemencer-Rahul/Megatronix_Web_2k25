@@ -5,9 +5,12 @@
   --surface-black: #141c2e;  
 
   /* Primary Bract Gradient (Bougainvillea) */
-  --yellow-primary: #be0772; /* main bougainvillea bract */
-  --yellow-hover: #b5dcfa;    /* soft bract glow */
-  --yellow-soft: #be0772;   /* brighter petal glow */
+  --yellow-primary: #34a0a4;
+    /* main bougainvillea bract */
+    --yellow-hover: #52b69a;
+    /* soft bract glow */
+    --yellow-soft: #52b69a;
+    /* brighter petal glow */
 
   /* Text Colors */
   --white: #f6f1e7;          
@@ -16,9 +19,12 @@
 
   /* Utility / Effects */
   --glass-white: rgba(246, 241, 231, 0.08);
-  --yellow-border-soft: rgba(233, 30, 99, 0.35);    /* bract neon border */
-  --yellow-shadow: rgba(236, 64, 122, 0.4);         /* petal glow shadow */
-  --yellow-shadow-strong: rgba(240, 98, 146, 0.65); /* intense bract glow */
+  --yellow-border-soft: rgba(82, 182, 154, 0.35);
+    /* bract neon border */
+    --yellow-shadow: rgba(52, 160, 164, 0.4);
+    /* petal glow shadow */
+    --yellow-shadow-strong: rgba(52, 160, 164, 0.65);
+    /* intense bract glow */
 
   /* Borders / Dividers */
   --border-dark: #2b3550;

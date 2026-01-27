@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import megaLogo from "../../assets/images/megaLogo.png";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
   const closeMenu = () => setIsMenuOpen(false);
@@ -19,6 +22,7 @@ export default function Navbar() {
     { name: "Team", value: "team" },
     { name: "Gallery", value: "gallery", disabled: true },
     { name: "Events", value: "event" },
+    { name: "Contact", value: "contact" },
   ];
 
   return (
@@ -30,8 +34,7 @@ export default function Navbar() {
           style={{
             background: "var(--glass-white)",
             backdropFilter: "blur(10px)",
-            border: "1px solid var(--yellow-border-soft)",
-            boxShadow: "0px 2px 30px var(--yellow-shadow)",
+            border: "1px solid var(--gray-text)",
           }}
         >
           {/* LOGO */}
@@ -73,24 +76,58 @@ export default function Navbar() {
           </ul>
 
           {/* DESKTOP CTA */}
-          <NavLink
-            to="/contact"
-            className="hidden lg:block rounded-full px-4 py-1.5 text-sm transition-all"
-            style={{
-              border: "1px solid var(--yellow-hover)",
-              color: "var(--white)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--yellow-soft)";
-              e.currentTarget.style.color = "var(--black)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = "var(--white)";
-            }}
-          >
-            Contact Us
-          </NavLink>
+          <div className="hidden lg:flex items-center gap-3">
+            {user ? (
+              <>
+                <span
+                  className="text-sm"
+                  style={{ color: "var(--yellow-primary)" }}
+                >
+                  {user.name}
+                </span>
+                <button
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  className="rounded-full px-4 py-1.5 text-sm transition-all"
+                  style={{
+                    border: "1px solid var(--yellow-hover)",
+                    color: "var(--white)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "var(--yellow-soft)";
+                    e.currentTarget.style.color = "var(--black)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "var(--white)";
+                  }}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+                <NavLink
+                  to="/auth"
+                  className="rounded-full px-4 py-1.5 text-sm transition-all"
+                  style={{
+                    border: "1px solid var(--yellow-hover)",
+                    color: "var(--white)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "var(--yellow-soft)";
+                    e.currentTarget.style.color = "var(--black)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "var(--white)";
+                  }}
+                >
+                  Login
+                </NavLink>
+            )}
+          </div>
 
           {/* HAMBURGER */}
           <button
@@ -164,25 +201,60 @@ export default function Navbar() {
           ))}
 
           {/* MOBILE CTA */}
-          <NavLink
-            to="/contact"
-            onClick={closeMenu}
-            className="mt-8 rounded-full px-6 py-2 text-sm"
-            style={{
-              border: "1px solid var(--yellow-primary)",
-              color: "var(--white)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--yellow-primary)";
-              e.currentTarget.style.color = "var(--black)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = "var(--white)";
-            }}
-          >
-            Contact Us
-          </NavLink>
+          <li className="mt-8">
+            {user ? (
+              <div className="flex flex-col items-center gap-4">
+                <span
+                  className="text-sm"
+                  style={{ color: "var(--yellow-primary)" }}
+                >
+                  {user.name}
+                </span>
+                <button
+                  onClick={() => {
+                    logout();
+                    closeMenu();
+                    navigate("/");
+                  }}
+                  className="rounded-full px-6 py-2 text-sm"
+                  style={{
+                    border: "1px solid var(--yellow-primary)",
+                    color: "var(--white)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "var(--yellow-primary)";
+                    e.currentTarget.style.color = "var(--black)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "var(--white)";
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+                <NavLink
+                  to="/auth"
+                  onClick={closeMenu}
+                  className="rounded-full px-6 py-2 text-sm"
+                  style={{
+                    border: "1px solid var(--yellow-primary)",
+                    color: "var(--white)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "var(--yellow-primary)";
+                    e.currentTarget.style.color = "var(--black)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "var(--white)";
+                  }}
+                >
+                  Login
+                </NavLink>
+            )}
+          </li>
         </ul>
       </div>
     </>
