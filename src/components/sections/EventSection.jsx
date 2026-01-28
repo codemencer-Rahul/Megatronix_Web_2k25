@@ -11,12 +11,6 @@ function EventSection() {
 
   const upcomingEvents = [
     {
-      title: "Orientation Program for 1st Year Students",
-      date: "2nd Feb, 2026 - 6th Feb, 2026",
-      time: "3:00 PM - 5:00 PM",
-      type: "Orientation",
-    },
-    {
       title: "Workshop on Robotics, Coding, Electrical and Civil",
       date: "TBD",
       time: "3:00 PM - 5:00 PM",
@@ -153,11 +147,11 @@ function EventSection() {
             <h2 className="text-3xl font-bold text-center mb-8">
               Upcoming Events
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="flex flex-wrap justify-center gap-6">
               {upcomingEvents.map((event, index) => (
                 <div
                   key={index}
-                  className="group backdrop-blur-xl rounded-2xl p-6 transition-all duration-500 animate-fade-in-up hover:shadow-2xl"
+                  className="group backdrop-blur-xl rounded-2xl p-6 transition-all duration-500 animate-fade-in-up hover:shadow-2xl w-full md:w-80"
                   style={{
                     animationDelay: `${index * 0.1}s`,
                     backgroundColor: 'var(--surface-black)',

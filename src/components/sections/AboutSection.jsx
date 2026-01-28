@@ -3,15 +3,18 @@ import {
   Gamepad,
   Trophy
 } from "lucide-react";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { LetterGlitch, SpotlightCard, StatsSection, Timeline, VideoComponent } from '../';
 import gamingEvent from "../../assets/videos/gamingEvent.mp4";
 import paridhiVid from "../../assets/videos/paridhiVid.mp4";
 import techxtraVid from "../../assets/videos/techxtraVid.mp4";
 import warVid from "../../assets/videos/warVid.mp4";
-import { CodeXmlIcon, TargetIcon } from "../ui/icons";
+import { CodeXmlIcon, TargetIcon, RocketIcon } from "../ui/icons";
 
 function AboutSection() {
+  const embeddedVideoRef = useRef(null);
   const milestones = [
     {
       year: "2009",
@@ -58,20 +61,13 @@ function AboutSection() {
   ];
 
   const events = [
-    // {
-    //   title: "Orientation",
-    //   description:
-    //     "Gain insights and inspiration from industry experts and thought leaders during our quarterly Tech Talks. Learn firsthand about emerging trends, real-world challenges, and the stories behind groundbreaking innovations.",
-    //   icon: UsersGroupIcon,
-    //   frequency: "Annually",
-    // },
-    // {
-    //   title: "Workshops",
-    //   description:
-    //     "Our hands-on workshops empower participants to turn ideas into reality. Dive into project development sessions, explore innovative tech solutions, and build skills that last a lifetime.",
-    //   icon: BulbSvg,
-    //   frequency: "Annually",
-    // },
+    {
+      title: "RoboWar",
+      description:
+        "An intense robotics combat event where participants design and battle robots in a controlled arena. RoboWar challenges engineering skills, strategic thinking, and teamwork while delivering an electrifying competitive experience.",
+      icon: RocketIcon,
+      videoSrc: warVid,
+    },
     {
       title: "Paridhi",
       description:
@@ -86,14 +82,6 @@ function AboutSection() {
       icon: CodeXmlIcon,
       videoSrc: techxtraVid,
     },
-    // {
-    //   title: "Pre-Paridhi / Pre-TechXtra Events",
-    //   description:
-    //     "Kickstart the excitement with our quarterly pre-events that set the stage for Paridhi and TechXtra. These sessions include mini competitions, interactive workshops, and collaborative challenges, giving participants a head start to innovate, learn, and refine their ideas before the main events.",
-    //   icon: Calendar,
-    //   frequency: "Quarterly",
-    // },
-
     {
       title: "Gaming Events",
       description:
@@ -105,15 +93,8 @@ function AboutSection() {
       title: "Coding Competitions and Hackathons",
       description:
         "Immerse yourself in our quarterly coding competitions and hackathons, where every challenge sparks creativity and pushes boundaries. Collaborate with peers, tackle real-world problems, and bring your ideas to life — an arena to sharpen skills, innovate, and experience the thrill of coding at its best.",
-      icon: TargetIcon,
+      icon: CodeXmlIcon,
     }, 
-    {
-      title: "RoboWar",
-      description:
-        "An intense robotics combat event where participants design and battle robots in a controlled arena. RoboWar challenges engineering skills, strategic thinking, and teamwork while delivering an electrifying competitive experience.",
-      icon: TargetIcon,
-      videoSrc: warVid,
-    },
     {
       title: "Robo Race",
       description:
@@ -125,8 +106,43 @@ function AboutSection() {
 
   const [showModal, setShowModal] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
+  const videoRefs = useRef([]);
+
+  // Mute embedded video when background music plays or modal opens
+  useEffect(() => {
+    const handleAudioPlay = () => {
+      if (embeddedVideoRef.current) {
+        embeddedVideoRef.current.muted = true;
+      }
+      // Mute all carousel videos when background music plays
+      videoRefs.current.forEach(video => {
+        if (video) video.muted = true;
+      });
+    };
+
+    // Listen for any audio element playing (background music)
+    document.addEventListener('play', handleAudioPlay, true);
+
+    return () => {
+      document.removeEventListener('play', handleAudioPlay, true);
+    };
+  }, []);
+
+  const handleCarouselChange = (index) => {
+    // Pause all videos except the current one
+    videoRefs.current.forEach((video, i) => {
+      if (video && i !== index) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  };
 
   const openModal = (videoSrc) => {
+    // Mute embedded video when opening modal
+    if (embeddedVideoRef.current) {
+      embeddedVideoRef.current.muted = true;
+    }
     setActiveVideo(videoSrc);
     setShowModal(true);
   };
@@ -190,58 +206,220 @@ function AboutSection() {
             <StatsSection />
           </div>
 
-          {/* Events We Conduct */}
-          <div>
+          {/* Events We Conduct - Carousel */}
+          <div className="relative">
             <h2 className="text-3xl font-bold text-center mb-12">
               Events We Specialize In
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="relative">
+              <Carousel
+                showArrows={true}
+                showStatus={false}
+                showThumbs={false}
+                showIndicators={false}
+                infiniteLoop={true}
+                autoPlay={false}
+                interval={5000}
+                transitionTime={500}
+                swipeable={true}
+                emulateTouch={true}
+                centerMode={false}
+                className="events-carousel"
+                onChange={handleCarouselChange}
+                renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                  hasPrev && (
+                    <button
+                      type="button"
+                      onClick={onClickHandler}
+                      title={label}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                      style={{
+                        background: 'var(--yellow-primary)',
+                        boxShadow: '0 4px 20px rgba(118, 200, 147, 0.6)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--yellow-hover)';
+                        e.currentTarget.style.boxShadow = '0 6px 30px rgba(118, 200, 147, 0.8)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'var(--yellow-primary)';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(118, 200, 147, 0.6)';
+                      }}
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--black)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
+                    </button>
+                  )
+                }
+                renderArrowNext={(onClickHandler, hasNext, label) =>
+                  hasNext && (
+                    <button
+                      type="button"
+                      onClick={onClickHandler}
+                      title={label}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                      style={{
+                        background: 'var(--yellow-primary)',
+                        boxShadow: '0 4px 20px rgba(118, 200, 147, 0.6)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--yellow-hover)';
+                        e.currentTarget.style.boxShadow = '0 6px 30px rgba(118, 200, 147, 0.8)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'var(--yellow-primary)';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(118, 200, 147, 0.6)';
+                      }}
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--black)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+                  )
+                }
+              >
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="backdrop-blur-sm rounded-xl p-6 hover:scale-105 transition-all duration-300 animate-fade-in-up"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    backgroundColor: 'var(--surface-black)',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: 'var(--yellow-border-soft)'
-                  }}
+                  className="px-4 pb-8"
                 >
-                  {/* Header Section */}
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center space-x-2">
-                      <event.icon className="h-6 w-6" style={{ color: 'var(--yellow-primary)' }} color="var(--yellow-primary)" />
-                      <h3 className="text-lg font-semibold" style={{ color: 'var(--white)' }}>
-                        {event.title}
-                      </h3>
-                  </div>
+                  <div
+                    className="backdrop-blur-sm rounded-2xl transition-all duration-300 mx-auto max-w-3xl"
+                    style={{
+                      backgroundColor: 'var(--surface-black)',
+                      borderWidth: '2px',
+                      borderStyle: 'solid',
+                      borderColor: 'var(--yellow-primary)',
+                      boxShadow: '0 0 30px rgba(118, 200, 147, 0.3), inset 0 0 20px rgba(118, 200, 147, 0.05)',
+                      minHeight: '550px',
+                    }}
+                  >
+                    <div className="relative p-4 sm:p-6 h-full flex flex-col">
+                      {/* Header Section */}
+                      <div className="flex items-center justify-center space-x-3 mb-4">
+                        <div
+                          className="p-3 rounded-xl shadow-lg"
+                          style={{ background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))' }}
+                        >
+                          <event.icon className="h-6 w-6" style={{ color: 'var(--black)' }} />
+                        </div>
+                        <h3 className="font-bold text-2xl md:text-3xl" style={{ color: 'var(--white)' }}>
+                          {event.title}
+                        </h3>
+                      </div>
 
-                  {/* 🎥 Show Video Button (below title) */}
-                  {event.videoSrc && (
-                    <button
-                      onClick={() => openModal(event.videoSrc)}
-                      className="hover:cursor-pointer mb-3 text-xs sm:text-sm px-3 py-1 rounded-lg transition-all duration-300 font-medium backdrop-blur-sm whitespace-nowrap"
-                      style={{
-                        color: 'var(--yellow-primary)',
-                        borderWidth: '1px',
-                        borderStyle: 'solid',
-                        borderColor: 'var(--yellow-primary)'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--yellow-border-soft)'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                      🎥 Show Video
-                    </button>
-                  )}
-                  </div>
+                      {/* Description */}
+                      <p className="text-base mb-6 text-center max-w-2xl mx-auto line-clamp-3" style={{ color: 'var(--gray-text)' }}>
+                        {event.description}
+                      </p>
 
-                  {/* Description */}
-                  <p style={{ color: 'var(--gray-text)' }}>{event.description}</p>
+                      {/* Video Display */}
+                      {event.videoSrc && (
+                        <div className="rounded-xl overflow-hidden " style={{ border: '3px solid var(--yellow-primary)', minHeight: '400px', maxHeight: '450px' }}>
+                          <video
+                            ref={(el) => (videoRefs.current[index] = el)}
+                            src={event.videoSrc}
+                            loop
+                            muted
+                            playsInline
+                            controls
+                            controlsList="nodownload"
+                            className="w-full h-full object-contain"
+                            style={{ display: 'block', backgroundColor: 'var(--black)' }}
+                          />
+                        </div>
+                      )}
+
+                      {!event.videoSrc && (
+                        <div
+                          className="rounded-xl flex items-center justify-center "
+                          style={{ 
+                            border: '3px solid var(--yellow-primary)',
+                            minHeight: '400px',
+                            backgroundColor: 'var(--yellow-border-soft)'
+                          }}
+                        >
+                          <p className="text-xl font-bold" style={{ color: 'var(--gray-text)' }}>
+                            Coming Soon
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               ))}
+              </Carousel>
             </div>
           </div>
+
+          <style jsx>{`
+            .events-carousel .control-arrow {
+              background: var(--yellow-primary) !important;
+              opacity: 1 !important;
+              border-radius: 50% !important;
+              width: 60px !important;
+              height: 60px !important;
+              top: 50% !important;
+              transform: translateY(-50%) !important;
+              z-index: 2 !important;
+              box-shadow: 0 4px 20px rgba(118, 200, 147, 0.6) !important;
+            }
+
+            .events-carousel .control-arrow:hover {
+              opacity: 1 !important;
+              background: var(--yellow-hover) !important;
+              box-shadow: 0 6px 30px rgba(118, 200, 147, 0.8) !important;
+            }
+
+            .events-carousel .control-arrow::before {
+              border-color: var(--black) !important;
+              border-width: 4px 4px 0 0 !important;
+            }
+
+            .events-carousel .control-prev {
+              left: 15px !important;
+            }
+
+            .events-carousel .control-next {
+              right: 15px !important;
+            }
+
+            .events-carousel .control-dots {
+              margin-bottom: 10px !important;
+            }
+
+            .events-carousel .dot {
+              background: var(--gray-text) !important;
+              box-shadow: none !important;
+              width: 12px !important;
+              height: 12px !important;
+              opacity: 0.5 !important;
+            }
+
+            .events-carousel .dot.selected {
+              background: var(--yellow-primary) !important;
+              opacity: 1 !important;
+            }
+          `}</style>
 
         </div>
 
