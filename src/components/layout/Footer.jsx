@@ -162,7 +162,7 @@ const Footer = () => {
             </p>
             <p className="text-xs" style={{ color: "var(--gray-text)" }}>
               Made with{" "}
-              <span style={{ color: "var(--yellow-primary)" }}>⚡</span> by
+                          <span style={{ color: "var(--yellow-primary)" }}>❤️</span> by
               Megatronix Team
             </p>
           </div>

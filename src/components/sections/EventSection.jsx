@@ -211,124 +211,170 @@ function EventSection() {
             </div>
           </div>
 
-          {/* Main Events */}
-          <div className="space-y-12 mt-16">
+          {/* Main Events - Bento Grid */}
+          <div className="mt-16">
             <h2 className="text-3xl font-bold text-center mb-8">
-              Our Events
+              Flagship Events
             </h2>
-            {mainEvents.map((event, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`relative backdrop-blur-sm overflow-hidden animate-fade-in-up transition-transform duration-200 ${event.comingSoon
-                    ? "cursor-not-allowed"
-                    : "hover:scale-[1.02]"
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {mainEvents.map((event, index) => {
+                // Define bento grid spans - Priority: Reboot & Orientation
+                const getGridClasses = () => {
+                  if (index === 0) return "md:col-span-4 lg:col-span-3 md:row-span-2"; // Reboot - HERO
+                  if (index === 1) return "md:col-span-2 lg:col-span-3 md:row-span-2"; // Orientation - TALL
+                  if (index === 2) return "md:col-span-2 lg:col-span-2"; // Workshop
+                  if (index === 3) return "md:col-span-2 lg:col-span-2"; // Techxtra
+                  if (index === 4) return "md:col-span-4 lg:col-span-2"; // Paridhi
+                  return "";
+                };
+
+                const isPriority = index === 0 || index === 1; // Reboot and Orientation
+
+                return (
+                  <div
+                    key={index}
+                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon
+                      ? "cursor-not-allowed"
+                      : "hover:scale-[1.01] cursor-pointer"
                     }`}
-                  style={{
-                    animationDelay: `${index * 0.2}s`,
-                    backgroundColor: 'var(--surface-black)',
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: 'var(--yellow-border-soft)'
-                  }}
-                  onClick={() =>
-                    !event.comingSoon && navigate(`/event/${event.key}`)
-                  }
-                >
-                  {event.comingSoon && (
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-10">
-                      <span className="text-white text-3xl font-bold">
-                        Coming Soon
-                      </span>
-                    </div>
-                  )}
-                  <div className="p-8">
-                    <div className={`flex flex-col lg:flex-row gap-8 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                      {/* Poster - appears on right for even index, left for odd index */}
-                      {event.poster && (
-                        <div className="lg:w-96 flex items-center">
+                    style={{
+                      animationDelay: `${index * 0.1}s`,
+                      backgroundColor: 'var(--surface-black)',
+                      borderWidth: isPriority ? '2px' : '1px',
+                      borderStyle: 'solid',
+                      borderColor: isPriority ? 'var(--yellow-primary)' : 'var(--yellow-border-soft)',
+                      boxShadow: isPriority
+                        ? '0 0 30px rgba(118, 200, 147, 0.3), inset 0 0 20px rgba(118, 200, 147, 0.05)'
+                        : '0 0 20px rgba(118, 200, 147, 0.1)',
+                    }}
+                    onClick={() =>
+                      !event.comingSoon && navigate(`/event/${event.key}`)
+                    }
+                  >
+                    {event.comingSoon && (
+                      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-10 rounded-2xl">
+                        <span className="text-white text-2xl md:text-3xl font-bold">
+                          Coming Soon
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Enhanced Poster Background for Reboot */}
+                    {event.poster && index === 0 && (
+                      <div
+                        className="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-500"
+                        style={{
+                          backgroundImage: `url(${event.poster})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          filter: 'blur(10px)',
+                        }}
+                      />
+                    )}
+
+                    {/* Animated border glow for priority cards */}
+                    {isPriority && (
+                      <div
+                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        style={{
+                          background: 'linear-gradient(45deg, transparent, var(--yellow-primary), transparent)',
+                          filter: 'blur(20px)',
+                        }}
+                      />
+                    )}
+
+                    <div className={`relative ${isPriority ? 'p-8' : 'p-6'} h-full flex flex-col`}>
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center space-x-3">
+                          <div
+                            className={`${isPriority ? 'p-3' : 'p-2.5'} rounded-xl shadow-lg`}
+                            style={{ background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))' }}
+                          >
+                            <event.icon className={`${isPriority ? 'h-6 w-6' : 'h-5 w-5'}`} style={{ color: 'var(--black)' }} />
+                          </div>
+                          <div>
+                            <h3 className={`font-bold ${isPriority ? 'text-xl md:text-3xl' : 'text-base md:text-lg'}`} style={{ color: 'var(--white)' }}>
+                              {event.title}
+                            </h3>
+                            <span
+                              className={`inline-block px-3 py-1 rounded-full ${isPriority ? 'text-sm' : 'text-xs'} font-semibold text-white ${getStatusColor(
+                                event.status
+                              )} mt-1.5`}
+                            >
+                              {getStatusText(event.status)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Poster - Larger for priority events */}
+                      {event.poster && (index === 0 || index === 1) && (
+                        <div className={`${isPriority ? 'mb-6' : 'mb-3'} relative overflow-hidden rounded-xl group/poster`}>
                           <img
                             src={event.poster}
                             alt={`${event.title} poster`}
-                            className="w-full h-auto object-contain rounded-lg cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                            className={`w-full ${index === 0 ? 'h-72 md:h-96' : 'h-64 md:h-80'
+                              } object-contain cursor-pointer transition-all duration-500 group-hover/poster:scale-105`}
                             style={{
-                              border: '2px solid var(--yellow-border-soft)',
-                              boxShadow: '0 4px 20px rgba(118, 200, 147, 0.2)'
+                              border: `${isPriority ? '3px' : '2px'} solid var(--yellow-primary)`,
+                              boxShadow: '0 8px 30px rgba(118, 200, 147, 0.3)',
                             }}
                             onClick={(e) => {
                               e.stopPropagation();
                               setModalImage(event.poster);
                             }}
                           />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
                       )}
 
-                      <div className="flex-1 flex flex-col">
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="flex items-center space-x-3">
-                            <div
-                              className={`p-3 rounded-full`}
-                              style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))' }}
-                            >
-                              <event.icon className="h-8 w-8" style={{ color: 'var(--black)' }} color="var(--black)" />
-                            </div>
-                            <div>
-                              <h2 className="text-2xl font-bold" style={{ color: 'var(--white)' }}>
-                                {event.title}
-                              </h2>
-                              <span
-                                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold text-white ${getStatusColor(
-                                  event.status
-                                )} mt-1`}
-                              >
-                                {getStatusText(event.status)}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                      {/* Description */}
+                      <p className={`${isPriority ? 'mb-6 text-base' : 'mb-3 text-xs'} ${index === 0 ? 'line-clamp-4' : 'line-clamp-3'}`} style={{ color: 'var(--gray-text)' }}>
+                        {event.description}
+                      </p>
 
-                        <p className="mb-6" style={{ color: 'var(--gray-text)' }}>
-                          {event.description}
-                        </p>
-
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
-                            <Calendar className="h-4 w-4" />
-                            <span>{event.date}</span>
-                          </div>
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
-                            <MapPin className="h-4 w-4" />
-                            <span>{event.location}</span>
-                          </div>
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
-                            <Clock className="h-4 w-4" />
-                            <span>{event.time}</span>
-                          </div>
-                          <div className="flex items-center space-x-2" style={{ color: 'var(--gray-text)' }}>
-                            <UsersGroupIcon className="h-4 w-4" />
-                            <span>{event.participants}</span>
-                          </div>
+                      {/* Details Grid */}
+                      <div className={`grid grid-cols-2 gap-3 ${isPriority ? 'mb-6' : 'mb-3'}`}>
+                        <div className={`flex items-center space-x-2 ${isPriority ? 'text-sm' : 'text-xs'}`} style={{ color: 'var(--gray-text)' }}>
+                          <Calendar className={`${isPriority ? 'h-4 w-4' : 'h-3.5 w-3.5'}`} style={{ color: 'var(--yellow-primary)' }} />
+                          <span className="truncate">{event.date}</span>
                         </div>
-
-                        {/* Learn More button at bottom */}
-                        <div className="mt-auto">
-                          <button
-                            className={`w-full h-12 rounded-2xl hover:cursor-pointer ${event.comingSoon
-                              ? "opacity-50 cursor-not-allowed"
-                              : "hover:scale-105"
-                              } transition-transform duration-300`}
-                            style={{ background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))', color: 'var(--black)', fontWeight: 'bold' }}
-                            disabled={event.comingSoon}
-                          >
-                            Learn More
-                          </button>
+                        <div className={`flex items-center space-x-2 ${isPriority ? 'text-sm' : 'text-xs'}`} style={{ color: 'var(--gray-text)' }}>
+                          <Clock className={`${isPriority ? 'h-4 w-4' : 'h-3.5 w-3.5'}`} style={{ color: 'var(--yellow-primary)' }} />
+                          <span className="truncate">{event.time}</span>
                         </div>
+                        <div className={`flex items-center space-x-2 ${isPriority ? 'text-sm' : 'text-xs'} col-span-2`} style={{ color: 'var(--gray-text)' }}>
+                          <MapPin className={`${isPriority ? 'h-4 w-4' : 'h-3.5 w-3.5'}`} style={{ color: 'var(--yellow-primary)' }} />
+                          <span className="truncate">{event.location}</span>
+                        </div>
+                        <div className={`flex items-center space-x-2 ${isPriority ? 'text-sm' : 'text-xs'} col-span-2`} style={{ color: 'var(--gray-text)' }}>
+                          <UsersGroupIcon className={`${isPriority ? 'h-4 w-4' : 'h-3.5 w-3.5'}`} />
+                          <span>{event.participants}</span>
+                        </div>
+                      </div>
+
+                      {/* Learn More Button */}
+                      <div className="mt-auto">
+                        <button
+                          className={`w-full ${isPriority ? 'py-3 text-base' : 'py-2.5 text-sm'} rounded-xl font-bold transition-all duration-300 ${event.comingSoon
+                            ? "opacity-50 cursor-not-allowed"
+                            : "hover:shadow-xl hover:shadow-teal-500/30 hover:-translate-y-0.5"
+                            }`}
+                          style={{
+                            background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
+                            color: 'var(--black)'
+                          }}
+                          disabled={event.comingSoon}
+                        >
+                          Learn More
+                        </button>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
         </div>
