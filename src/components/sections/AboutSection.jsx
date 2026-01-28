@@ -73,6 +73,13 @@ function AboutSection() {
     //   frequency: "Annually",
     // },
     {
+      title: "Paridhi",
+      description:
+        "Step into Paridhi, our flagship annual technical festival where innovation takes center stage. From thrilling competitions to hands-on workshops and dazzling tech showcases, participants experience the cutting edge of technology and creativity.",
+      icon: Trophy,
+      videoSrc: paridhiVid,
+    },
+    {
       title: "TechXtra",
       description:
         "TechXtra sparks the imagination of first-year students with exclusive intra-college challenges. This annual compitition encourages experimentation, teamwork, and the joy of creating something extraordinary from scratch.",
@@ -86,13 +93,7 @@ function AboutSection() {
     //   icon: Calendar,
     //   frequency: "Quarterly",
     // },
-    {
-      title: "Paridhi",
-      description:
-        "Step into Paridhi, our flagship annual technical festival where innovation takes center stage. From thrilling competitions to hands-on workshops and dazzling tech showcases, participants experience the cutting edge of technology and creativity.",
-      icon: Trophy,
-      videoSrc: paridhiVid,
-    },
+
     {
       title: "Gaming Events",
       description:
@@ -101,7 +102,7 @@ function AboutSection() {
       videoSrc: gamingEvent,
     },
     {
-      title: "Coding Competitions / Hackathons",
+      title: "Coding Competitions and Hackathons",
       description:
         "Immerse yourself in our quarterly coding competitions and hackathons, where every challenge sparks creativity and pushes boundaries. Collaborate with peers, tackle real-world problems, and bring your ideas to life — an arena to sharpen skills, innovate, and experience the thrill of coding at its best.",
       icon: TargetIcon,

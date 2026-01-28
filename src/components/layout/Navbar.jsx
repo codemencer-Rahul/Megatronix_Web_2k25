@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import megaLogo from "../../assets/images/megaLogo.png";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
@@ -40,7 +39,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link to="/" className="flex items-center">
             <img
-              src={megaLogo}
+              src="/megaLogo.png"
               alt="Mega Logo"
               className="h-6 sm:h-7 lg:h-9 object-contain select-none"
               draggable={false}

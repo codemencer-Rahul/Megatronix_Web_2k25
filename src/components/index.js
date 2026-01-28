@@ -22,4 +22,4 @@ export {
 export { SpotlightCard, ProfileCard, Counter, VideoComponent } from "./ui";
 
 // Animation Components
-export { LetterGlitch, FuzzyText, Shuffle, ShinyText } from "./animations";
+export { LetterGlitch } from "./animations";
