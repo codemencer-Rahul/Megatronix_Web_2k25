@@ -14,7 +14,7 @@ const Footer = () => {
     >
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+              <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
           {/* About Section */}
           <div>
             <h3
@@ -30,7 +30,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+                  {/* <div>
             <h3
               className="text-lg font-bold mb-4 tracking-widest"
               style={{ color: "var(--yellow-primary)" }}
@@ -62,7 +62,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div>
