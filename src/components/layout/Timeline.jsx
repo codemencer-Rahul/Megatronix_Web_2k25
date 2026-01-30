@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import SpotlightCard from '../ui/SpotlightCard';
 
 function Timeline({ milestones, openModal }) {
   const timelineData = milestones.map((milestone, index) => ({
@@ -150,7 +151,9 @@ function Timeline({ milestones, openModal }) {
                 boxShadow: '0 0 15px 3px var(--yellow-shadow-strong)'
               }}
             />
-            <div className="text-box p-5 sm:py-5 sm:px-7 backdrop-blur-sm relative rounded-xl"
+            <SpotlightCard
+              className="text-box p-5 sm:py-5 sm:px-7 backdrop-blur-sm relative rounded-xl border-0"
+              spotlightColor="rgba(52, 160, 164, 0.35)"
               style={{
                 backgroundColor: 'var(--surface-black)',
                 borderWidth: '1px',
@@ -186,7 +189,7 @@ function Timeline({ milestones, openModal }) {
                   borderRightColor: item.position === "right" ? 'var(--yellow-border-soft)' : 'transparent'
                 }}
               />
-            </div>
+            </SpotlightCard>
           </div>
         ))}
       </div>

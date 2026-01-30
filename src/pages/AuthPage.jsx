@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -8,7 +8,7 @@ import { LetterGlitch } from "../components";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const { login, signup } = useAuth();
+  const { login, signup, user } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -16,6 +16,13 @@ const AuthPage = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/', { replace: true });
+    }
+  }, [user, navigate]);
 
   const onSubmit = async (data) => {
     try {
@@ -55,19 +62,22 @@ const AuthPage = () => {
   return (
     <>
       <div className="relative min-h-screen overflow-auto">
-        <LetterGlitch
-          glitchSpeed={50}
-          centerVignette={false}
-          outerVignette={true}
-          smooth={true}
-        />
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
+          <LetterGlitch
+            glitchSpeed={50}
+            centerVignette={false}
+            outerVignette={true}
+            smooth={true}
+          />
+        </div>
         
-        <div className="absolute inset-0 pt-32 pb-20 px-4 sm:px-6 lg:px-8 font-orbitron flex items-center justify-center overflow-auto">
+        <div className="absolute inset-0 pt-32 pb-20 px-4 sm:px-6 lg:px-8 font-orbitron flex items-center justify-center overflow-auto" style={{ zIndex: 10 }}>
           <ToastContainer theme="dark" position="bottom-right" />
 
-          <div className="max-w-md w-full mx-auto my-8">
+          <div className="max-w-md w-full mx-auto my-8" style={{ zIndex: 20, position: 'relative' }}>
             <div
               className="relative rounded-3xl bg-neutral-900 border border-neutral-800 overflow-hidden p-8 sm:p-10 pb-10"
+              style={{ zIndex: 20 }}
             >
               <h2
                 className="relative z-10 text-3xl sm:text-4xl font-bold font-orbitron text-center mb-10 tracking-widest pb-4"

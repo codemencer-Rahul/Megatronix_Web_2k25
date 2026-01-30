@@ -1,11 +1,8 @@
 import {
-  Calendar,
   Gamepad,
   Trophy
 } from "lucide-react";
 import { useState, useRef, useEffect } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { LetterGlitch, SpotlightCard, StatsSection, Timeline, VideoComponent } from '../';
 import gamingEvent from "../../assets/videos/gamingEvent.mp4";
 import paridhiVid from "../../assets/videos/paridhiVid.mp4";
@@ -128,15 +125,6 @@ function AboutSection() {
     };
   }, []);
 
-  const handleCarouselChange = (index) => {
-    // Pause all videos except the current one
-    videoRefs.current.forEach((video, i) => {
-      if (video && i !== index) {
-        video.pause();
-        video.currentTime = 0;
-      }
-    });
-  };
 
   const openModal = (videoSrc) => {
     // Mute embedded video when opening modal
@@ -206,220 +194,119 @@ function AboutSection() {
             <StatsSection />
           </div>
 
-          {/* Events We Conduct - Carousel */}
+          {/* Events We Conduct - Bento Grid */}
           <div className="relative">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--white)' }}>
               Events We Specialize In
             </h2>
-            <div className="relative">
-              <Carousel
-                showArrows={true}
-                showStatus={false}
-                showThumbs={false}
-                showIndicators={false}
-                infiniteLoop={true}
-                autoPlay={false}
-                interval={5000}
-                transitionTime={500}
-                swipeable={true}
-                emulateTouch={true}
-                centerMode={false}
-                className="events-carousel"
-                onChange={handleCarouselChange}
-                renderArrowPrev={(onClickHandler, hasPrev, label) =>
-                  hasPrev && (
-                    <button
-                      type="button"
-                      onClick={onClickHandler}
-                      title={label}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                      style={{
-                        background: 'var(--yellow-primary)',
-                        boxShadow: '0 4px 20px rgba(118, 200, 147, 0.6)',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--yellow-hover)';
-                        e.currentTarget.style.boxShadow = '0 6px 30px rgba(118, 200, 147, 0.8)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'var(--yellow-primary)';
-                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(118, 200, 147, 0.6)';
-                      }}
-                    >
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="var(--black)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                      </svg>
-                    </button>
-                  )
-                }
-                renderArrowNext={(onClickHandler, hasNext, label) =>
-                  hasNext && (
-                    <button
-                      type="button"
-                      onClick={onClickHandler}
-                      title={label}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                      style={{
-                        background: 'var(--yellow-primary)',
-                        boxShadow: '0 4px 20px rgba(118, 200, 147, 0.6)',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--yellow-hover)';
-                        e.currentTarget.style.boxShadow = '0 6px 30px rgba(118, 200, 147, 0.8)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'var(--yellow-primary)';
-                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(118, 200, 147, 0.6)';
-                      }}
-                    >
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="var(--black)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </button>
-                  )
-                }
-              >
+
+            {/* Bento Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="px-4 pb-8"
+                  className={`group relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] ${index === 3 ? 'lg:col-span-2' : ''
+                    }`}
+                  style={{
+                    backgroundColor: 'var(--surface-black)',
+                    borderWidth: '2px',
+                    borderStyle: 'solid',
+                    borderColor: 'var(--yellow-primary)',
+                    boxShadow: '0 0 30px rgba(52, 160, 164, 0.3)',
+                  }}
                 >
-                  <div
-                    className="backdrop-blur-sm rounded-2xl transition-all duration-300 mx-auto max-w-3xl"
+                  {/* Background gradient */}
+                  <div 
+                    className="absolute inset-0"
                     style={{
-                      backgroundColor: 'var(--surface-black)',
-                      borderWidth: '2px',
-                      borderStyle: 'solid',
-                      borderColor: 'var(--yellow-primary)',
-                      boxShadow: '0 0 30px rgba(118, 200, 147, 0.3), inset 0 0 20px rgba(118, 200, 147, 0.05)',
-                      minHeight: '550px',
+                      background: 'linear-gradient(135deg, var(--dark-black) 0%, var(--black) 100%)',
                     }}
-                  >
-                    <div className="relative p-4 sm:p-6 h-full flex flex-col">
-                      {/* Header Section */}
-                      <div className="flex items-center justify-center space-x-3 mb-4">
-                        <div
-                          className="p-3 rounded-xl shadow-lg"
-                          style={{ background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))' }}
-                        >
-                          <event.icon className="h-6 w-6" style={{ color: 'var(--black)' }} />
-                        </div>
-                        <h3 className="font-bold text-2xl md:text-3xl" style={{ color: 'var(--white)' }}>
-                          {event.title}
-                        </h3>
+                  />
+
+                  {/* Content */}
+                  <div className="relative z-10 p-6 h-full flex flex-col gap-4">
+                    {/* Header */}
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="p-3 rounded-xl"
+                        style={{
+                          background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
+                          boxShadow: '0 0 20px rgba(52, 160, 164, 0.4)',
+                        }}
+                      >
+                        <event.icon className="h-6 w-6" style={{ color: 'var(--black)' }} />
                       </div>
+                      <h3 className="font-bold text-xl md:text-2xl" style={{ color: 'var(--white)' }}>
+                        {event.title}
+                      </h3>
+                    </div>
 
-                      {/* Description */}
-                      <p className="text-base mb-6 text-center max-w-2xl mx-auto line-clamp-3" style={{ color: 'var(--gray-text)' }}>
-                        {event.description}
-                      </p>
+                    {/* Description */}
+                    <p
+                      className="text-sm"
+                      style={{
+                        color: 'var(--gray-text)',
+                        overflow: 'hidden',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: 'vertical',
+                      }}
+                    >
+                      {event.description}
+                    </p>
 
-                      {/* Video Display */}
-                      {event.videoSrc && (
-                        <div className="rounded-xl overflow-hidden " style={{ border: '3px solid var(--yellow-primary)', minHeight: '400px', maxHeight: '450px' }}>
-                          <video
-                            ref={(el) => (videoRefs.current[index] = el)}
-                            src={event.videoSrc}
-                            loop
-                            muted
-                            playsInline
-                            controls
-                            controlsList="nodownload"
-                            className="w-full h-full object-contain"
-                            style={{ display: 'block', backgroundColor: 'var(--black)' }}
-                          />
-                        </div>
-                      )}
-
-                      {!event.videoSrc && (
-                        <div
-                          className="rounded-xl flex items-center justify-center "
-                          style={{ 
-                            border: '3px solid var(--yellow-primary)',
-                            minHeight: '400px',
-                            backgroundColor: 'var(--yellow-border-soft)'
+                    {/* Button */}
+                    {event.videoSrc ? (
+                      <button
+                        onClick={() => openModal(event.videoSrc)}
+                        className="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group-hover:scale-105"
+                        style={{
+                          background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
+                          color: 'var(--black)',
+                          boxShadow: '0 4px 20px rgba(52, 160, 164, 0.4)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.boxShadow = '0 6px 30px rgba(52, 160, 164, 0.6)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.boxShadow = '0 4px 20px rgba(52, 160, 164, 0.4)';
+                        }}
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        Watch Video
+                      </button>
+                    ) : (
+                      <div
+                          className="w-full py-3 px-6 rounded-lg font-semibold text-center"
+                          style={{
+                            backgroundColor: 'rgba(52, 160, 164, 0.2)',
+                            color: 'var(--gray-text)',
+                            border: '1px solid var(--yellow-border-soft)',
                           }}
                         >
-                          <p className="text-xl font-bold" style={{ color: 'var(--gray-text)' }}>
-                            Coming Soon
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                          Coming Soon
+                      </div>
+                    )}
                   </div>
+
+                  {/* Hover glow effect */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      background: 'radial-gradient(circle at center, rgba(52, 160, 164, 0.1) 0%, transparent 70%)',
+                    }}
+                  />
                 </div>
               ))}
-              </Carousel>
             </div>
           </div>
-
-          <style jsx>{`
-            .events-carousel .control-arrow {
-              background: var(--yellow-primary) !important;
-              opacity: 1 !important;
-              border-radius: 50% !important;
-              width: 60px !important;
-              height: 60px !important;
-              top: 50% !important;
-              transform: translateY(-50%) !important;
-              z-index: 2 !important;
-              box-shadow: 0 4px 20px rgba(118, 200, 147, 0.6) !important;
-            }
-
-            .events-carousel .control-arrow:hover {
-              opacity: 1 !important;
-              background: var(--yellow-hover) !important;
-              box-shadow: 0 6px 30px rgba(118, 200, 147, 0.8) !important;
-            }
-
-            .events-carousel .control-arrow::before {
-              border-color: var(--black) !important;
-              border-width: 4px 4px 0 0 !important;
-            }
-
-            .events-carousel .control-prev {
-              left: 15px !important;
-            }
-
-            .events-carousel .control-next {
-              right: 15px !important;
-            }
-
-            .events-carousel .control-dots {
-              margin-bottom: 10px !important;
-            }
-
-            .events-carousel .dot {
-              background: var(--gray-text) !important;
-              box-shadow: none !important;
-              width: 12px !important;
-              height: 12px !important;
-              opacity: 0.5 !important;
-            }
-
-            .events-carousel .dot.selected {
-              background: var(--yellow-primary) !important;
-              opacity: 1 !important;
-            }
-          `}</style>
 
         </div>
 
