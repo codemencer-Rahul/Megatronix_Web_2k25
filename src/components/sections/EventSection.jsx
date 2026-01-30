@@ -376,7 +376,7 @@ function EventSection() {
         {/* Image Modal */}
         {modalImage && (
           <div
-            className="fixed inset-0 z-50 flex items-end justify-center pb-4 p-4"
+            className="fixed inset-0 z-50 flex items-end justify-center  p-4"
             style={{
               backgroundColor: 'rgba(0, 0, 0, 0.9)',
               backdropFilter: 'blur(10px)',
@@ -386,7 +386,7 @@ function EventSection() {
           >
             {/* Modal Image */}
             <div
-              className="max-w-5xl max-h-[80h] w-full"
+              className="max-w-4xl max-h-[85vh] w-full h-full flex items-center justify-center"
               style={{
                 animation: 'zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
               }}
@@ -394,7 +394,7 @@ function EventSection() {
               <img
                 src={modalImage}
                 alt="Event poster"
-                className="w-full h-full object-contain rounded-lg"
+                className="max-w-full max-h-full object-contain rounded-lg"
                 style={{
                   border: '3px solid var(--yellow-primary)',
                   boxShadow: '0 0 40px rgba(52, 160, 164, 0.4)'

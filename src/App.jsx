@@ -47,7 +47,7 @@ function AppContent() {
 
   return (
     <>
-      <BackgroundMusic />
+      {/* <BackgroundMusic /> */}
       {!isAuthPage && <Navbar />}
       <Routes>
         <Route path="/auth" element={<AuthPage />} />

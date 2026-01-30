@@ -59,45 +59,53 @@ function AboutSection() {
 
   const events = [
     {
-      title: "RoboWar",
+      title: "Gaming Events",
       description:
-        "An intense robotics combat event where participants design and battle robots in a controlled arena. RoboWar challenges engineering skills, strategic thinking, and teamwork while delivering an electrifying competitive experience.",
-      icon: RocketIcon,
-      videoSrc: warVid,
+        "Quarterly gaming events bringing students together in thrilling battles of strategy, skill, and teamwork.",
+      icon: Gamepad,
+      videoSrc: gamingEvent,
     },
+
     {
       title: "Paridhi",
       description:
-        "Step into Paridhi, our flagship annual technical festival where innovation takes center stage. From thrilling competitions to hands-on workshops and dazzling tech showcases, participants experience the cutting edge of technology and creativity.",
+        "Our flagship annual technical festival featuring thrilling competitions, workshops, and cutting-edge tech showcases.",
       icon: Trophy,
       videoSrc: paridhiVid,
     },
     {
       title: "TechXtra",
       description:
-        "TechXtra sparks the imagination of first-year students with exclusive intra-college challenges. This annual compitition encourages experimentation, teamwork, and the joy of creating something extraordinary from scratch.",
+        "An annual intra-college competition sparking imagination and experimentation among first-year students.",
       icon: CodeXmlIcon,
       videoSrc: techxtraVid,
     },
     {
-      title: "Gaming Events",
+      title: "RoboWar",
       description:
-        "Quarterly gaming events that bring together students in thrilling battles of strategy, skill, and teamwork. From esports tournaments to casual gaming challenges, these events foster friendly competition, sharpen reflexes, and build a vibrant community of gamers and tech enthusiasts.",
-      icon: Gamepad,
-      videoSrc: gamingEvent,
+        "Intense robotics combat where participants design and battle robots in a controlled arena.",
+      icon: RocketIcon,
+      videoSrc: warVid,
     },
     {
-      title: "Coding Competitions and Hackathons",
+      title: "Coding Competitions",
       description:
-        "Immerse yourself in our quarterly coding competitions and hackathons, where every challenge sparks creativity and pushes boundaries. Collaborate with peers, tackle real-world problems, and bring your ideas to life — an arena to sharpen skills, innovate, and experience the thrill of coding at its best.",
+        "Quarterly coding competitions and hackathons where creativity meets real-world problem-solving.",
       icon: CodeXmlIcon,
     }, 
     {
       title: "Robo Race",
       description:
-        "A fast-paced robotics competition focused on speed, control, and precision. Participants race their robots through challenging tracks and obstacles, testing mechanical design, programming accuracy, and problem-solving skills.",
+        "Fast-paced robotics competition focused on speed, control, and precision through challenging tracks.",
+      icon: TargetIcon,
+    },
+    {
+      title: "Robotics Workshops",
+      description:
+        "Hands-on workshops introducing students to fundamentals of robotics and autonomous systems.",
       icon: TargetIcon,
     }
+
 
   ];
 
@@ -142,8 +150,9 @@ function AboutSection() {
 
 
   return (
-    <LetterGlitch>
-      <div className="min-h-screen pt-30">
+    <LetterGlitch >
+
+      <div className=" min-h-screen pt-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
 
           {/* Mission & Vision */}
@@ -205,7 +214,7 @@ function AboutSection() {
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className={`group relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] ${index === 3 ? 'lg:col-span-2' : ''
+                  className={`group relative rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] ${index === 3 ? 'lg:col-span-3' : ''
                     }`}
                   style={{
                     backgroundColor: 'var(--surface-black)',
@@ -243,13 +252,9 @@ function AboutSection() {
 
                     {/* Description */}
                     <p
-                      className="text-sm"
+                      className="text-sm md:text-base leading-relaxed"
                       style={{
                         color: 'var(--gray-text)',
-                        overflow: 'hidden',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: 'vertical',
                       }}
                     >
                       {event.description}
@@ -259,7 +264,7 @@ function AboutSection() {
                     {event.videoSrc ? (
                       <button
                         onClick={() => openModal(event.videoSrc)}
-                        className="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 group-hover:scale-105"
+                        className="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
                         style={{
                           background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
                           color: 'var(--black)',

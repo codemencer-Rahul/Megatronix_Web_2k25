@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { LetterGlitch } from "../animations";
 import forklifter from "../../assets/images/forklifter.JPG";
 import homeautomation from "../../assets/images/homeautomation.png";
@@ -63,12 +65,29 @@ const projectsByYear = {
 const yearList = Object.keys(projectsByYear).sort((a, b) => b - a);
 
 export default function OrientationPage() {
+  const navigate = useNavigate();
   const [selectedYear, setSelectedYear] = useState(yearList[0]);
   const projects = projectsByYear[selectedYear] || [];
 
   return (
     <LetterGlitch>
       <div className="min-h-screen pt-20 relative">
+        <button
+          onClick={() => navigate(-1)}
+          className="fixed top-20 left-2 sm:top-24 sm:left-2 p-2 sm:p-3 rounded-lg transition-all duration-300 hover:scale-110 z-50 hover:cursor-pointer"
+          style={{
+            background: 'transparent',
+            color: 'var(--yellow-primary)',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(52, 160, 164, 0.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'transparent';
+          }}
+        >
+          <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+        </button>
         <div
           className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl z-0"
           style={{ backgroundColor: "rgba(255, 202, 40, 0.08)" }}
@@ -78,11 +97,11 @@ export default function OrientationPage() {
           style={{ backgroundColor: "rgba(255, 202, 40, 0.08)" }}
         />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 mt-8">
             {yearList.map((year) => (
               <button
                 key={year}
-                className={`px-6 py-2 rounded-full font-semibold text-lg transition-all duration-200 border-2 ${selectedYear === year
+                className={`px-4 sm:px-6 py-2 rounded-full font-semibold text-base sm:text-lg transition-all duration-200 border-2 ${selectedYear === year
                     ? "text-black scale-105"
                     : "hover:cursor-pointer"
                   }`}

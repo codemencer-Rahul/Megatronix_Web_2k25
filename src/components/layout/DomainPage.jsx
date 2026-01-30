@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { LetterGlitch } from "../animations";
 import codemanthanPoster from "../../assets/images/codemanthanPoster.jpg";
 import snapsyncPoster from "../../assets/images/snapsyncPoster.jpg";
@@ -58,6 +59,22 @@ export default function DomainPage() {
     return (
       <LetterGlitch>
         <div className="min-h-screen pt-20 flex flex-col items-center justify-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="fixed top-20 left-2 sm:top-24 sm:left-2 p-2 sm:p-3 rounded-lg transition-all duration-300 hover:scale-110 z-50 hover:cursor-pointer"
+            style={{
+              background: 'transparent',
+              color: 'var(--yellow-primary)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(52, 160, 164, 0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+            }}
+          >
+            <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+          </button>
           <h2 className="text-3xl font-bold text-center mb-12">
             Reboot Event Winners
           </h2>
