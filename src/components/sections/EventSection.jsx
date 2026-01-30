@@ -319,7 +319,7 @@ function EventSection() {
                               setModalImage(event.poster);
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          <div className="absolute inset-0  from-black/50 to-transparent opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
                       )}
 
@@ -376,7 +376,7 @@ function EventSection() {
         {/* Image Modal */}
         {modalImage && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-end justify-center pb-4 p-4"
             style={{
               backgroundColor: 'rgba(0, 0, 0, 0.9)',
               backdropFilter: 'blur(10px)',
@@ -386,7 +386,7 @@ function EventSection() {
           >
             {/* Modal Image */}
             <div
-              className="max-w-3xl max-h-[70vh]"
+              className="max-w-5xl max-h-[80h] w-full"
               style={{
                 animation: 'zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
               }}
@@ -397,7 +397,7 @@ function EventSection() {
                 className="w-full h-full object-contain rounded-lg"
                 style={{
                   border: '3px solid var(--yellow-primary)',
-                  boxShadow: '0 0 40px rgba(118, 200, 147, 0.4)'
+                  boxShadow: '0 0 40px rgba(52, 160, 164, 0.4)'
                 }}
                 onClick={(e) => e.stopPropagation()}
               />

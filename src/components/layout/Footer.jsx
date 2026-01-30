@@ -29,41 +29,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
-                  {/* <div>
-            <h3
-              className="text-lg font-bold mb-4 tracking-widest"
-              style={{ color: "var(--yellow-primary)" }}
-            >
-              QUICK LINKS
-            </h3>
-            <ul className="space-y-2">
-              {[
-                { name: "Home", path: "/" },
-                { name: "About", path: "/about" },
-                { name: "Events", path: "/event" },
-                { name: "Team", path: "/team" },
-                { name: "Contact", path: "/contact" },
-              ].map((link, idx) => (
-                <li key={idx}>
-                  <a
-                    href={link.path}
-                    className="text-sm transition-colors hover:underline"
-                    style={{ color: "var(--gray-text)" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "var(--yellow-primary)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "var(--gray-text)")
-                    }
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div> */}
-
           {/* Contact Info */}
           <div>
             <h3
