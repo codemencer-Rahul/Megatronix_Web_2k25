@@ -1,20 +1,18 @@
 import React from "react";
-import { LetterGlitch } from "../components";
 import { Link } from "react-router-dom";
 import HoverText from "../components/HoverText";
 import { useAuth } from "../context/AuthContext";
+import Hyperspeed from "../components/Hyperspeed";
+import { hyperspeedPresets } from "../components/HyperSpeedPresets";
 
 function HomePage() {
   const { user } = useAuth();
 
   return (
-    <div className="relative min-h-screen">
-      <LetterGlitch
-        glitchSpeed={50}
-        centerVignette={false}
-        outerVignette={true}
-        smooth={true}
-      />
+    <div className="relative min-h-screen w-full overflow-hidden">
+      <div className="fixed inset-0 w-full h-full scale-110 origin-center">
+        <Hyperspeed effectOptions={hyperspeedPresets.megatronix} />
+      </div>
       {/* centered column: Shuffle row and button underneath */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-20 text-white px-2 sm:px-4 w-full max-w-[95vw] overflow-visible">
         {/* Username display above Megatronix */}

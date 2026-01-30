@@ -20,6 +20,7 @@
     "imagekit": "^6.0.0",
     "lucide-react": "^0.552.0",
     "motion": "^12.25.0",
+    "postprocessing": "^6.38.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.69.0",
@@ -28,7 +29,8 @@
     "react-toastify": "^11.0.5",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.16",
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
