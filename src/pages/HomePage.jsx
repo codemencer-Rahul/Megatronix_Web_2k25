@@ -16,16 +16,16 @@ function HomePage() {
       <div className="fixed inset-0 w-full h-full block sm:hidden">
         <LetterGlitch />
       </div>
-      <div className="fixed inset-0 w-full h-full scale-110 origin-center hidden sm:block">
+      <div className="fixed inset-0 w-full h-full scale-100 origin-center hidden sm:block">
         <Hyperspeed effectOptions={hyperspeedPresets.megatronix} />
       </div>
       {/* centered column: Shuffle row and button underneath */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-20 text-white px-2 sm:px-4 w-full max-w-[95vw] overflow-visible">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:-translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-20 text-white px-2 sm:px-4 w-full max-w-[95vw] overflow-visible">
         {/* Username display above Megatronix */}
         {user && (
           <div className="relative mb-2 animate-fadeIn flex flex-col items-center gap-1">
             <div
-              className="px-6 py-2 rounded-full text-sm sm:text-base md:text-lg font-orbitron tracking-wider uppercase backdrop-blur-md"
+              className="px-4 py-1.5 sm:px-6 sm:py-2 rounded-full text-xs sm:text-base md:text-md font-orbitron tracking-wider uppercase backdrop-blur-md"
               style={{
                 background: "rgba(52, 160, 164, 0.15)",
                 border: "1px solid rgba(52, 160, 164, 0.3)",
@@ -40,7 +40,7 @@ function HomePage() {
 
         {/* Mobile: Logo + Highlighted Text, Desktop: HoverText */}
         <div className="flex flex-col items-center gap-4 sm:hidden">
-          <img src={megaLogo} alt="Megatronix Logo" className="w-32 h-32 object-contain" />
+          <img src={megaLogo} alt="Megatronix Logo" className="w-80 h-80 object-contain" />
 
           {/* Highlighted Subtitle */}
           <div className="relative flex justify-center w-full px-2">
@@ -73,6 +73,8 @@ function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* for the desktop */}
         <div className="hidden sm:flex sm:flex-col sm:items-center sm:gap-3">
           <HoverText />
 
