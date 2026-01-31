@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
@@ -21,7 +19,6 @@ export default function Navbar() {
     { name: "Team", value: "team" },
     { name: "Gallery", value: "gallery", disabled: true },
     { name: "Events", value: "event" },
-    { name: "Contact Us", value: "contact" },
   ];
 
   return (
@@ -76,10 +73,9 @@ export default function Navbar() {
 
           {/* DESKTOP CTA */}
           <div className="hidden lg:flex items-center gap-3">
-                <button
-                  onClick={() => {
-                    logout();
-                    navigate("/");
+            <button
+              onClick={() => {
+                navigate("/contact");
                   }}
                   className="rounded-full px-4 py-1.5 text-sm transition-all"
                   style={{
@@ -95,8 +91,9 @@ export default function Navbar() {
                     e.currentTarget.style.color = "var(--white)";
                   }}
                 >
-                  Logout
+              Contact Us
             </button>
+
           </div>
 
           {/* HAMBURGER */}
@@ -105,32 +102,22 @@ export default function Navbar() {
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           >
-            <div className="w-6 h-6 flex items-center justify-center">
-              {!isMenuOpen ? (
-                /* Hamburger */
-                <div className="w-6 h-6 flex flex-col justify-between">
-                  <span
-                    className="h-0.5 w-full"
-                    style={{ background: "var(--gray-text)" }}
-                  />
-                  <span
-                    className="h-0.5 w-full"
-                    style={{ background: "var(--gray-text)" }}
-                  />
-                  <span
-                    className="h-0.5 w-full"
-                    style={{ background: "var(--gray-text)" }}
-                  />
-                </div>
-              ) : (
-                /* Close (X) */
-                <span
-                  className="text-2xl font-light leading-none"
-                  style={{ color: "var(--yellow-primary)" }}
-                >
-                  ×
-                </span>
-              )}
+            <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
+              <span
+                className={`h-0.5 w-full transition-all duration-300 ${isMenuOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                style={{ background: "var(--gray-text)" }}
+              />
+              <span
+                className={`h-0.5 w-full transition-all duration-300 ${isMenuOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                style={{ background: "var(--gray-text)" }}
+              />
+              <span
+                className={`h-0.5 w-full transition-all duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                style={{ background: "var(--gray-text)" }}
+              />
             </div>
           </button>
         </nav>
@@ -142,9 +129,10 @@ export default function Navbar() {
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         style={{ backgroundColor: "var(--black)" }}
+        onClick={closeMenu}
       >
         {/* MOBILE LINKS */}
-        <ul className="flex flex-col items-center justify-center h-full space-y-6 text-lg">
+        <ul className="flex flex-col items-center justify-center h-full space-y-6 text-lg" onClick={(e) => e.stopPropagation()}>
           {navItems.map((item, idx) => (
             <li key={idx}>
               {item.disabled ? (
@@ -172,13 +160,12 @@ export default function Navbar() {
 
           {/* MOBILE CTA */}
           <li className="mt-8">
-
             <div className="flex flex-col items-center gap-4">
+
                 <button
-                  onClick={() => {
-                    logout();
+                onClick={() => {
                     closeMenu();
-                    navigate("/");
+                  navigate("/contact");
                   }}
                   className="rounded-full px-6 py-2 text-sm"
                   style={{
@@ -194,9 +181,10 @@ export default function Navbar() {
                     e.currentTarget.style.color = "var(--white)";
                   }}
                 >
-                  Logout
+                Contact Us
                 </button>
             </div>
+
           </li>
         </ul>
       </div>

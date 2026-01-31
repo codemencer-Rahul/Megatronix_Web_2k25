@@ -35,7 +35,7 @@ function EventSection() {
       key: "reboot",
       title: "Reboot 2025",
       description:
-        "REBOOT 2K25 marks a new era for Megatronix — a dynamic online event built to reset, reimagine, and recharge the tech spirit. Designed to connect innovators, creators, and visionaries, it offers thrilling challenges, global collaboration, and limitless opportunities to showcase talent. Get ready to push boundaries, unlock creativity, and experience the future of innovation—because this is where the reboot begins.",
+        "REBOOT 2K25 is a dynamic online tech event by Megatronix, bringing innovators together through exciting challenges, collaboration, and opportunities to showcase creativity and skills.",
       date: "July 6 - 12, 2025",
       location: "Online",
       time: "NA",
@@ -49,9 +49,9 @@ function EventSection() {
 
     {
       key: "orientation",
-      title: "Orientation Program for 1st year Students",
+      title: "Orientation for 1st year Students",
       description:
-        "Comprehensive orientation program for 1st year students of MSIT to get familiar with club domains, activities and upcoming events",
+        "An orientation program for first-year MSIT students introducing club domains, activities, and upcoming events, with interactive sessions to help students explore interests and get involved.",
       date: "Feb 2nd-6th, 2026",
       location: "JC Bose Auditorium ( BSH Seminar Hall ), MSIT",
       time: "3:00 PM - 5:00 PM",
@@ -253,19 +253,6 @@ function EventSection() {
                       </div>
                     )}
 
-                    {/* Enhanced Poster Background for Reboot */}
-                    {event.poster && index === 0 && (
-                      <div
-                        className="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-500"
-                        style={{
-                          backgroundImage: `url(${event.poster})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          filter: 'blur(10px)',
-                        }}
-                      />
-                    )}
-
                     {/* Animated border glow for priority cards */}
                     {isPriority && (
                       <div
@@ -294,7 +281,7 @@ function EventSection() {
                             <span
                               className={`inline-block px-3 py-1 rounded-full ${isPriority ? 'text-sm' : 'text-xs'} font-semibold text-white ${getStatusColor(
                                 event.status
-                              )} mt-1.5`}
+                              )} mt-2`}
                             >
                               {getStatusText(event.status)}
                             </span>
@@ -304,12 +291,12 @@ function EventSection() {
 
                       {/* Poster - Larger for priority events */}
                       {event.poster && (index === 0 || index === 1) && (
-                        <div className={`${isPriority ? 'mb-6' : 'mb-3'} relative overflow-hidden rounded-xl group/poster`}>
+                        <div className={`${isPriority ? 'mb-6' : 'mb-3'} relative flex justify-center items-center overflow-hidden rounded-xl group/poster`}>
                           <img
                             src={event.poster}
                             alt={`${event.title} poster`}
-                            className={`w-full ${index === 0 ? 'h-72 md:h-96' : 'h-64 md:h-80'
-                              } object-contain cursor-pointer transition-all duration-500 group-hover/poster:scale-105`}
+                            className={` ${index === 0 || index === 1 ? 'h-72 md:h-84' : 'h-64 md:h-80'
+                              } object-contain cursor-pointer transition-all duration-500 group-hover/poster:scale-105 rounded-2xl`}
                             style={{
                               border: `${isPriority ? '3px' : '2px'} solid var(--yellow-primary)`,
                               boxShadow: '0 8px 30px rgba(118, 200, 147, 0.3)',
@@ -319,7 +306,7 @@ function EventSection() {
                               setModalImage(event.poster);
                             }}
                           />
-                          <div className="absolute inset-0  from-black/50 to-transparent opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          <div className="absolute inset-0 from-black/50 to-transparent opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
                       )}
 
@@ -376,7 +363,7 @@ function EventSection() {
         {/* Image Modal */}
         {modalImage && (
           <div
-            className="fixed inset-0 z-50 flex items-end justify-center  p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
             style={{
               backgroundColor: 'rgba(0, 0, 0, 0.9)',
               backdropFilter: 'blur(10px)',
@@ -386,7 +373,7 @@ function EventSection() {
           >
             {/* Modal Image */}
             <div
-              className="max-w-4xl max-h-[85vh] w-full h-full flex items-center justify-center"
+              className="max-w-3xl max-h-[70vh]"
               style={{
                 animation: 'zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
               }}
@@ -394,10 +381,10 @@ function EventSection() {
               <img
                 src={modalImage}
                 alt="Event poster"
-                className="max-w-full max-h-full object-contain rounded-lg"
+                className="w-full h-full object-contain rounded-lg"
                 style={{
                   border: '3px solid var(--yellow-primary)',
-                  boxShadow: '0 0 40px rgba(52, 160, 164, 0.4)'
+                  boxShadow: '0 0 40px rgba(118, 200, 147, 0.4)'
                 }}
                 onClick={(e) => e.stopPropagation()}
               />

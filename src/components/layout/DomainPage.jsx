@@ -58,7 +58,7 @@ export default function DomainPage() {
   if (mainEvent === "reboot") {
     return (
       <LetterGlitch>
-        <div className="min-h-screen pt-20 flex flex-col items-center justify-center">
+        <div className="min-h-screen pt-20 flex flex-col items-center justify-center mb-10">
           <button
             onClick={() => navigate(-1)}
             className="fixed top-20 left-2 sm:top-24 sm:left-2 p-2 sm:p-3 rounded-lg transition-all duration-300 hover:scale-110 z-50 hover:cursor-pointer"

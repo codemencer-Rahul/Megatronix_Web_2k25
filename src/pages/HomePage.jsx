@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HoverText from "../components/HoverText";
-import { useAuth } from "../context/AuthContext";
 import Hyperspeed from "../components/Hyperspeed";
 import { hyperspeedPresets } from "../components/HyperSpeedPresets";
 import LetterGlitch from "../components/animations/LetterGlitch";
 import megaLogo from "../assets/images/megaLogo.png";
+import ScrollVelocity from "../../src/components/ScrollVelocity";
 
 function HomePage() {
-  const { user } = useAuth();
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
@@ -20,27 +19,11 @@ function HomePage() {
         <Hyperspeed effectOptions={hyperspeedPresets.megatronix} />
       </div>
       {/* centered column: Shuffle row and button underneath */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:-translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-20 text-white px-2 sm:px-4 w-full max-w-[95vw] overflow-visible">
-        {/* Username display above Megatronix */}
-        {user && (
-          <div className="relative mb-2 animate-fadeIn flex flex-col items-center gap-1">
-            <div
-              className="px-4 py-1.5 sm:px-6 sm:py-2 rounded-full text-xs sm:text-base md:text-md font-orbitron tracking-wider uppercase backdrop-blur-md"
-              style={{
-                background: "rgba(52, 160, 164, 0.15)",
-                border: "1px solid rgba(52, 160, 164, 0.3)",
-                color: "var(--white)",
-                boxShadow: "0 0 20px rgba(52, 160, 164, 0.2), inset 0 0 20px rgba(52, 160, 164, 0.1)",
-              }}
-            >
-              Welcome, {user.name} 👋
-            </div>
-          </div>
-        )}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[58%] sm:-translate-y-1/3 flex flex-col items-center gap-4 sm:gap-5 z-20 text-white px-2 sm:px-4 w-full max-w-[95vw] overflow-visible">
 
         {/* Mobile: Logo + Highlighted Text, Desktop: HoverText */}
         <div className="flex flex-col items-center gap-4 sm:hidden">
-          <img src={megaLogo} alt="Megatronix Logo" className="w-80 h-80 object-contain" />
+          <img src={megaLogo} alt="Megatronix Logo" className="w-60 h-60 object-contain" />
 
           {/* Highlighted Subtitle */}
           <div className="relative flex justify-center w-full px-2">
@@ -64,7 +47,7 @@ function HomePage() {
 
             {/* Text */}
             <div
-              className="px-3 py-2.5 text-sm uppercase tracking-[0.15em] font-semibold text-center relative z-10"
+              className="px-3 py-2.5 text-lg uppercase tracking-[0.15em] font-semibold text-center relative z-10"
               style={{
                 color: "var(--white)"
               }}
@@ -100,7 +83,7 @@ function HomePage() {
 
             {/* Text */}
             <div
-              className="px-5 md:px-7 py-3 text-lg md:text-xl lg:text-2xl uppercase tracking-[0.15em] sm:tracking-[0.25em] font-semibold text-center relative z-10"
+              className="px-5 md:px-7 py-3 text-xl md:text-2xl lg:text-3xl uppercase tracking-[0.15em] sm:tracking-[0.25em] font-semibold text-center relative z-10"
               style={{
                 color: "var(--white)"
               }}
@@ -176,6 +159,15 @@ function HomePage() {
             </span>
           </Link>
         </div>
+      </div>
+
+      {/* ScrollVelocity at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full z-10 bg-black/25 backdrop-blur-sm py-2">
+        <ScrollVelocity
+          texts={['02/02/26 (Monday): CSE-A, AIML-A, IT • 03/02/26 (Tuesday): CSE-C, AIDS, IOT, CSE-D + CSIT', '04/02/26 (Wednesday): ECE, EE, AIML-B, ECS • 05 /02 / 26(Thursday): CSE-B, CYS, CSBS, CSE(DS) • 06/02/26 (Friday): BCA, BBA, CE, ME']}
+          velocity={50}
+          className="italic font-bold text-(--gray-text)"
+        />
       </div>
     </div>
   );
