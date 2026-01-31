@@ -4,13 +4,19 @@ import HoverText from "../components/HoverText";
 import { useAuth } from "../context/AuthContext";
 import Hyperspeed from "../components/Hyperspeed";
 import { hyperspeedPresets } from "../components/HyperSpeedPresets";
+import LetterGlitch from "../components/animations/LetterGlitch";
+import megaLogo from "../assets/images/megaLogo.png";
 
 function HomePage() {
   const { user } = useAuth();
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      <div className="fixed inset-0 w-full h-full scale-110 origin-center">
+      {/* Mobile: LetterGlitch, Desktop: Hyperspeed */}
+      <div className="fixed inset-0 w-full h-full block sm:hidden">
+        <LetterGlitch />
+      </div>
+      <div className="fixed inset-0 w-full h-full scale-110 origin-center hidden sm:block">
         <Hyperspeed effectOptions={hyperspeedPresets.megatronix} />
       </div>
       {/* centered column: Shuffle row and button underneath */}
@@ -32,39 +38,76 @@ function HomePage() {
           </div>
         )}
 
-        {/* main megatronix text */}
-        <HoverText />
+        {/* Mobile: Logo + Highlighted Text, Desktop: HoverText */}
+        <div className="flex flex-col items-center gap-4 sm:hidden">
+          <img src={megaLogo} alt="Megatronix Logo" className="w-32 h-32 object-contain" />
 
-        {/* Highlighted Subtitle */}
-        <div className="relative mb-3 sm:mb-4 flex justify-center w-full px-2 sm:px-4">
-          {/* Glow shield */}
-          <div
-            className="absolute inset-0 -z-20 rounded-2xl blur-2xl opacity-80"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(212,175,55,0.45) 0%, rgba(0,0,0,0.75) 100%)",
-            }}
-          />
+          {/* Highlighted Subtitle */}
+          <div className="relative flex justify-center w-full px-2">
+            {/* Glow shield */}
+            <div
+              className="absolute inset-0 -z-20 rounded-2xl blur-2xl opacity-80"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(212,175,55,0.45) 0%, rgba(0,0,0,0.75) 100%)",
+              }}
+            />
 
-          {/* Dark isolation layer */}
-          <div
-            className="absolute inset-0 -z-10 rounded-2xl blur-xl"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 60%, transparent 100%)",
-            }}
-          />
+            {/* Dark isolation layer */}
+            <div
+              className="absolute inset-0 -z-10 rounded-2xl blur-xl"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 60%, transparent 100%)",
+              }}
+            />
 
-          {/* Text */}
-          <div
-            className="px-3 sm:px-5 md:px-7 py-2.5 sm:py-3 text-sm sm:text-lg md:text-xl lg:text-2xl uppercase tracking-[0.15em] sm:tracking-[0.25em] font-semibold text-center relative z-10"
-            style={{
-              color: "var(--white)"
-            }}
-          >
-            The Official Technical Club of MSIT
+            {/* Text */}
+            <div
+              className="px-3 py-2.5 text-sm uppercase tracking-[0.15em] font-semibold text-center relative z-10"
+              style={{
+                color: "var(--white)"
+              }}
+            >
+              The Official Technical Club of MSIT
+            </div>
           </div>
         </div>
+        <div className="hidden sm:flex sm:flex-col sm:items-center sm:gap-3">
+          <HoverText />
+
+          {/* Highlighted Subtitle for Desktop */}
+          <div className="relative flex justify-center w-full px-4">
+            {/* Glow shield */}
+            <div
+              className="absolute inset-0 -z-20 rounded-2xl blur-2xl opacity-80"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(212,175,55,0.45) 0%, rgba(0,0,0,0.75) 100%)",
+              }}
+            />
+
+            {/* Dark isolation layer */}
+            <div
+              className="absolute inset-0 -z-10 rounded-2xl blur-xl"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.65) 60%, transparent 100%)",
+              }}
+            />
+
+            {/* Text */}
+            <div
+              className="px-5 md:px-7 py-3 text-lg md:text-xl lg:text-2xl uppercase tracking-[0.15em] sm:tracking-[0.25em] font-semibold text-center relative z-10"
+              style={{
+                color: "var(--white)"
+              }}
+            >
+              The Official Technical Club of MSIT
+            </div>
+          </div>
+        </div>
+
         {/* Two buttons inline under MEGATRONIX text */}
         <div className="flex flex-col sm:flex-row gap-10 sm:gap-6 md:gap-10 lg:gap-12 translate-y-14 sm:translate-y-12">
           {/* REGISTER BUTTON */}
