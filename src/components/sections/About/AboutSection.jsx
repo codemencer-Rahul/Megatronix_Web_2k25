@@ -143,7 +143,7 @@ function AboutSection() {
                     {event.videoSrc ? (
                       <button
                         onClick={() => openModal(event.videoSrc)}
-                        className="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
+                        className="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 hover:cursor-pointer"
                         style={{
                           background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
                           color: 'var(--black)',
