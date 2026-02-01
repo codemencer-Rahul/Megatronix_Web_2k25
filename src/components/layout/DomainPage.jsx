@@ -103,7 +103,7 @@ export default function DomainPage() {
                 className="object-fit w-full h-60  rounded-2xl  mb-4"
               />
               <div
-                className="font-semibold mb-2"
+                className="font-bold mb-2 text-2xl"
                 style={{ color: "var(--gray-text)" }}
               >
                 Winners:
@@ -140,7 +140,7 @@ export default function DomainPage() {
                 className="object-fit w-full h-60 rounded-2xl mb-4"
               />
               <div
-                className="font-semibold mb-2"
+                className="font-bold mb-2 text-2xl"
                 style={{ color: "var(--gray-text)" }}
               >
                 Winners:

@@ -135,7 +135,7 @@ function AboutSection() {
     }
   ];
 
-  const logos = [
+  const logo1 = [
     {
       src: FriendFm,
       alt: "91.9 Friends FM",
@@ -183,7 +183,10 @@ function AboutSection() {
     {
       src: Microcenter,
       alt: "Micro Center",
-    },
+    }
+  ];
+
+  const logo2 = [
     {
       src: CodingNinja,
       alt: "Coding Ninjas",
@@ -232,7 +235,7 @@ function AboutSection() {
       src: WowMomo,
       alt: "Wow! Momo",
     },
-  ];
+  ]
 
   const [showModal, setShowModal] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
@@ -335,7 +338,7 @@ function AboutSection() {
             </h2>
             <div style={{ position: 'relative', overflow: 'hidden' }}>
               <LogoLoop
-                logos={logos}
+                logos={logo1}
                 speed={80}
                 direction="left"
                 logoHeight={100}
@@ -348,7 +351,7 @@ function AboutSection() {
               />
               <div className="my-8"></div>
               <LogoLoop
-                logos={logos}
+                logos={logo2}
                 speed={80}
                 direction="right"
                 logoHeight={100}

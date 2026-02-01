@@ -165,7 +165,7 @@ function HomePage() {
       <div className="absolute bottom-0 left-0 w-full z-10 bg-black/25 backdrop-blur-sm py-2">
         <ScrollVelocity
           texts={['02/02/26 (Monday): CSE-A, AIML-A, IT • 03/02/26 (Tuesday): CSE-C, AIDS, IOT, CSE-D + CSIT', '04/02/26 (Wednesday): ECE, EE, AIML-B, ECS • 05 /02 / 26(Thursday): CSE-B, CYS, CSBS, CSE(DS) • 06/02/26 (Friday): BCA, BBA, CE, ME']}
-          velocity={50}
+          velocity={25}
           className="italic font-bold text-(--gray-text)"
         />
       </div>
