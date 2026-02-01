@@ -1,10 +1,11 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import React, { useState } from "react";
 import LetterGlitch from "../components/ui/animatedComponents/LetterGlitch"
 import codemanthanPoster from "../assets/images/codemanthanPoster.jpg";
 import snapsyncPoster from "../assets/images/snapsyncPoster.jpg";
 import rebootPoster from "../assets/images/rebootPoster.jpg";
+import ModalImage from "../components/layout/ModalImage";
+import { useParams, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 const DOMAINS = [
   {
@@ -54,6 +55,7 @@ const DOMAINS = [
 export default function DomainPage() {
   const { mainEvent } = useParams();
   const navigate = useNavigate();
+  const [modalImage, setModalImage] = useState(null);
 
   if (mainEvent === "reboot") {
     return (
@@ -100,20 +102,42 @@ export default function DomainPage() {
               <img
                 src={snapsyncPoster}
                 alt="SnapSync"
-                className="object-fit w-full h-60  rounded-2xl  mb-4"
+                className="object-fit w-full h-60 mb-4  cursor-pointer transition-all duration-500 group-hover/poster:scale-105 rounded-2xl"
+                style={{
+                  border: '3px solid var(--yellow-primary)'
+                }}
+                onClick={() => setModalImage(snapsyncPoster)}
               />
-              <div
-                className="font-bold mb-2 text-2xl"
-                style={{ color: "var(--gray-text)" }}
-              >
-                Winners:
+              <div className="w-full mb-4">
+                <h3
+                  className="font-bold text-2xl mb-4 text-center"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  🏆 Winners
+                </h3>
+                <div 
+                  className="h-0.5 w-20 mx-auto mb-4"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, var(--yellow-primary), transparent)'
+                  }}
+                />
               </div>
               <ul
-                className="list-disc list-inside text-lg"
-                style={{ color: "var(--white)" }}
+                className="space-y-2 text-lg w-full flex flex-col items-center justify-center"
               >
-                <li>Shuvojit Banik</li>
-                <li>Tapobrata Roy</li>
+                <li className="flex items-center gap-2" style={{ color: "var(--white)" }}>
+                  <span className="text-yellow-400">🥇</span>
+                  <span>Shuvojit Banik</span>
+                </li>
+                <li className="flex items-center gap-2" style={{ color: "var(--white)" }}>
+                  <span className="text-yellow-400">🥇</span>
+                  <span>Tapobrata Roy</span>
+                </li>
               </ul>
             </div>
             {/* CodeManthan Card */}
@@ -137,21 +161,43 @@ export default function DomainPage() {
               <img
                 src={codemanthanPoster}
                 alt="CodeManthan"
-                className="object-fit w-full h-60 rounded-2xl mb-4"
+                className="object-fit w-full h-60 mb-4  cursor-pointer transition-all duration-500 group-hover/poster:scale-105 rounded-2xl"
+                style={{
+                  border: '3px solid var(--yellow-primary)'
+                }}
+                onClick={() => setModalImage(codemanthanPoster)}
               />
-              <div
-                className="font-bold mb-2 text-2xl"
-                style={{ color: "var(--gray-text)" }}
-              >
-                Winners:
+              <div className="w-full mb-4">
+                <h3
+                  className="font-bold text-2xl mb-4 text-center"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  🏆 Winners
+                </h3>
+                <div 
+                  className="h-0.5 w-20 mx-auto mb-4"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, var(--yellow-primary), transparent)'
+                  }}
+                />
               </div>
               <ul
-                className="list-disc list-inside text-lg"
-                style={{ color: "var(--white)" }}
+                className="space-y-2 text-lg w-full flex flex-col items-center justify-center"
               >
-                <li>Parul Priya</li>
+                <li className="flex items-center gap-2" style={{ color: "var(--white)" }}>
+                  <span className="text-yellow-400">🥇</span>
+                  <span>Parul Priya</span>
+                </li>
               </ul>
             </div>
+            {modalImage && (
+              <ModalImage setModalImage={setModalImage} modalImage={modalImage} />
+            )}
           </div>
         </div>
       </LetterGlitch>

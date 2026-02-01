@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { UsersGroupIcon, } from '../../ui/icons';
 import { Calendar, Clock, MapPin } from "lucide-react";
 import UpcomingEventsCard from './UpcomingEventsCard';
-
+import ModalImage from "../../layout/ModalImage"
 
 function EventSection() {
   const [modalImage, setModalImage] = useState(null);
@@ -133,23 +133,22 @@ function EventSection() {
                       </div>
 
                       {/* Poster - Larger for priority events */}
-                      {event.poster && (index === 0 || index === 1) && (
+                      {event.poster && (isPriority) && (
                         <div className={`${isPriority ? 'mb-6' : 'mb-3'} relative flex justify-center items-center overflow-hidden rounded-xl group/poster`}>
                           <img
                             src={event.poster}
                             alt={`${event.title} poster`}
-                            className={` ${index === 0 || index === 1 ? 'h-72 md:h-84' : 'h-64 md:h-80'
-                              } object-contain cursor-pointer transition-all duration-500 group-hover/poster:scale-105 rounded-2xl`}
+                            className={` ${isPriority ? 'h-60 md:h-84' : 'h-52 md:h-80'
+                              } object-fit cursor-pointer transition-all duration-500 group-hover/poster:scale-105 rounded-2xl`}
                             style={{
-                              border: `${isPriority ? '3px' : '2px'} solid var(--yellow-primary)`,
-                              boxShadow: '0 8px 30px rgba(118, 200, 147, 0.3)',
+                              border: `${isPriority ? '3px' : '2px'} solid var(--yellow-primary) `,
                             }}
                             onClick={(e) => {
                               e.stopPropagation();
                               setModalImage(event.poster);
                             }}
                           />
-                          <div className="absolute inset-0 from-black/50 to-transparent opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                          <div className="absolute inset-0 opacity-0 group-hover/poster:opacity-100 transition-opacity duration-300 pointer-events-none" />
                         </div>
                       )}
 
@@ -211,34 +210,7 @@ function EventSection() {
 
         {/* Image Modal */}
         {modalImage && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            style={{
-              backgroundColor: 'rgba(0, 0, 0, 0.9)',
-              backdropFilter: 'blur(10px)',
-              animation: 'fadeIn 0.3s ease-out'
-            }}
-            onClick={() => setModalImage(null)}
-          >
-            {/* Modal Image */}
-            <div
-              className="max-w-3xl max-h-[70vh]"
-              style={{
-                animation: 'zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
-              }}
-            >
-              <img
-                src={modalImage}
-                alt="Event poster"
-                className="w-full h-full object-contain rounded-lg"
-                style={{
-                  border: '3px solid var(--yellow-primary)',
-                  boxShadow: '0 0 40px rgba(118, 200, 147, 0.4)'
-                }}
-                onClick={(e) => e.stopPropagation()}
-              />
-            </div>
-          </div>
+          <ModalImage setModalImage={setModalImage} modalImage={modalImage} />
         )}
 
         {/* Orientation Modal */}
