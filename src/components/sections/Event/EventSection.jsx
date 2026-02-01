@@ -49,7 +49,7 @@ function EventSection() {
           {/* Upcoming Events */}
          <UpcomingEventsCard/>
 
-          {/* Main Events - Bento Grid */}
+          {/* Main Events - Bento Grid , large cards for the priority events and coming soon for the others */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-center mb-8">
               Flagship Events
