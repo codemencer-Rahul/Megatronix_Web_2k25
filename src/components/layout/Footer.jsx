@@ -53,7 +53,7 @@ const Footer = () => {
                   style={{ color: "var(--yellow-primary)" }}
                 />
                 <span className="text-xs" style={{ color: "var(--gray-text)" }}>
-                  +91 99394 26962 / +91 7384563401 
+                  +91 90071 54749 / +91 62918 17369 
                 </span>
               </li>
               <li className="flex items-center gap-2">
