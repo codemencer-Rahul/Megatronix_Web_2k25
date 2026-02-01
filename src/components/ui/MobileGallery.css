@@ -1,0 +1,60 @@
+.mobile-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+}
+
+.mobile-gallery-item img, .mobile-gallery-item .mobile-thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.mobile-gallery-item .mobile-thumb {
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px) saturate(1.2);
+  transform: scale(1.02);
+}
+
+.mobile-gallery-img {
+  position: relative;
+  display: block;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.03);
+  background: #0b0b0b;
+  opacity: 0;
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+
+.mobile-gallery-img.loaded {
+  opacity: 1;
+  transform: none;
+}
+
+.mobile-thumb.hidden { display: none; }
+.mobile-thumb.visible { display: block; }
+
+/* Slight spacing adjustments so last image isn't too close to footer */
+.mobile-gallery-item:last-child {
+  margin-bottom: 0;
+  position: relative;
+}
+
+/* fade transition at bottom of last image to blend into footer */
+.mobile-gallery-item:last-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 80px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--surface-black, #071226) 80%);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}

@@ -6,6 +6,8 @@ import EventPage from "./pages/EventPage";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { lazy } from "react";
+import GalleryPage from "./pages/GalleryPage";
+// import OrientationModal from "./components/OrientationModal";
 // import BackgroundMusic from "./components/BackgroundMusic";
 
 const TeamPage = lazy(() => import("./pages/TeamPage"));
@@ -24,6 +26,8 @@ function AppContent() {
         <Route path="/event/*" element={<EventPage />} />
         <Route path="/team" element={<TeamPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {!isHomePage && <Footer />}
