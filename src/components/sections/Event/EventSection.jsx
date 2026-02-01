@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import OrientationModal from '../../layout/OrientationSchedualModal';
+import OrientationModal from './OrientationSchedualModal';
 import LetterGlitch from '../../ui/animatedComponents/LetterGlitch';
 import EventsData from '../../../lib/data/EventsData';
 import { useNavigate } from 'react-router-dom';
