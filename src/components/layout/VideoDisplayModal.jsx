@@ -1,3 +1,4 @@
+import { ArrowBigLeftDashIcon } from "lucide-react";
 
 const VideoComponent = ({ videoSrc, closeModal }) => {
   if (!videoSrc) return null;
@@ -8,7 +9,7 @@ const VideoComponent = ({ videoSrc, closeModal }) => {
       onClick={closeModal} // close when clicking outside
     >
       <div
-        className="relative rounded-2xl shadow-xl w-full max-w-6xl h-auto md:h-[80vh] flex flex-col"
+        className="relative rounded-2xl shadow-xl w-full max-w-5xl h-auto md:h-[80vh] flex flex-col"
         onClick={(e) => e.stopPropagation()} // prevent close on inner click
       >
         {/* Top Bar with Back Button */}
