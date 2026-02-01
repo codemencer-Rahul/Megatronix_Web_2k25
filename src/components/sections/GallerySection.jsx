@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import GridMotion from "../ui/GridMotion";
-import MobileGallery from "../ui/MobileGallery";
+import GridMotion from "../ui/animatedComponents/GridMotion";
+import MobileGallery from "../ui/animatedComponents/MobileGallery"
 import galleryImages, { getGridItems } from "../../lib/data/galleryImages";
 
 const GallerySection = () => {
