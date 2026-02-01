@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { User } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, GmailIcon } from './icons';
+import { GithubIcon, LinkedinIcon, GmailIcon } from '../ui/icons';
 
 // Moved styles outside component to avoid recreating on every render
 const cardStyles = {

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { ProfileCard } from "../ui";
 import contactInfo from "../../lib/data/ContactInfo.json";
+import { ProfileCard } from "../layout";
 
 // Helper function to capitalize names (moved outside component)
 const capitalizeName = (name) => {
@@ -35,7 +35,7 @@ const TeamSection = () => {
   }, []); // Empty dependency array is correct since contactInfo is static
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-12">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {membersByYear.map((group) => (
           <div key={group.year} className="mb-30 mt-10">

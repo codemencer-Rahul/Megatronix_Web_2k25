@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer } from "./components/layout";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import EventPage from "./pages/EventPage";
-import HomePage from "./pages/HomePage"; import ErrorPage from "./pages/ErrorPage"; import { lazy } from "react";
-// import OrientationModal from "./components/OrientationModal";
+import HomePage from "./pages/HomePage";
+import ErrorPage from "./pages/ErrorPage";
+import { lazy } from "react";
 // import BackgroundMusic from "./components/BackgroundMusic";
 
 const TeamPage = lazy(() => import("./pages/TeamPage"));
@@ -16,7 +17,6 @@ function AppContent() {
   return (
     <>
       {/* <BackgroundMusic /> */}
-      {/* <OrientationModal /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

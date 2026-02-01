@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Calendar, Clock, MapPin, Users, Code, Rocket, X } from "lucide-react";
-import { LetterGlitch } from '../animations'
+import { Calendar, Clock, MapPin } from "lucide-react";
+import LetterGlitch from '../ui/animatedComponents/LetterGlitch';
 import { useNavigate } from 'react-router-dom';
 import { CodeXmlIcon, RocketIcon, UsersGroupIcon, UsersIcon } from '../ui/icons';
 import rebootPoster from "../../assets/images/rebootPoster.jpg";
 import orientationPoster from "../../assets/images/orientationPoster.jpeg";
-import OrientationModal from '../OrientationModal';
+import OrientationModal from '../layout/OrientationSchedualModal';
 
 function EventSection() {
   const [modalImage, setModalImage] = useState(null);
