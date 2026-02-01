@@ -17,7 +17,7 @@ export default function Navbar() {
     { name: "Home", value: "" },
     { name: "About Us", value: "about" },
     { name: "Team", value: "team" },
-    { name: "Gallery", value: "gallery", disabled: true },
+    { name: "Gallery", value: "gallery", },
     { name: "Events", value: "event" },
   ];
 
