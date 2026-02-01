@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import contactInfo from "../../lib/data/ContactInfo.json";
-import { ProfileCard } from "../layout";
+import ProfileCard from "../layout/ProfileCard"
 
 // Helper function to capitalize names (moved outside component)
 const capitalizeName = (name) => {
