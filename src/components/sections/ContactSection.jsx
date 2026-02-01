@@ -385,7 +385,7 @@ const ContactSection = () => {
                     CONVENOR'S  CONTACT
                   </h4>
                   <p className="text-sm" style={{ color: "var(--gray-text)" }}>
-                    +91 9007154749 - Debdip Bhattacharya ( 4TH YR MEGATRON )
+                    +91 9007154749 - Debdip Bhattacharya
                   </p>
                 </div>
               </div>
@@ -555,26 +555,6 @@ const ContactSection = () => {
                       </span>
                     </div>
                   </div>
-
-                  {/* <button
-    className="w-full text-[10px] uppercase px-3 py-1.5 rounded font-semibold transition-colors"
-    style={{
-      border: "1px solid var(--yellow-border-soft)",
-      color: "var(--yellow-primary)",
-      backgroundColor: "transparent",
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.backgroundColor =
-        "var(--yellow-primary)";
-      e.currentTarget.style.color = "var(--surface-black)";
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.backgroundColor = "transparent";
-      e.currentTarget.style.color = "var(--yellow-primary)";
-    }}
-  >
-    Contact Coordinator
-  </button> */}
                 </div>
 
               ))}
