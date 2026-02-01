@@ -90,7 +90,6 @@ const SponsorSection = () => {
                   <div
                     key={index}
                     className="flex items-center justify-center p-4 rounded-lg"
-                    style={{ backgroundColor: 'var(--dark-black)' }}
                   >
                     <img
                       src={logo.src}
