@@ -5,16 +5,16 @@ import LogoLoop from '../../ui/animatedComponents/LogoLoop'; //logo loop compone
 const SponsorSection = () => {
     return (
         <>
-            <h2 className="text-3xl font-bold text-center mb-8" style={{ color: 'var(--white)' }}>
+        <h2 className="text-3xl font-bold text-center my-8" style={{ color: 'var(--white)' }}>
                           Our Partners & Sponsors
                         </h2>
                         <div style={{ position: 'relative', overflow: 'hidden' }}>
                           <LogoLoop
                             logos={AboutUsData.logo1}
-                            speed={80}
+            speed={60}
                             direction="left"
-                            logoHeight={100}
-                            gap={60}
+            logoHeight={60}
+            gap={40}
                             hoverSpeed={0}
                             scaleOnHover
                             fadeOut
@@ -24,10 +24,10 @@ const SponsorSection = () => {
                           <div className="my-8"></div>
                           <LogoLoop
                             logos={AboutUsData.logo2}
-                            speed={80}
+            speed={60}
                             direction="right"
-                            logoHeight={100}
-                            gap={60}
+            logoHeight={60}
+            gap={40}
                             hoverSpeed={0}
                             scaleOnHover
                             fadeOut
