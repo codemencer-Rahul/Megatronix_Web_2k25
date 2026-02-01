@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./GridMotion.css";
 import { loadingPhrases } from "../../../lib/data/loadingPhrases";
+import Lightbox from './Lightbox';
 
 const GridMotion = ({ items = [], gradientColor = "black" }) => {
   const gridRef = useRef(null);
@@ -51,6 +52,25 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
   }, []);
 
   const [failureMap, setFailureMap] = useState(() => Array(totalItems).fill(false));
+
+  // Lightbox state for click-to-view behavior
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
+
+  // build unique image array for lightbox (only valid image URLs)
+  const displayItems = Array.from(
+    new Set(
+      combinedItems.filter((c) => typeof c === 'string' && (c.startsWith('http') || c.startsWith('data:')))
+    )
+  );
+
+  const openLightbox = (content) => {
+    const idx = displayItems.indexOf(content);
+    if (idx >= 0) {
+      setStartIndex(idx);
+      setLightboxOpen(true);
+    }
+  };
 
   // Prefetch images and mark as loaded when they finish / timeout on failure
   useEffect(() => {
@@ -148,10 +168,18 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
             >
               {Array.from({ length: 7 }, (_, itemIndex) => {
                 const content = combinedItems[rowIndex * 7 + itemIndex];
+                const isImage = typeof content === "string" && (content.startsWith("http") || content.startsWith("data:"));
                 return (
                   <div key={itemIndex} className="row__item">
-                    <div className="row__item-inner" style={{ backgroundColor: "#111" }}>
-                      {typeof content === "string" && (content.startsWith("http") || content.startsWith("data:")) ? (
+                    <div
+                      className="row__item-inner"
+                      style={{ backgroundColor: "#111", cursor: isImage ? 'pointer' : 'default' }}
+                      role={isImage ? 'button' : undefined}
+                      tabIndex={isImage ? 0 : undefined}
+                      onClick={() => isImage && openLightbox(content)}
+                      onKeyDown={(e) => isImage && e.key === 'Enter' && openLightbox(content)}
+                    >
+                      {isImage ? (
                         <>
                           <div
                             className="row__item-img"
@@ -175,6 +203,9 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
             </div>
           ))}
         </div>
+        {lightboxOpen && (
+          <Lightbox images={displayItems} startIndex={startIndex} onClose={() => setLightboxOpen(false)} />
+        )}
         <div className="fullview" />
       </section>
     </div>
