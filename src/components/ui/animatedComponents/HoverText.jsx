@@ -29,9 +29,9 @@ const HoverText = () => {
         fontFamily: "'Bring Race', 'Arial Black', sans-serif",
         backgroundImage: `radial-gradient(
           circle at ${pos.x}% ${pos.y}%,
-          #b8f3d8 0%,
-          #76c893 35%,
-          #5fa878 60%
+          var(--gray-text) 0%,
+          var(--yellow-soft) 10%,
+          var(--yellow-primary) 30%
         )`,
         transition: "background-image 1s ease-out",
       }}
