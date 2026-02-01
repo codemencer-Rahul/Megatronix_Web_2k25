@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Navbar, Footer } from "./components/layout";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import EventPage from "./pages/EventPage";
