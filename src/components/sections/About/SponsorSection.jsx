@@ -15,7 +15,6 @@ const SponsorSection = () => {
                             direction="left"
             logoHeight={100}
             gap={60}
-                            scaleOnHover
                             fadeOut
                             fadeOutColor="var(--black)"
                             ariaLabel="Our partners and sponsors"
@@ -27,7 +26,6 @@ const SponsorSection = () => {
                             direction="right"
             logoHeight={100}
             gap={60}
-                            scaleOnHover
                             fadeOut
                             fadeOutColor="var(--black)"
                             ariaLabel="Our partners and sponsors"
