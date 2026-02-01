@@ -23,4 +23,4 @@ export {
 export { GridMotion, MagicBento, SpotlightCard, ProfileCard, Counter, VideoComponent } from "./ui";
 
 // Animation Components
-export { LetterGlitch } from "./animations";
+// export { LetterGlitch } from "./animations";
