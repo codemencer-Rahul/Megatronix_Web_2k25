@@ -39,6 +39,45 @@
 .mobile-thumb.hidden { display: none; }
 .mobile-thumb.visible { display: block; }
 
+/* loading message (techy/savage) */
+.mobile-loading-text {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--yellow-primary, #c7ff5a);
+  background: rgba(0,0,0,0.35);
+  padding: 6px 10px;
+  border-radius: 10px;
+  z-index: 20;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  opacity: 1;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.mobile-loading-text.hidden { opacity: 0; transform: translateY(-45%); pointer-events: none; }
+.mobile-loading-text.visible { opacity: 1; pointer-events: none; }
+
+/* small pulsing dot effect to add life */
+.mobile-loading-text::after {
+  content: ' •';
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 0.9;
+  animation: loadDot 1.4s infinite;
+}
+
+@keyframes loadDot {
+  0% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+  100% { opacity: 0.2; transform: translateY(0); }
+}
+
 /* Slight spacing adjustments so last image isn't too close to footer */
 .mobile-gallery-item:last-child {
   margin-bottom: 0;
