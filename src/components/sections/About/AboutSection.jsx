@@ -5,7 +5,7 @@ import Timeline from './HistoryTimeline';
 import VideoDisplayModal from '../../layout/VideoDisplayModal';
 import AboutUsData from '../../../lib/data/AboutUsData';
 import SponsorSection from './SponsorSection';
-import { StatsSection } from '..';
+import StatsSection from './StatsSection';
 
 function AboutSection() {
   const [showModal, setShowModal] = useState(false);
