@@ -5,7 +5,6 @@ import { GmailIcon,  PhoneVolume, } from "../../ui/icons";
 const ContactInfoPanel = () => {
     const convenors = [
         { name: "Debdip Bhattacharya", phone: "+91 9007154749" },
-        { name: "Debangshi Roy", phone: "+91 7384563401" },
         { name: "Sahil Kumar Singh", phone: "+91 6291817369" }
     ];
 
@@ -68,7 +67,7 @@ const ContactInfoPanel = () => {
                     className="font-bold text-sm tracking-wide"
                     style={{ color: "var(--yellow-primary)" }}
                   >
-                    CONVENOR'S  CONTACT
+                    CONTACT
                   </h4>
                   {convenors.map((convenor, index) => (
                     <p key={index} className="text-sm mt-2 gap-2" style={{ color: "var(--gray-text)" }}>
