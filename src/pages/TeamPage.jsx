@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import LetterGlitch from '../components/ui/animatedComponents/LetterGlitch';
-import { TeamSection } from '../components/sections';
+import TeamSection from '../components/sections/TeamSection';
 
 function TeamPage() {
   const [showContent, setShowContent] = useState(false);
