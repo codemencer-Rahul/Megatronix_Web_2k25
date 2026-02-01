@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { CodeXmlIcon, RocketIcon, UsersGroupIcon, UsersIcon } from '../ui/icons';
 import rebootPoster from "../../assets/images/rebootPoster.jpg";
 import orientationPoster from "../../assets/images/orientationPoster.jpeg";
+import OrientationModal from '../OrientationModal';
 
 function EventSection() {
   const [modalImage, setModalImage] = useState(null);
+  const [showOrientationModal, setShowOrientationModal] = useState(false);
 
   const upcomingEvents = [
     {
@@ -227,7 +229,7 @@ function EventSection() {
                 return (
                   <div
                     key={index}
-                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon
+                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon || event.key === 'orientation'
                       ? "cursor-not-allowed"
                       : "hover:scale-[1.01] cursor-pointer"
                     }`}
@@ -242,7 +244,7 @@ function EventSection() {
                         : '0 0 20px rgba(118, 200, 147, 0.1)',
                     }}
                     onClick={() =>
-                      !event.comingSoon && navigate(`/event/${event.key}`)
+                      !event.comingSoon && event.key !== 'orientation' && navigate(`/event/${event.key}`)
                     }
                   >
                     {event.comingSoon && (
@@ -347,8 +349,14 @@ function EventSection() {
                             color: 'var(--black)'
                           }}
                           disabled={event.comingSoon}
+                          onClick={(e) => {
+                            if (event.key === 'orientation') {
+                              e.stopPropagation();
+                              setShowOrientationModal(true);
+                            }
+                          }}
                         >
-                          Learn More
+                          {event.key === 'orientation' ? 'View Schedule' : 'Learn More'}
                         </button>
                       </div>
                     </div>
@@ -391,6 +399,12 @@ function EventSection() {
             </div>
           </div>
         )}
+
+        {/* Orientation Modal */}
+        <OrientationModal
+          isOpen={showOrientationModal}
+          onClose={() => setShowOrientationModal(false)}
+        />
 
         <style>{`
           @keyframes fadeIn {

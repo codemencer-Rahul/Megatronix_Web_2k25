@@ -95,7 +95,7 @@ function HomePage() {
 
         {/* Two buttons inline under MEGATRONIX text */}
         <div className="flex flex-col sm:flex-row gap-10 sm:gap-6 md:gap-10 lg:gap-12 translate-y-14 sm:translate-y-12">
-          {/* REGISTER BUTTON */}
+          {/* Activities BUTTON */}
           <Link
             to="/event"
             className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tl-3xl rounded-br-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before: inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10 inline-block"
@@ -123,11 +123,11 @@ function HomePage() {
                 className="w-1.5 h-1.5 animate-pulse rounded-full"
                 style={{ backgroundColor: "var(--gray-text)" }}
               ></span>
-              Register
+              Activities
             </span>
           </Link>
 
-          {/* ABOUT US BUTTON */}
+          {/* History BUTTON */}
           <Link
             to="/about"
             className="group relative overflow-hidden uppercase px-5 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 tracking-widest text-xs sm:text-sm md:text-base rounded-tl-3xl rounded-br-3xl transition-all duration-300 hover:scale-[1.02] hover:-translate-y-0.5 hover:cursor-pointer before:absolute before: inset-0 before:from-transparent before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700 after:absolute after:-z-10 inline-block"
@@ -155,7 +155,7 @@ function HomePage() {
                 className="w-1.5 h-1.5 animate-pulse rounded-full"
                 style={{ backgroundColor: "var(--gray-text)" }}
               ></span>
-              About Us
+              History
             </span>
           </Link>
         </div>
