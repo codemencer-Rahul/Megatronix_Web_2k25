@@ -1,11 +1,9 @@
-import { AboutSection } from '../components'
 import React from 'react'
+import AboutSection from "../components/sections/About/AboutSection"
 
 function AboutPage() {
   return (
-    <div>
-      <AboutSection/>
-    </div>
+    <AboutSection />
   )
 }
 

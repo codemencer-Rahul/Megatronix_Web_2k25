@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { LetterGlitch } from "../animations";
-import forklifter from "../../assets/images/forklifter.JPG";
-import homeautomation from "../../assets/images/homeautomation.png";
-import pothole from "../../assets/images/pothole.png";
-// import trussbridge from "../../assets/images/trussbridge.png";
-import windcharging from "../../assets/images/windcharging.JPG";
-import edgeandobstacle from "../../assets/images/edgeandobstacle.jpg";
-import airhockey from "../../assets/images/airhockey.JPG";
-import hydraulic from "../../assets/images/hydraulic.jpg";
+import LetterGlitch from "../components/ui/animatedComponents/LetterGlitch";
+import forklifter from "../assets/images/forklifter.JPG"
+import homeautomation from "../assets/images/homeautomation.png"
+import pothole from "../assets/images/pothole.png"
+import windcharging from "../assets/images/windcharging.JPG"
+import edgeandobstacle from "../assets/images/edgeandobstacle.jpg"
+import airhockey from "../assets/images/airhockey.JPG"
+import hydraulic from "../assets/images/hydraulic.jpg"
 
 const projectsByYear = {
   2023: [

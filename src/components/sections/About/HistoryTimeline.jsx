@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import SpotlightCard from '../ui/SpotlightCard';
+import SpotlightCard from '../../ui/animatedComponents/SpotlightCard';
 
-function Timeline({ milestones, openModal }) {
+function Timeline({ milestones }) {
   const timelineData = milestones.map((milestone, index) => ({
     ...milestone,
     position: index % 2 === 0 ? 'left' : 'right',
@@ -163,22 +163,6 @@ function Timeline({ milestones, openModal }) {
               <h2 className="text-lg sm:text-2xl font-semibold" style={{ color: 'var(--white)' }}>{item.event}</h2>
               <small className="mb-3 inline-block font-bold text-sm sm:text-md" style={{ color: 'var(--yellow-primary)' }}>{item.year}</small>
               <p className='text-sm sm:text-base leading-relaxed' style={{ color: 'var(--gray-text)' }}>{item.description}</p>
-              {item.videoSrc && (
-                <button
-                  onClick={() => openModal(item.videoSrc)}
-                  className="mt-4 hover:cursor-pointer text-xs sm:text-md md:text-base md:font-semibold px-3 py-1 rounded-lg transition-all duration-300 font-medium backdrop-blur-sm whitespace-nowrap"
-                  style={{
-                    color: 'var(--yellow-primary)',
-                    borderWidth: '2px',
-                    borderStyle: 'solid',
-                    borderColor: 'var(--yellow-primary)'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--yellow-border-soft)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                >
-                  🎥 Show Video
-                </button>
-              )}
               <span
                 className={`absolute top-7 z-10 ${item.position === "left"
                   ? "timeline-arrow-left right-[-15px] border-t-15 border-t-transparent border-b-15 border-b-transparent border-l-15"

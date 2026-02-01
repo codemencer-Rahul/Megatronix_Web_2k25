@@ -1,9 +1,11 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer } from "./components/layout";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import EventPage from "./pages/EventPage";
-import HomePage from "./pages/HomePage"; import ErrorPage from "./pages/ErrorPage"; import { lazy } from "react";
+import HomePage from "./pages/HomePage";
+import ErrorPage from "./pages/ErrorPage";
+import { lazy } from "react";
 import GalleryPage from "./pages/GalleryPage";
 // import OrientationModal from "./components/OrientationModal";
 // import BackgroundMusic from "./components/BackgroundMusic";
@@ -17,7 +19,6 @@ function AppContent() {
   return (
     <>
       {/* <BackgroundMusic /> */}
-      {/* <OrientationModal /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

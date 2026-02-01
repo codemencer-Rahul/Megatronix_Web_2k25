@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LetterGlitch from '../components/animations/LetterGlitch';
+import LetterGlitch from '../components/ui/animatedComponents/LetterGlitch';
 
 const ErrorPage = () => {
     const navigate = useNavigate();

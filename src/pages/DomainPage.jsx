@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { LetterGlitch } from "../animations";
-import codemanthanPoster from "../../assets/images/codemanthanPoster.jpg";
-import snapsyncPoster from "../../assets/images/snapsyncPoster.jpg";
-import rebootPoster from "../../assets/images/rebootPoster.jpg";
+import LetterGlitch from "../components/ui/animatedComponents/LetterGlitch"
+import codemanthanPoster from "../assets/images/codemanthanPoster.jpg";
+import snapsyncPoster from "../assets/images/snapsyncPoster.jpg";
+import rebootPoster from "../assets/images/rebootPoster.jpg";
 
 const DOMAINS = [
   {

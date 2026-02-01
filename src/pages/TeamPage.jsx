@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { TeamSection, LetterGlitch } from '../components'
+import LetterGlitch from '../components/ui/animatedComponents/LetterGlitch';
+import { TeamSection } from '../components/sections';
 
 function TeamPage() {
   const [showContent, setShowContent] = useState(false);
@@ -33,9 +34,7 @@ function TeamPage() {
 
   return (
     <LetterGlitch glitchSpeed={150} smooth={false}>
-      <div className="min-h-screen pt-15">
-        <TeamSection />
-      </div>
+      <TeamSection />
     </LetterGlitch>
   )
 }

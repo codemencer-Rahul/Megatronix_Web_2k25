@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { LetterGlitch } from "../animations";
-import codemanthanPoster from "../../assets/images/codemanthanPoster.jpg";
-import snapsyncPoster from "../../assets/images/snapsyncPoster.jpg";
-import rebootPoster from "../../assets/images/rebootPoster.jpg";
+import LetterGlitch from "../components/ui/animatedComponents/LetterGlitch";
+import codemanthanPoster from "../assets/images/codemanthanPoster.jpg";
+import snapsyncPoster from "../assets/images/snapsyncPoster.jpg";
+import rebootPoster from "../assets/images/rebootPoster.jpg";
 
 const DOMAIN_EVENTS = {
   robotics: [

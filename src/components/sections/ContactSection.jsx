@@ -1,7 +1,6 @@
 import {
   ChevronDown,
   ChevronUp,
-  Clock,
   MapPin,
   MessageSquare,
 } from "lucide-react";
@@ -10,8 +9,8 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { contactUsService } from "../../lib/services/contactUsService";
-import { LetterGlitch } from "../animations";
-import { FacebookIcon, GmailIcon, InstagramIcon, LinkedinIcon, MailFilledIcon, PhoneVolume, TwitterXIcon, YoutubeIcon } from "../ui/icons";
+import LetterGlitch from "../ui/animatedComponents/LetterGlitch";
+import { GmailIcon, MailFilledIcon, PhoneVolume, } from "../ui/icons";
 
 // --- DATA ---
 const facultyCoordinators = [

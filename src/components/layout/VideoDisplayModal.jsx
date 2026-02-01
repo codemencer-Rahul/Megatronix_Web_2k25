@@ -1,5 +1,3 @@
-import { ArrowLeft } from "lucide-react";
-import { ArrowBigLeftDashIcon } from "./icons";
 
 const VideoComponent = ({ videoSrc, closeModal }) => {
   if (!videoSrc) return null;

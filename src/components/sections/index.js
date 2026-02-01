@@ -1,7 +1,6 @@
-export { default as AboutSection } from "./AboutSection";
+export { default as AboutSection } from "./About/AboutSection";
 export { default as ContactSection } from "./ContactSection";
 export { default as EventSection } from "./EventSection";
-export { default as IntroSection } from "./IntroSection";
+export { default as StatsSection } from "./About/StatsSection";
+export { default as TeamSection } from "./TeamSection";
 export { default as GallerySection } from "./GallerySection";
-export { default as StatsSection } from "./StatsSection";
-export { default as TeamSection } from "./TeamSection"; 

@@ -1,6 +1,5 @@
 export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
-export { default as DomainEventsPage } from "./DomainEventsPage";
-export { default as DomainPage } from "./DomainPage";
-export { default as OrientationPage } from "./OrientationPage";
-export { default as Timeline } from "./Timeline";
+export { default as OrientationModal } from "./OrientationSchedualModal";
+export { default as ProfileCard } from "./ProfileCard";
+export { default as VideoComponent } from "./VideoDisplayModal";
