@@ -77,13 +77,13 @@ export default function Navbar() {
               onClick={() => {
                 navigate("/contact");
                   }}
-                  className="rounded-full px-4 py-1.5 text-sm transition-all"
+              className="rounded-full px-4 py-1.5 text-sm transition-all hover:cursor-pointer"
                   style={{
                     border: "1px solid var(--yellow-hover)",
                     color: "var(--white)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "var(--yellow-soft)";
+                    e.currentTarget.style.backgroundColor = "var(--yellow-primary)";
                     e.currentTarget.style.color = "var(--black)";
                   }}
                   onMouseLeave={(e) => {
@@ -167,7 +167,7 @@ export default function Navbar() {
                     closeMenu();
                   navigate("/contact");
                   }}
-                  className="rounded-full px-6 py-2 text-sm"
+                className="rounded-full px-6 py-2 text-sm hover:cursor-pointer"
                   style={{
                     border: "1px solid var(--yellow-primary)",
                     color: "var(--white)",
