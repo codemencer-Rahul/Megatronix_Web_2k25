@@ -8,7 +8,36 @@ import gamingEvent from "../../assets/videos/gamingEvent.mp4";
 import paridhiVid from "../../assets/videos/paridhiVid.mp4";
 import techxtraVid from "../../assets/videos/techxtraVid.mp4";
 import warVid from "../../assets/videos/warVid.mp4";
+
+//importing all the logo from the assets folder
+import FriendFm from "../../assets/images/91.9 Friends FM.jpg"
+import BengalChess from "../../assets/images/Bengal Chess.jpg"
+import BigBasket from "../../assets/images/Bigbasket.png"
+import Bloggeradda from "../../assets/images/bloggeradda.jpeg"
+import CalcuttaCacophony from "../../assets/images/Calcutta Cacophony.png"
+import CollegeRivals from "../../assets/images/cllgrivals.jpeg"
+import CocaCola from "../../assets/images/Coca-Cola.jpg"
+import GamersGrub from "../../assets/images/gamersGrub.jpeg"
+import Gfg from "../../assets/images/gfglogo.png"
+import IntelSoftware from "../../assets/images/Intel Software.jpg"
+import Lic from "../../assets/images/LIC-Logo.jpg"
+import Microcenter from "../../assets/images/Micro Center India.png"
+import CodingNinja from "../../assets/images/Coding Ninja.png"
+import OhKolkata from "../../assets/images/Oh!Kolkata.jpg"
+import Otaku from "../../assets/images/otaku.jpeg"
+import PizzaHut from "../../assets/images/Pizza Hut.jpg"
+import Popski from "../../assets/images/popski.jpeg"
+import SIUK from "../../assets/images/SI-UK.jpg"
+import SITICable from "../../assets/images/SITI Digital Cable Television.png"
+import Tatacopper from "../../assets/images/tatacopper.jpeg"
+import Tea from "../../assets/images/tea.jpeg"
+import Xenon from "../../assets/images/Team Xenon.jpg"
+import Tvs from "../../assets/images/TVS.png"
+import WowMomo from "../../assets/images/Wow! Momo.jpg"
+
+
 import { CodeXmlIcon, TargetIcon, RocketIcon } from "../ui/icons";
+import LogoLoop from '../LogoLoop';
 
 function AboutSection() {
   const embeddedVideoRef = useRef(null);
@@ -105,8 +134,105 @@ function AboutSection() {
         "Hands-on workshops introducing students to fundamentals of robotics and autonomous systems.",
       icon: TargetIcon,
     }
+  ];
 
-
+  const logos = [
+    {
+      src: FriendFm,
+      alt: "91.9 Friends FM",
+    },
+    {
+      src: BengalChess,
+      alt: "Bengal Chess",
+    },
+    {
+      src: BigBasket,
+      alt: "Big Basket",
+    },
+    {
+      src: Bloggeradda,
+      alt: "Bloggeradda",
+    },
+    {
+      src: CalcuttaCacophony,
+      alt: "Calcutta Cacophony",
+    },
+    {
+      src: CollegeRivals,
+      alt: "College Rivals",
+    },
+    {
+      src: CocaCola,
+      alt: "Coca Cola",
+    },
+    {
+      src: GamersGrub,
+      alt: "Gamers Grub",
+    },
+    {
+      src: Gfg,
+      alt: "GeeksforGeeks",
+    },
+    {
+      src: IntelSoftware,
+      alt: "Intel Software",
+    },
+    {
+      src: Lic,
+      alt: "LIC",
+    },
+    {
+      src: Microcenter,
+      alt: "Micro Center",
+    },
+    {
+      src: CodingNinja,
+      alt: "Coding Ninjas",
+    },
+    {
+      src: OhKolkata,
+      alt: "Ohi Kolkata",
+    },
+    {
+      src: Otaku,
+      alt: "Otaku",
+    },
+    {
+      src: PizzaHut,
+      alt: "Pizza Hut",
+    },
+    {
+      src: Popski,
+      alt: "Popski",
+    },
+    {
+      src: SIUK,
+      alt: "Study in UK",
+    },
+    {
+      src: SITICable,
+      alt: "SITI Cable",
+    },
+    {
+      src: Tatacopper,
+      alt: "Tata Copper",
+    },
+    {
+      src: Tea,
+      alt: "Tea",
+    },
+    {
+      src: Xenon,
+      alt: "Xenon",
+    },
+    {
+      src: Tvs,
+      alt: "TVS",
+    },
+    {
+      src: WowMomo,
+      alt: "Wow! Momo",
+    },
   ];
 
   const [showModal, setShowModal] = useState(false);
@@ -201,6 +327,40 @@ function AboutSection() {
           {/* Stats Section */}
           <div className="mb-16">
             <StatsSection />
+          </div>
+
+          {/* Sponsors/Partners Logo Loop */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-center mb-8" style={{ color: 'var(--white)' }}>
+              Our Partners & Sponsors
+            </h2>
+            <div style={{ position: 'relative', overflow: 'hidden' }}>
+              <LogoLoop
+                logos={logos}
+                speed={80}
+                direction="left"
+                logoHeight={100}
+                gap={60}
+                hoverSpeed={0}
+                scaleOnHover
+                fadeOut
+                fadeOutColor="var(--black)"
+                ariaLabel="Our partners and sponsors"
+              />
+              <div className="my-8"></div>
+              <LogoLoop
+                logos={logos}
+                speed={80}
+                direction="right"
+                logoHeight={100}
+                gap={60}
+                hoverSpeed={0}
+                scaleOnHover
+                fadeOut
+                fadeOutColor="var(--black)"
+                ariaLabel="Our partners and sponsors"
+              />
+            </div>
           </div>
 
           {/* Events We Conduct - Bento Grid */}
