@@ -69,7 +69,7 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
   }, [onLoad, seqRef, dependencies]);
 };
 
-const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical) => {
+const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isVertical) => {
   const rafRef = useRef(null);
   const lastTimestampRef = useRef(null);
   const offsetRef = useRef(0);
@@ -109,7 +109,7 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
       lastTimestampRef.current = timestamp;
 
-      const target = isHovered && hoverSpeed !== undefined ? hoverSpeed : targetVelocity;
+      const target = targetVelocity;
 
       const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
       velocityRef.current += (target - velocityRef.current) * easingFactor;
@@ -137,7 +137,7 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical, trackRef]);
+  }, [targetVelocity, seqWidth, seqHeight, isVertical, trackRef]);
 };
 
 export const LogoLoop = memo(({
@@ -151,7 +151,6 @@ export const LogoLoop = memo(({
   hoverSpeed,
   fadeOut = false,
   fadeOutColor,
-  scaleOnHover = false,
   renderItem,
   ariaLabel = 'Partner logos',
   className,
@@ -164,7 +163,6 @@ export const LogoLoop = memo(({
   const [seqWidth, setSeqWidth] = useState(0);
   const [seqHeight, setSeqHeight] = useState(0);
   const [copyCount, setCopyCount] = useState(ANIMATION_CONFIG.MIN_COPIES);
-  const [isHovered, setIsHovered] = useState(false);
 
   const effectiveHoverSpeed = useMemo(() => {
     if (hoverSpeed !== undefined) return hoverSpeed;
@@ -225,7 +223,6 @@ export const LogoLoop = memo(({
     targetVelocity,
     seqWidth,
     seqHeight,
-    isHovered,
     effectiveHoverSpeed,
     isVertical
   );
@@ -238,22 +235,15 @@ export const LogoLoop = memo(({
 
   const rootClasses = useMemo(() =>
     cx(
-      'relative group',
+      'relative',
       isVertical ? 'overflow-hidden h-full inline-block' : 'overflow-x-hidden',
       '[--logoloop-gap:32px]',
       '[--logoloop-logoHeight:28px]',
       '[--logoloop-fadeColorAuto:#ffffff]',
       'dark:[--logoloop-fadeColorAuto:#0b0b0b]',
-      scaleOnHover && 'py-[calc(var(--logoloop-logoHeight)*0.1)]',
       className
-    ), [isVertical, scaleOnHover, className]);
+    ), [isVertical, className]);
 
-  const handleMouseEnter = useCallback(() => {
-    if (effectiveHoverSpeed !== undefined) setIsHovered(true);
-  }, [effectiveHoverSpeed]);
-  const handleMouseLeave = useCallback(() => {
-    if (effectiveHoverSpeed !== undefined) setIsHovered(false);
-  }, [effectiveHoverSpeed]);
 
   const renderLogoItem = useCallback((item, key) => {
     if (renderItem) {
@@ -261,8 +251,7 @@ export const LogoLoop = memo(({
         <li
           className={cx(
             'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]',
-            isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]',
-            scaleOnHover && 'overflow-visible group/item'
+            isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]'
           )}
           key={key}
           role="listitem">
@@ -276,10 +265,7 @@ export const LogoLoop = memo(({
     const content = isNodeItem ? (
       <span
         className={cx(
-          'inline-flex items-center',
-          'motion-reduce:transition-none',
-          scaleOnHover &&
-            'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+          'inline-flex items-center'
         )}
         aria-hidden={!!item.href && !item.ariaLabel}>
         {item.node}
@@ -289,10 +275,7 @@ export const LogoLoop = memo(({
         className={cx(
           'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
           '[-webkit-user-drag:none] pointer-events-none',
-          '[image-rendering:-webkit-optimize-contrast]',
-          'motion-reduce:transition-none',
-          scaleOnHover &&
-            'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
+          '[image-rendering:-webkit-optimize-contrast]'
         )}
         src={item.src}
         srcSet={item.srcSet}
@@ -312,8 +295,6 @@ export const LogoLoop = memo(({
       <a
         className={cx(
           'inline-flex items-center no-underline rounded',
-          'transition-opacity duration-200 ease-linear',
-          'hover:opacity-80',
           'focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2'
         )}
         href={item.href}
@@ -330,15 +311,14 @@ export const LogoLoop = memo(({
       <li
         className={cx(
           'flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]',
-          isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]',
-          scaleOnHover && 'overflow-visible group/item'
+          isVertical ? 'mb-[var(--logoloop-gap)]' : 'mr-[var(--logoloop-gap)]'
         )}
         key={key}
         role="listitem">
         {inner}
       </li>
     );
-  }, [isVertical, scaleOnHover, renderItem]);
+  }, [isVertical, renderItem]);
 
   const logoLists = useMemo(() =>
     Array.from({ length: copyCount }, (_, copyIndex) => (
@@ -369,8 +349,7 @@ export const LogoLoop = memo(({
       style={containerStyle}
       role="region"
       aria-label={ariaLabel}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+    >
       {fadeOut && (
         <>
           {isVertical ? (
@@ -417,8 +396,7 @@ export const LogoLoop = memo(({
           isVertical ? 'flex-col h-max w-full' : 'flex-row w-max'
         )}
         ref={trackRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}>
+      >
         {logoLists}
       </div>
     </div>
