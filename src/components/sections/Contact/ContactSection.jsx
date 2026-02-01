@@ -255,7 +255,7 @@ const ContactSection = () => {
           </div>
 
           {/* FACULTY SECTION */}
-          <FacultyCoordinator/>
+          {/* <FacultyCoordinator/> */}
 
           {/* FAQ SECTION (Accordion) */}
           <FaqAccordian/>
