@@ -1,5 +1,5 @@
 // import {  } from '../components'
-import GallerySection from '@/components/sections/GallerySection'
+import GallerySection from '../components/sections/GallerySection'
 import React from 'react'
 
 function GalleryPage() {
