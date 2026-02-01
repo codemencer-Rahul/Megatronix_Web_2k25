@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import EventSection from '../components/sections/EventSection'
+import EventSection from '../components/sections/Event/EventSection'
 import DomainEventsPage from './DomainEventsPage'
 import DomainPage from './DomainPage'
 import OrientationPage from './OrientationPage'

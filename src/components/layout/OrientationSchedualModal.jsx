@@ -39,7 +39,7 @@ const OrientationModal = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="relative max-w-2xl w-full rounded-2xl overflow-hidden z-[10000]"
+        className="relative max-w-xl w-full rounded-2xl overflow-hidden z-[10000]"
         style={{
           backgroundColor: 'var(--surface-black)',
           border: '2px solid var(--yellow-primary)',

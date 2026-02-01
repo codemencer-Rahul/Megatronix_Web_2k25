@@ -1,116 +1,19 @@
 import React, { useState } from 'react'
-import { Calendar, Clock, MapPin } from "lucide-react";
-import LetterGlitch from '../ui/animatedComponents/LetterGlitch';
+import OrientationModal from '../../layout/OrientationSchedualModal';
+import LetterGlitch from '../../ui/animatedComponents/LetterGlitch';
+import EventsData from '../../../lib/data/EventsData';
 import { useNavigate } from 'react-router-dom';
-import { CodeXmlIcon, RocketIcon, UsersGroupIcon, UsersIcon } from '../ui/icons';
-import rebootPoster from "../../assets/images/rebootPoster.jpg";
-import orientationPoster from "../../assets/images/orientationPoster.jpeg";
-import OrientationModal from '../layout/OrientationSchedualModal';
+import { UsersGroupIcon, } from '../../ui/icons';
+import { Calendar, Clock, MapPin } from "lucide-react";
+import UpcomingEventsCard from './UpcomingEventsCard';
+
 
 function EventSection() {
   const [modalImage, setModalImage] = useState(null);
   const [showOrientationModal, setShowOrientationModal] = useState(false);
+  const navigate = useNavigate();
 
-  const upcomingEvents = [
-    {
-      title: "Workshop on Robotics, Coding, Electrical and Civil",
-      date: "TBD",
-      time: "3:00 PM - 5:00 PM",
-      type: "Wokrshop",
-    },
-    {
-      title: "Techxtra",
-      date: "TBD",
-      time: "10:00 AM - 5:00 PM",
-      type: "Flagship Event",
-    },
-    {
-      title: "Paridhi",
-      date: "TBD",
-      time: "10:00 AM - 5:00 PM",
-      type: "Flagship Event",
-    },
-  ];
-
-  const mainEvents = [
-    {
-      key: "reboot",
-      title: "Reboot 2025",
-      description:
-        "REBOOT 2K25 is a dynamic online tech event by Megatronix, bringing innovators together through exciting challenges, collaboration, and opportunities to showcase creativity and skills.",
-      date: "July 6 - 12, 2025",
-      location: "Online",
-      time: "NA",
-      participants: "200+ Participants",
-      icon: RocketIcon,
-      gradient: "from-teal-800/40 to-red-500/40",
-      status: "completed",
-      comingSoon: false,
-      poster: rebootPoster,
-    },
-
-    {
-      key: "orientation",
-      title: "Orientation for 1st year Students",
-      description:
-        "An orientation program for first-year MSIT students introducing club domains, activities, and upcoming events, with interactive sessions to help students explore interests and get involved.",
-      date: "Feb 2nd-6th, 2026",
-      location: "JC Bose Auditorium ( BSH Seminar Hall ), MSIT",
-      time: "3:00 PM - 5:00 PM",
-      participants: "100+ Participants",
-      icon: UsersIcon,
-      gradient: "from-teal-800/40 to-red-500/40",
-      status: "ongoing",
-      comingSoon: false,
-      poster: orientationPoster,
-    },
-    {
-      key: "workshop",
-      title: "Workshops for 1st year Students",
-      description:
-        "Comprehensive workshop series covering latest technologies including AIML, Electronics, Web Development, Robotics and more",
-      date: "15th Dec, 2025",
-      location: "MSIT Campus",
-      time: "3:00 PM - 5:00 PM",
-      participants: "50 per session",
-      icon: CodeXmlIcon,
-      gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
-      comingSoon: true,
-      poster: null,
-    },
-    {
-      key: "techxtra",
-      title: "Intra College Tech Fest ( Techxtra )",
-      description:
-        "Techxtra is Megatronix’s flagship intra-college tech fest celebrating innovation through thrilling competitions in robotics, electrical, civil and coding domains.",
-      date: "TBD",
-      location: "MSIT Campus",
-      time: "10:00 AM - 5:00 PM",
-      participants: "200+ Participants",
-      icon: CodeXmlIcon,
-      gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
-      comingSoon: true,
-      poster: null,
-    },
-    {
-      key: "paridhi",
-      title: "Paridhi",
-      description:
-        "Our flagship annual tech festival featuring cutting-edge technology showcases, competitions, and workshops",
-      date: "TBD",
-      location: "MSIT Campus",
-      time: "10:00 AM - 5:00 PM",
-      participants: "500+ Expected",
-      icon: RocketIcon,
-      gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
-      comingSoon: true,
-      poster: null,
-    },
-  ];
-
+  //code for the status color and text
   const getStatusColor = (status) => {
     switch (status) {
       case "upcoming":
@@ -137,7 +40,6 @@ function EventSection() {
     }
   };
 
-  const navigate = useNavigate();
 
   return (
     <LetterGlitch>
@@ -145,91 +47,30 @@ function EventSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
           {/* Upcoming Events */}
-          <div>
-            <h2 className="text-3xl font-bold text-center mb-8">
-              Upcoming Events
-            </h2>
-            <div className="flex flex-wrap justify-center gap-6">
-              {upcomingEvents.map((event, index) => (
-                <div
-                  key={index}
-                  className="group backdrop-blur-xl rounded-2xl p-6 transition-all duration-500 animate-fade-in-up hover:shadow-2xl w-full md:w-80"
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    backgroundColor: 'var(--surface-black)',
-                    border: '1.5px solid',
-                    borderColor: 'var(--yellow-border-soft)',
-                    boxShadow: '0 0 20px rgba(255, 202, 40, 0.1), inset 0 0 20px rgba(255, 202, 40, 0.05)',
-                    position: 'relative',
-                    overflow: 'hidden'
-                  }}
-                >
-                  {/* Animated gradient accent */}
-                  <div
-                    className="absolute top-0 left-0 w-full h-0.5 from-transparent via-yellow-primary to-transparent group-hover:h-1 transition-all duration-500"
-                    style={{ background: 'linear-gradient(to right, transparent, var(--yellow-primary), transparent)' }}
-                  />
+         <UpcomingEventsCard/>
 
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <span
-                        className="text-xs px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider transition-all duration-300 group-hover:scale-105"
-                        style={{
-                          color: 'var(--black)',
-                          background: 'linear-gradient(to right, var(--yellow-primary), var(--yellow-hover))',
-                        }}
-                      >
-                        {event.type}
-                      </span>
-                    </div>
-
-                    <h3 className="text-base font-bold mb-4 leading-snug transition-colors duration-300" style={{ color: 'var(--white)' }}>
-                      {event.title}
-                    </h3>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-3 text-sm transition-colors duration-300" style={{ color: 'var(--gray-text)' }}>
-                        <div className="p-2 rounded-lg" style={{ backgroundColor: 'var(--yellow-border-soft)' }}>
-                          <Calendar className="h-4 w-4" style={{ color: 'var(--yellow-primary)' }} />
-                        </div>
-                        <span>{event.date}</span>
-                      </div>
-                      <div className="flex items-center space-x-3 text-sm transition-colors duration-300" style={{ color: 'var(--gray-text)' }}>
-                        <div className="p-2 rounded-lg" style={{ backgroundColor: 'var(--yellow-border-soft)' }}>
-                          <Clock className="h-4 w-4" style={{ color: 'var(--yellow-primary)' }} />
-                        </div>
-                        <span>{event.time}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Main Events - Bento Grid */}
+          {/* Main Events - Bento Grid , large cards for the priority events and coming soon for the others */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-center mb-8">
               Flagship Events
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {mainEvents.map((event, index) => {
-                // Define bento grid spans - Priority: Reboot & Orientation
+              {EventsData.mainEvents.map((event, index) => {
                 const getGridClasses = () => {
-                  if (index === 0) return "md:col-span-4 lg:col-span-3 md:row-span-2"; // Reboot - HERO
-                  if (index === 1) return "md:col-span-2 lg:col-span-3 md:row-span-2"; // Orientation - TALL
+                  if (index === 0) return "md:col-span-4 lg:col-span-3 md:row-span-2"; // Reboot 
+                  if (index === 1) return "md:col-span-2 lg:col-span-3 md:row-span-2"; // Orientation 
                   if (index === 2) return "md:col-span-2 lg:col-span-2"; // Workshop
                   if (index === 3) return "md:col-span-2 lg:col-span-2"; // Techxtra
                   if (index === 4) return "md:col-span-4 lg:col-span-2"; // Paridhi
                   return "";
                 };
 
-                const isPriority = index === 0 || index === 1; // Reboot and Orientation
+                const isPriority = index === 0 || index === 1; // setting priority for Reboot and Orientation
 
                 return (
                   <div
                     key={index}
-                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon || event.key === 'orientation'
+                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon 
                       ? "cursor-not-allowed"
                       : "hover:scale-[1.01] cursor-pointer"
                     }`}
