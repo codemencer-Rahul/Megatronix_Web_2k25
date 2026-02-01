@@ -14,12 +14,13 @@ export {
   ContactSection,
   EventSection,
   IntroSection,
+  GallerySection,
   StatsSection,
   TeamSection,
 } from "./sections";
 
 // UI Components
-export { SpotlightCard, ProfileCard, Counter, VideoComponent } from "./ui";
+export { GridMotion, MagicBento, SpotlightCard, ProfileCard, Counter, VideoComponent } from "./ui";
 
 // Animation Components
 export { LetterGlitch } from "./animations";
