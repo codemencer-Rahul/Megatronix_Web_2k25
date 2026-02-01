@@ -35,7 +35,6 @@ import Xenon from "../../assets/images/Team Xenon.jpg"
 import Tvs from "../../assets/images/TVS.png"
 import WowMomo from "../../assets/images/Wow! Momo.jpg"
 
-
 import { CodeXmlIcon, TargetIcon, RocketIcon } from "../ui/icons";
 import LogoLoop from '../LogoLoop';
 
