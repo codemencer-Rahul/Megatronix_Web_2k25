@@ -15,28 +15,9 @@ const ImageTile = ({ src, index, onOpen }) => {
   const [loaded, setLoaded] = useState(false);
   const thumb = createThumb(src, 200);
 
-  const loaderMessages = [
-    'Warming up GPUs...',
-    'Fetching pixels...',
-    'Summoning the best shot...',
-    'Decrypting memories...',
-    'Rendering good times...',
-    'Optimizing frames...',
-    'Assembling vibes...',
-    'Calling Cloudinary...',
-    'Buffering megabytes...',
-    'Loading hyperpixels...'
-  ];
-
-  const message = loaderMessages[index % loaderMessages.length];
-
   return (
     <div className="mobile-gallery-item">
       <div className={`mobile-thumb ${loaded ? 'hidden' : 'visible'}`} style={{ backgroundImage: `url(${thumb})` }} />
-
-      {/* loading message overlay */}
-      <div className={`mobile-loading-text ${loaded ? 'hidden' : 'visible'}`}>{message}</div>
-
       <img
         src={src}
         alt={`Gallery ${index + 1}`}
