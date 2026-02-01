@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../context/AuthContext";
-import { LetterGlitch } from "../components/ui/animatedComponents";
+import { LetterGlitch } from "../components/ui";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
