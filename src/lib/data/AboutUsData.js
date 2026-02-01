@@ -56,14 +56,21 @@ const milestones = [
       description:
         "Fast forward to 2024, we witnessed the thrill of our inaugural 15kg Robo War competition. Students engineered, strategized, and battled, turning creativity into action. The event became a testament to the skills and determination nurtured within our community over the years.",
     },
-    {
-      year: "2025",
-      event: "First App Launch",
-      description:
-        "In 2025, we embraced the digital era by launching our very first official app for Paridhi. This app streamlined event management and registrations, making it easier for participants to engage while showcasing our commitment to innovation and seamless experiences.",
-    },
-    {
-      year: "2025",
+  {
+  year: "2024",
+  event: "First App Launch",
+  description:
+      "In 2024, we stepped into the digital era by launching our first official app. Designed to streamline event management and registrations, the app marked a major milestone in enhancing participant engagement and showcasing our commitment to innovation.",
+  },
+  {
+    year: "2025",
+    event: "App-Powered Paridhi",
+    description:
+      "In 2025, we successfully utilized our official app for Paridhi, enabling seamless event registrations and management at scale. This marked our transition from launch to real-world impact, delivering a smoother and more connected experience for participants.",
+  },
+
+  {
+    year: "2025",
       event: "Organized MegaExpo for the first time",
       description:
         "The same year marked the debut of MegaExpo, a grand platform where ideas transformed into impact. From technological innovations to social solutions, young innovators from multiple institutions and diverse backgrounds pitched their bold concepts to panels of startup founders, industry experts, and mentors, igniting collaboration and inspiration across the campus.",

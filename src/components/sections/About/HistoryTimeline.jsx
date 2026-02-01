@@ -125,11 +125,11 @@ function Timeline({ milestones }) {
         }
 
         .card-visible-left {
-          animation: slideInLeft 0.8s ease-out forwards !important;
+          animation: slideInLeft 0.3s ease-out forwards !important;
         }
 
         .card-visible-right {
-          animation: slideInRight 0.8s ease-out forwards !important;
+          animation: slideInRight 0.3s ease-out forwards !important;
         }
       `}</style>
       <div className="timeline relative max-w-6xl mx-auto my-0 sm:my-12">
