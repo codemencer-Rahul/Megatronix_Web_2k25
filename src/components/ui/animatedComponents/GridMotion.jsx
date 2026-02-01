@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./GridMotion.css";
+import { loadingPhrases } from "../../../lib/data/loadingPhrases";
 
 const GridMotion = ({ items = [], gradientColor = "black" }) => {
   const gridRef = useRef(null);
@@ -10,6 +11,8 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
   const totalItems = 28;
   const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);
   const combinedItems = items.length > 0 ? items.slice(0, totalItems) : defaultItems;
+
+  const [loadedMap, setLoadedMap] = useState(() => Array(totalItems).fill(false));
 
   useEffect(() => {
     gsap.ticker.lagSmoothing(0);
@@ -47,6 +50,85 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
     };
   }, []);
 
+  const [failureMap, setFailureMap] = useState(() => Array(totalItems).fill(false));
+
+  // Prefetch images and mark as loaded when they finish / timeout on failure
+  useEffect(() => {
+    let mounted = true;
+    const loaders = [];
+
+    combinedItems.forEach((content, idx) => {
+      if (typeof content === 'string' && (content.startsWith('http') || content.startsWith('data:'))) {
+        // If already loaded in state, skip
+        if (loadedMap[idx] || failureMap[idx]) return;
+
+        const img = new Image();
+        let timeoutId = null;
+
+        const markLoaded = () => {
+          if (!mounted) return;
+          setLoadedMap(prev => {
+            const copy = prev.slice();
+            copy[idx] = true;
+            return copy;
+          });
+        };
+
+        const markFailed = () => {
+          if (!mounted) return;
+          setFailureMap(prev => {
+            const copy = prev.slice();
+            copy[idx] = true;
+            return copy;
+          });
+          setLoadedMap(prev => {
+            const copy = prev.slice();
+            copy[idx] = true;
+            return copy;
+          });
+        };
+
+        const onLoad = () => {
+          clearTimeout(timeoutId);
+          markLoaded();
+        };
+
+        const onError = () => {
+          clearTimeout(timeoutId);
+          markFailed();
+        };
+
+        // Set a network timeout (8s)
+        timeoutId = setTimeout(() => {
+          onError();
+        }, 8000);
+
+        img.addEventListener('load', onLoad);
+        img.addEventListener('error', onError);
+        img.src = content;
+
+        loaders.push({ img, onLoad, onError, timeoutId });
+
+      } else {
+        // mark non-image content as loaded
+        setLoadedMap(prev => {
+          const copy = prev.slice();
+          copy[idx] = true;
+          return copy;
+        });
+      }
+    });
+
+    return () => {
+      mounted = false;
+      loaders.forEach(({ img, onLoad, onError, timeoutId }) => {
+        img.removeEventListener('load', onLoad);
+        img.removeEventListener('error', onError);
+        if (timeoutId) clearTimeout(timeoutId);
+      });
+    };
+  }, [combinedItems, failureMap, loadedMap]);
+
   return (
     <div className="noscroll loading" ref={gridRef}>
       <section
@@ -70,12 +152,19 @@ const GridMotion = ({ items = [], gradientColor = "black" }) => {
                   <div key={itemIndex} className="row__item">
                     <div className="row__item-inner" style={{ backgroundColor: "#111" }}>
                       {typeof content === "string" && (content.startsWith("http") || content.startsWith("data:")) ? (
-                        <div
-                          className="row__item-img"
-                          style={{
-                            backgroundImage: `url(${content})`,
-                          }}
-                        />
+                        <>
+                          <div
+                            className="row__item-img"
+                            style={{
+                              backgroundImage: `url(${content})`,
+                            }}
+                          />
+                          {!loadedMap[rowIndex * 7 + itemIndex] && (
+                            <div className="grid-loading-overlay">
+                              <div className="grid-loading-text">{loadingPhrases[(rowIndex * 7 + itemIndex) % loadingPhrases.length]}</div>
+                            </div>
+                          )}
+                        </>
                       ) : (
                         <div className="row__item-content">{content}</div>
                       )}
