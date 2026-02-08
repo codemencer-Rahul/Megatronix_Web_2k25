@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import { lazy } from "react";
 import GalleryPage from "./pages/GalleryPage";
+import ScrollToTop from "./components/ui/animatedComponents/ScrollToTop";
 // import OrientationModal from "./components/OrientationModal";
 // import BackgroundMusic from "./components/BackgroundMusic";
 
@@ -39,6 +40,7 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AppContent />
     </BrowserRouter>
   );
