@@ -4,7 +4,7 @@ import { GmailIcon,  PhoneVolume, } from "../../ui/icons";
 
 const ContactInfoPanel = () => {
     const convenors = [
-        { name: "Debangshi Roy", phone: "+91 90071 54749" },
+      { name: "Debangshi Roy", phone: "+91 73845 6340" },
         { name: "Kaustubh Upadhyay", phone: "+91 99394 26962" }
 
     ];

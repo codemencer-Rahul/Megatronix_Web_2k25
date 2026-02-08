@@ -51,7 +51,7 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
       participants: "100+ Participants",
       icon: UsersIcon,
       gradient: "from-teal-800/40 to-red-500/40",
-      status: "ongoing",
+      status: "completed",
       comingSoon: false,
       poster: orientationPoster,
     },
