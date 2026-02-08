@@ -140,7 +140,7 @@ function AboutSection() {
                     </p>
 
                     {/* Watch video or coming soon button*/}
-                    {event.videoSrc ? (
+                    {event.videoSrc && (
                       <button
                         onClick={() => openModal(event.videoSrc)}
                         className="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 hover:cursor-pointer"
@@ -166,17 +166,6 @@ function AboutSection() {
                         </svg>
                         Watch Video
                       </button>
-                    ) : (
-                      <div
-                          className="w-full py-3 px-6 rounded-lg font-semibold text-center"
-                          style={{
-                            backgroundColor: 'rgba(52, 160, 164, 0.2)',
-                            color: 'var(--gray-text)',
-                            border: '1px solid var(--yellow-border-soft)',
-                          }}
-                        >
-                          Coming Soon
-                      </div>
                     )}
                   </div>
 
