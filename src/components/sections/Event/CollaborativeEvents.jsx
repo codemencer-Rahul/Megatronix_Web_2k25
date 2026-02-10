@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Calendar, Clock, MapPin, Trophy, Handshake } from "lucide-react";
 import { UsersGroupIcon } from "../../ui/icons";
-import escaladePoster from "../../../assets/images/escaladePoster.jpeg";
+import escaladePoster from "../../../assets/images/EscaladePoster.jpeg";
 import collegeRivalPoster from "../../../assets/images/clgRivalsPoster.jpeg";
 import { collaborativeEventsVideos } from "../../../lib/data/collaborativeEventsVideos";
 import ModalImage from "../../layout/ModalImage";
