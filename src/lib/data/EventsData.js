@@ -6,7 +6,7 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
     {
       title: "Workshop on Robotics, Coding, Electrical and Civil",
       date: "TBD",
-      time: "3:00 PM - 5:00 PM",
+      time: "TBD",
       type: "Workshop",
     },
     {
@@ -60,14 +60,14 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
       title: "Workshops for 1st year Students",
       description:
         "Comprehensive workshop series covering latest technologies including AIML, Electronics, Web Development, Robotics and more",
-      date: "15th Dec, 2025",
+      date: "TBD",
       location: "MSIT Campus",
-      time: "3:00 PM - 5:00 PM",
-      participants: "50 per session",
+      time: "TBD",
+      participants: "100+ Per Session",
       icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
-      comingSoon: true,
+      comingSoon: false,
       poster: null,
     },
     {

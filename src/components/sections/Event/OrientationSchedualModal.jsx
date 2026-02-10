@@ -29,7 +29,7 @@ const OrientationModal = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 pt-24"
+      className="fixed inset-0 z-9999 flex items-center justify-center p-4 pt-24"
       style={{
         backgroundColor: 'rgba(0, 0, 0, 0.92)',
         backdropFilter: 'blur(12px)',
@@ -39,7 +39,7 @@ const OrientationModal = ({ isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="relative max-w-xl w-full rounded-2xl overflow-hidden z-[10000]"
+        className="relative max-w-xl w-full rounded-2xl overflow-hidden z-10000"
         style={{
           backgroundColor: 'var(--surface-black)',
           border: '2px solid var(--yellow-primary)',
