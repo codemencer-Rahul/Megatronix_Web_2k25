@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
-import OrientationModal from './OrientationSchedualModal';
+// import OrientationModal from './OrientationSchedualModal'; // Commented - using dedicated page now
 import LetterGlitch from '../../ui/animatedComponents/LetterGlitch';
 import EventsData from '../../../lib/data/EventsData';
 import { useNavigate } from 'react-router-dom';
 import { UsersGroupIcon, } from '../../ui/icons';
 import { Calendar, Clock, MapPin } from "lucide-react";
 import UpcomingEventsCard from './UpcomingEventsCard';
-import ModalImage from "../../layout/ModalImage"
+import ModalImage from "../../layout/ModalImage";
+import CollaborativeEvents from './CollaborativeEvents';
 
 function EventSection() {
   const [modalImage, setModalImage] = useState(null);
-  const [showOrientationModal, setShowOrientationModal] = useState(false);
+  // const [showOrientationModal, setShowOrientationModal] = useState(false); // Commented - using dedicated page now
   const navigate = useNavigate();
 
   //code for the status color and text
@@ -57,8 +58,8 @@ function EventSection() {
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {EventsData.mainEvents.map((event, index) => {
                 const getGridClasses = () => {
-                  if (index === 0) return "md:col-span-4 lg:col-span-3 md:row-span-2"; // Reboot 
-                  if (index === 1) return "md:col-span-2 lg:col-span-3 md:row-span-2"; // Orientation 
+                  if (index === 0) return "md:col-span-4 lg:col-span-3 md:row-span-2"; // Reboot
+                  if (index === 1) return "md:col-span-2 lg:col-span-3 md:row-span-2"; // Orientation
                   if (index === 2) return "md:col-span-2 lg:col-span-2"; // Workshop
                   if (index === 3) return "md:col-span-2 lg:col-span-2"; // Techxtra
                   if (index === 4) return "md:col-span-4 lg:col-span-2"; // Paridhi
@@ -70,7 +71,7 @@ function EventSection() {
                 return (
                   <div
                     key={index}
-                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon 
+                    className={`relative backdrop-blur-sm overflow-hidden rounded-2xl animate-fade-in-up transition-all duration-300 group ${getGridClasses()} ${event.comingSoon
                       ? "cursor-not-allowed"
                       : "hover:scale-[1.01] cursor-pointer"
                     }`}
@@ -84,9 +85,7 @@ function EventSection() {
                         ? '0 0 30px rgba(118, 200, 147, 0.3), inset 0 0 20px rgba(118, 200, 147, 0.05)'
                         : '0 0 20px rgba(118, 200, 147, 0.1)',
                     }}
-                    onClick={() =>
-                      !event.comingSoon && event.key !== 'orientation' && navigate(`/event/${event.key}`)
-                    }
+                    onClick={() => !event.comingSoon && event.key !== 'workshop' && navigate(`/event/${event.key}`)}
                   >
                     {event.comingSoon && (
                       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-10 rounded-2xl">
@@ -99,7 +98,7 @@ function EventSection() {
                     {/* Animated border glow for priority cards */}
                     {isPriority && (
                       <div
-                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 pointer-events-none"
                         style={{
                           background: 'linear-gradient(45deg, transparent, var(--yellow-primary), transparent)',
                           filter: 'blur(20px)',
@@ -122,7 +121,7 @@ function EventSection() {
                               {event.title}
                             </h3>
                             <span
-                              className={`inline-block px-3 py-1 rounded-full ${isPriority ? 'text-sm' : 'text-xs'} font-semibold text-white ${getStatusColor(
+                              className={`inline-block px-3 py-1 rounded-full ${isPriority ? 'text-sm' : 'text-xs pb-2'} font-semibold text-white ${getStatusColor(
                                 event.status
                               )} mt-2`}
                             >
@@ -172,7 +171,7 @@ function EventSection() {
                           <span className="truncate">{event.location}</span>
                         </div>
                         <div className={`flex items-center space-x-2 ${isPriority ? 'text-sm' : 'text-xs'} col-span-2`} style={{ color: 'var(--gray-text)' }}>
-                          <UsersGroupIcon className={`${isPriority ? 'h-4 w-4' : 'h-3.5 w-3.5'}`} />
+                          <UsersGroupIcon className={`${isPriority ? 'h-4 w-4' : 'h-3.5 w-3.5'}`} color="#34a0a4"/>
                           <span>{event.participants}</span>
                         </div>
                       </div>
@@ -180,23 +179,18 @@ function EventSection() {
                       {/* Learn More Button */}
                       <div className="mt-auto">
                         <button
-                          className={`w-full ${isPriority ? 'py-3 text-base' : 'py-2.5 text-sm'} rounded-xl font-bold transition-all duration-300 ${event.comingSoon
-                            ? "opacity-50 cursor-not-allowed"
+                          className={`w-full ${isPriority ? 'py-3 text-base' : 'py-2.5 text-sm'} rounded-xl font-bold transition-all duration-300 ${(event.comingSoon || event.key === 'workshop')
+                            ? "cursor-not-allowed"
                             : "hover:shadow-xl hover:shadow-teal-500/30 hover:-translate-y-0.5"
                             }`}
                           style={{
                             background: 'linear-gradient(135deg, var(--yellow-primary), var(--yellow-hover))',
                             color: 'var(--black)'
                           }}
-                          disabled={event.comingSoon}
-                          onClick={(e) => {
-                            if (event.key === 'orientation') {
-                              e.stopPropagation();
-                              setShowOrientationModal(true);
-                            }
-                          }}
+                          disabled={event.comingSoon || event.key === 'workshop'}
+                          // onClick handler removed - handled by parent div
                         >
-                          {event.key === 'orientation' ? 'View Schedule' : 'Learn More'}
+                          {event.key === 'orientation' ? 'View Gallery' : 'Learn More'}
                         </button>
                       </div>
                     </div>
@@ -206,6 +200,9 @@ function EventSection() {
             </div>
           </div>
 
+          {/* Collaborative & Exclusive Events */}
+          <CollaborativeEvents />
+
         </div>
 
         {/* Image Modal */}
@@ -213,11 +210,12 @@ function EventSection() {
           <ModalImage setModalImage={setModalImage} modalImage={modalImage} />
         )}
 
-        {/* Orientation Modal */}
-        <OrientationModal
+        {/* Orientation Modal - Commented out, now using dedicated page */}
+
+        {/* <OrientationModal
           isOpen={showOrientationModal}
           onClose={() => setShowOrientationModal(false)}
-        />
+        /> */}
 
         <style>{`
           @keyframes fadeIn {

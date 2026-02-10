@@ -3,16 +3,16 @@
 const CLOUDINARY_BASE = 'https://res.cloudinary.com/drxvzwtfr/image/upload/';
 
 // export const galleryImages = [
-  
+
 // ];
 
 export const galleryImages = [
-    `https://res.cloudinary.com/drxvzwtfr/image/upload/v1745769158/paridhi-2025/images/Gallery/2024/scaled_img-20231117-wa0017.jpg_2025-04-28_49673073`,
+  `https://res.cloudinary.com/drxvzwtfr/image/upload/v1745769158/paridhi-2025/images/Gallery/2024/scaled_img-20231117-wa0017.jpg_2025-04-28_49673073`,
   `https://res.cloudinary.com/drxvzwtfr/image/upload/v1745769158/paridhi-2025/images/Gallery/2024/scaled_1000197437.jpg_2025-04-28_3F33495F.jpg`,
   `https://res.cloudinary.com/drxvzwtfr/image/upload/v1745769158/paridhi-2025/images/Gallery/2024/scaled_20240512_101121.jpg_2025-04-27_B7F85D44.jpg`,
   `https://res.cloudinary.com/drxvzwtfr/image/upload/v1745769158/paridhi-2025/images/Gallery/2024/20240512_103739.webp_2025-04-21_5996114E.webp`,
   `https://res.cloudinary.com/drxvzwtfr/image/upload/v1745769158/paridhi-2025/images/Gallery/2024/20240512_101445.webp_2025-04-21_855F5913.webp`,
-  
+
   `${CLOUDINARY_BASE}v1769931657/IMG_5974_cy0vdy.jpg`,
   `${CLOUDINARY_BASE}v1769931652/IMG_5958_sayaod.jpg`,
   `${CLOUDINARY_BASE}v1769931651/IMG_5937_dnweuu.jpg`,

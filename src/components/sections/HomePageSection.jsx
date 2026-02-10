@@ -181,7 +181,7 @@ const HomePageSection = () => {
       </div>
 
       {/* ScrollVelocity for the schedual*/}
-      <div className="absolute bottom-0 left-0 w-full z-10 bg-black/25 backdrop-blur-sm py-2">
+      {/* <div className="absolute bottom-0 left-0 w-full z-10 bg-black/25 backdrop-blur-sm py-2">
         <ScrollVelocity
           texts={[
             "02/02/26 (Monday): CSE-A, AIML-A, IT • 03/02/26 (Tuesday): CSE-C, AIDS, IOT, CSE-D + CSIT",
@@ -190,7 +190,7 @@ const HomePageSection = () => {
           velocity={25}
           className="italic font-bold text-(--gray-text)"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
