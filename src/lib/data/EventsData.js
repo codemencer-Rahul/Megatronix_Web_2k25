@@ -5,15 +5,9 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
  const upcomingEvents = [
     {
       title: "Workshop on Robotics, Coding, Electrical and Civil",
-      date: "TBD",
-      time: "TBD",
+      date: "6th - 17th April, 2026",
+      time: "3:00 PM - 5:00 PM",
       type: "Workshop",
-    },
-    {
-      title: "Techxtra",
-      date: "TBD",
-      time: "10:00 AM - 5:00 PM",
-      type: "Flagship Event",
     },
     {
       title: "Paridhi",
@@ -60,29 +54,14 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
       title: "Workshops for 1st year Students",
       description:
         "Comprehensive workshop series covering latest technologies including AIML, Electronics, Web Development, Robotics and more",
-      date: "TBD",
-      location: "MSIT Campus",
-      time: "TBD",
+      date: "6th - 17th April, 2026",
+      location: "MSIT Campus / Online",
+      time: "3:00 PM - 5:00 PM",
       participants: "100+ Per Session",
       icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
       status: "upcoming",
       comingSoon: false,
-      poster: null,
-    },
-    {
-      key: "techxtra",
-      title: "Intra College Tech Fest ( Techxtra )",
-      description:
-        "Techxtra is Megatronix’s flagship intra-college tech fest celebrating innovation through thrilling competitions in robotics, electrical, civil and coding domains.",
-      date: "TBD",
-      location: "MSIT Campus",
-      time: "10:00 AM - 5:00 PM",
-      participants: "200+ Participants",
-      icon: CodeXmlIcon,
-      gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
-      comingSoon: true,
       poster: null,
     },
     {
