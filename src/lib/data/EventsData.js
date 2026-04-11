@@ -12,7 +12,7 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
     {
       title: "Paridhi",
       date: "TBD",
-      time: "10:00 AM - 5:00 PM",
+      time: "TBD",
       type: "Flagship Event",
     },
   ];
@@ -60,7 +60,7 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
       participants: "100+ Per Session",
       icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
+      status: "ongoing",
       comingSoon: false,
       poster: null,
     },
@@ -71,7 +71,7 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
         "Our flagship annual tech festival featuring cutting-edge technology showcases, competitions, and workshops",
       date: "TBD",
       location: "MSIT Campus",
-      time: "10:00 AM - 5:00 PM",
+      time: "TBD",
       participants: "500+ Expected",
       icon: RocketIcon,
       gradient: "from-teal-800/40 to-red-500/40",
