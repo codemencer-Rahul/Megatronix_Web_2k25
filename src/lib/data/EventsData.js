@@ -60,7 +60,7 @@ import  { UsersIcon, RocketIcon, CodeXmlIcon } from "../../components/ui/icons";
       participants: "100+ Per Session",
       icon: CodeXmlIcon,
       gradient: "from-teal-800/40 to-red-500/40",
-      status: "upcoming",
+      status: "ongoing",
       comingSoon: false,
       poster: null,
     },
